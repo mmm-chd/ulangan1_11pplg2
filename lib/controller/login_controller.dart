@@ -6,8 +6,8 @@ class LoginController extends GetxController {
   TextEditingController passwordController = TextEditingController();
 
   void login() {
-    if (usernameController.text == 'apacoba' &&
-        passwordController.text == 'abcd') {
+    if (usernameController.text == 'abcd' &&
+        passwordController.text == 'apacoba') {
       Get.snackbar(
         'Success',
         'Login successful',
