@@ -7,11 +7,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
       ),
-      home: Scaffold(),
+      home: Scaffold(
+        appBar: AppBar(title: Text('Flutter Demo Home Page')),
+        body: Center(child: Text('Hello, world!')),
+      ),
     );
   }
 }
