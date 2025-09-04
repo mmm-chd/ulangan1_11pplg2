@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ulangan1_11pplg2/routes/app_pages.dart';
+import 'package:ulangan1_11pplg2/routes/app_routes.dart';
+
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -12,10 +18,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
       ),
-      home: Scaffold(
-        appBar: AppBar(title: Text('Flutter Demo Home Page')),
-        body: Center(child: Text('Hello, world!')),
-      ),
+      initialRoute: AppRoutes.login,
+      getPages: AppPages.appPages,
     );
   }
 }
