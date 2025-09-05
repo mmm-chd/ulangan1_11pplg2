@@ -10,7 +10,10 @@ class LoginPage extends StatelessWidget {
       body: Center(
         child: Text(
           'Login Page',
-          style: TextStyle(fontSize: 24, fontFamily: 'Inter'),
+          style: TextStyle(
+            fontSize: 24,
+            fontFamily: 'Inter',
+          ),
         ),
       ),
     );
