@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ulangan1_11pplg2/components/color/component/background_component.dart';
-import 'package:ulangan1_11pplg2/components/color/component/button_component.dart';
-import 'package:ulangan1_11pplg2/components/color/component/customtext_component.dart';
-import 'package:ulangan1_11pplg2/components/color/component/customtextfield_component.dart';
-import 'package:ulangan1_11pplg2/components/color/component/space_component.dart';
-import 'package:ulangan1_11pplg2/controller/login_controller.dart';
+import 'package:ulangan1_11pplg2/components/widget/background_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/customtextfield_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 
 class LoginController extends GetxController {
   var rememberMe = false.obs;
