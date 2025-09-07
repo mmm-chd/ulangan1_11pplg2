@@ -10,9 +10,7 @@ class CustomBackground extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      decoration: const BoxDecoration(
-        color: Colors.white
-      ),
+      decoration: const BoxDecoration(color: Colors.white),
       child: child,
     );
   }

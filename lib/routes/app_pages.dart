@@ -4,6 +4,6 @@ import 'package:ulangan1_11pplg2/routes/app_routes.dart';
 
 class AppPages {
   static final appPages = [
-    GetPage(name: AppRoutes.login, page: () => LoginPage()),
+    GetPage(name: AppRoutes.loginPage, page: () => LoginPage()),
   ];
 }

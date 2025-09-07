@@ -8,7 +8,7 @@ class CustomTextField extends StatelessWidget {
   final bool obsecureText;
   final bool showToggle;
   final RxBool? toggleState;
-  
+
   const CustomTextField({
     super.key,
     required this.hint,
@@ -17,33 +17,36 @@ class CustomTextField extends StatelessWidget {
     this.obsecureText = false,
     this.showToggle = false,
     this.toggleState,
-    });
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => TextField(
+    return TextField(
       obscureText: showToggle ? toggleState!.value : obsecureText,
       decoration: InputDecoration(
         prefixIcon: Icon(icon),
         hintText: hint,
-        
+
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(color: color),
-          ),
+        ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: color)
+          borderSide: BorderSide(color: color),
         ),
 
-        suffixIcon: showToggle ? IconButton(
-          icon: Icon(toggleState!.value ?Icons.visibility_off :Icons.visibility,),
-          onPressed: () {
-            toggleState!.value = !toggleState!.value;
-          }, 
-        )
-        :null,
+        suffixIcon: showToggle
+            ? IconButton(
+                icon: Icon(
+                  toggleState!.value ? Icons.visibility_off : Icons.visibility,
+                ),
+                onPressed: () {
+                  toggleState!.value = !toggleState!.value;
+                },
+              )
+            : null,
       ),
-    ));
+    );
   }
 }
