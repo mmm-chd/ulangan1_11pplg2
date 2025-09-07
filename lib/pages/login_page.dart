@@ -15,7 +15,7 @@ class LoginPage extends StatelessWidget {
   final LoginController c = Get.put(LoginController());
 
   @override
-   Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       body: CustomBackground(
         child: SingleChildScrollView(
@@ -23,7 +23,7 @@ class LoginPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SpacingComponent(height: 80,),
+              SpacingComponent(height: 80),
               const CustomText(
                 text: "Sign In",
                 size: 60,
@@ -43,40 +43,44 @@ class LoginPage extends StatelessWidget {
 
               // Username Field
               CustomTextField(
-                hint: "Username", 
-                color: Colors.purple, 
+                hint: "Username",
+                color: Colors.purple,
                 icon: Icons.person,
               ),
               SpacingComponent(height: 16),
 
               // Password Field
-              Obx(() => CustomTextField(
-                hint: "Password", 
-                color: Colors.purple, 
-                icon: Icons.lock,
-                obsecureText: c.obscurePassword.value, ),
+              Obx(
+                () => CustomTextField(
+                  hint: "Password",
+                  color: Colors.purple,
+                  icon: Icons.lock,
+                  obsecureText: c.obscurePassword.value,
                 ),
+              ),
               SpacingComponent(height: 40),
 
               // Remember Me + Forgot Password
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Obx(() => Row(
-                        children: [
-                          Checkbox(
-                            value: c.rememberMe.value,
-                            onChanged: (val) {
-                              c.rememberMe.value = val!;
-                            },
-                          ),
-                          const Text("Remember Me"),
-                        ],
-                      )),
+                  Obx(
+                    () => Row(
+                      children: [
+                        Checkbox(
+                          value: c.rememberMe.value,
+                          onChanged: (val) {
+                            c.rememberMe.value = val!;
+                          },
+                        ),
+                        const Text("Remember Me"),
+                      ],
+                    ),
+                  ),
                   TextButton(
                     onPressed: () {},
                     child: const Text("Forgot Password?"),
-                  )
+                  ),
                 ],
               ),
               SpacingComponent(height: 40),
@@ -85,13 +89,14 @@ class LoginPage extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ButtonComponent(
-                  height: 65, 
-                  width: 376, 
-                  color: Colors.white, 
-                  text: "Sign In", 
-                  size: 28, 
-                  weight: FontWeight.bold, 
-                  onPressed: (){},)
+                  height: 65,
+                  width: 376,
+                  color: Colors.white,
+                  text: "Sign In",
+                  size: 28,
+                  weight: FontWeight.bold,
+                  onPressed: () {},
+                ),
               ),
 
               SpacingComponent(height: 32),
