@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/widget/background_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtextfield_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 
-class LoginController extends GetxController {
-  var rememberMe = false.obs;
-  var obscurePassword = true.obs;
-}
-
 class LoginPage extends StatelessWidget {
-  final LoginController c = Get.put(LoginController());
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,13 +44,11 @@ class LoginPage extends StatelessWidget {
               SpacingComponent(height: 16),
 
               // Password Field
-              Obx(
-                () => CustomTextField(
-                  hint: "Password",
-                  color: Colors.purple,
-                  icon: Icons.lock,
-                  obsecureText: c.obscurePassword.value,
-                ),
+              CustomTextField(
+                hint: "Password",
+                color: Colors.purple,
+                icon: Icons.lock,
+                obsecureText: true,
               ),
               SpacingComponent(height: 40),
 
@@ -64,19 +56,6 @@ class LoginPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Obx(
-                    () => Row(
-                      children: [
-                        Checkbox(
-                          value: c.rememberMe.value,
-                          onChanged: (val) {
-                            c.rememberMe.value = val!;
-                          },
-                        ),
-                        const Text("Remember Me"),
-                      ],
-                    ),
-                  ),
                   TextButton(
                     onPressed: () {},
                     child: const Text("Forgot Password?"),
