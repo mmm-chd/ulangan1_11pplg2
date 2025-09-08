@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ulangan1_11pplg2/components/color/color.dart';
 
 class LoginController extends GetxController {
   TextEditingController usernameController = TextEditingController();
@@ -12,13 +13,16 @@ class LoginController extends GetxController {
         'Success',
         'Login successful',
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.purpleAccent,
+        colorText: TextColor.primaryTextColor,
+        backgroundColor: SupportColor.checkColor,
       );
     } else {
       Get.snackbar(
         'Wrong!!',
         'Invalid username or password',
         snackPosition: SnackPosition.BOTTOM,
+        colorText: TextColor.primaryTextColor,
+        backgroundColor: SupportColor.errorColor,
       );
     }
   }
