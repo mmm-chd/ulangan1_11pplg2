@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hint;
@@ -7,7 +6,7 @@ class CustomTextField extends StatelessWidget {
   final IconData icon;
   final bool obsecureText;
   final bool showToggle;
-  final RxBool? toggleState;
+  // final RxBool? toggleState;
 
   const CustomTextField({
     super.key,
@@ -16,13 +15,13 @@ class CustomTextField extends StatelessWidget {
     required this.icon,
     this.obsecureText = false,
     this.showToggle = false,
-    this.toggleState,
+    // this.toggleState,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      obscureText: showToggle ? toggleState!.value : obsecureText,
+      obscureText: obsecureText,
       decoration: InputDecoration(
         prefixIcon: Icon(icon),
         hintText: hint,
@@ -39,11 +38,9 @@ class CustomTextField extends StatelessWidget {
         suffixIcon: showToggle
             ? IconButton(
                 icon: Icon(
-                  toggleState!.value ? Icons.visibility_off : Icons.visibility,
+                  obsecureText ? Icons.visibility : Icons.visibility_off,
                 ),
-                onPressed: () {
-                  toggleState!.value = !toggleState!.value;
-                },
+                onPressed: () {},
               )
             : null,
       ),
