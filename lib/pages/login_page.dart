@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/widget/background_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtextfield_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
+import 'package:ulangan1_11pplg2/controller/auth_controller.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  LoginPage({super.key});
+
+  final AuthController authController = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
