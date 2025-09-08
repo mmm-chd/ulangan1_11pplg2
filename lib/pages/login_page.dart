@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ulangan1_11pplg2/components/color/color.dart';
 import 'package:ulangan1_11pplg2/components/widget/background_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtextfield_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/socialbutton_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/auth_controller.dart';
 
@@ -24,25 +26,25 @@ class LoginPage extends StatelessWidget {
               SpacingComponent(height: 80),
               const CustomText(
                 text: "Sign In",
-                size: 60,
-                color: Colors.purple,
+                size: 50,
+                color: MainColor.primaryColor,
                 weight: FontWeight.bold,
                 fontFamily: "Inter",
               ),
-              SpacingComponent(height: 8),
+              SpacingComponent(height: 2),
               const CustomText(
                 text: "One small task today, one big step toward your goal.",
-                size: 18,
-                color: Colors.purple,
-                weight: FontWeight.bold,
+                size: 14,
+                color: TextColor.primaryTextColor,
+                weight: FontWeight.w500,
                 fontFamily: "Inter",
               ),
-              SpacingComponent(height: 44),
+              SpacingComponent(height: 32),
 
               // Username Field
               CustomTextField(
                 hintText: "Username",
-                outlineColor: Colors.purple,
+                outlineColor: MainColor.primaryColor,
                 icon: Icons.person,
               ),
               SpacingComponent(height: 16),
@@ -50,34 +52,48 @@ class LoginPage extends StatelessWidget {
               // Password Field
               CustomTextField(
                 hintText: "Password",
-                outlineColor: Colors.purple,
+                outlineColor: MainColor.primaryColor,
                 icon: Icons.lock,
                 obsecureText: true,
                 showToggle: true,
               ),
-              SpacingComponent(height: 40),
 
               // Remember Me + Forgot Password
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Row(
+                        children: [
+                          Checkbox(value: false, onChanged: (bool? value) {}),
+                          const CustomText(
+                            text: "Remember Me", 
+                            color: TextColor.primaryTextColor, 
+                            weight: FontWeight.w500, 
+                            size: 12),
+                        ],
+                      ),
                   TextButton(
                     onPressed: () {},
-                    child: const Text("Forgot Password?"),
+                    child: const CustomText(
+                      text: "Forgot Password?", 
+                      color: TextColor.primaryTextColor, 
+                      weight: FontWeight.w500, 
+                      size: 12),
                   ),
+                  
                 ],
               ),
-              SpacingComponent(height: 40),
+              SpacingComponent(height: 20),
 
               // Sign In Button
               SizedBox(
                 width: double.infinity,
                 child: ButtonComponent(
-                  height: 65,
+                  height: 49,
                   width: 376,
-                  color: Colors.white,
+                  color: MainColor.primaryColor,
                   text: "Sign In",
-                  size: 28,
+                  size: 24,
                   weight: FontWeight.bold,
                   onPressed: () {
                     authController.login();
@@ -91,50 +107,81 @@ class LoginPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("Don’t Have an Account? "),
+                  const CustomText(
+                    text: "Don't Have an Account? ", 
+                    color: TextColor.primaryTextColor, 
+                    weight: FontWeight.w500, 
+                    size: 14
+                  ),
                   GestureDetector(
                     onTap: () {},
-                    child: const Text(
-                      "Sign Up",
-                      style: TextStyle(
-                        color: Color(0xFFA62671),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    child: const CustomText(
+                      text: " Sign Up", 
+                      color: MainColor.primaryColor, 
+                      weight: FontWeight.w500, 
+                      size: 14),
                   ),
                 ],
               ),
-              SpacingComponent(height: 37),
+
+              SpacingComponent(height: 8),
+
+              // Container(
+              //       margin: EdgeInsets.symmetric(vertical: 8),
+              //       height: 1,
+              //       width: ,
+              //       color: Colors.black,
+              //     ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 8),
+                    height: 1,
+                    width: 110,
+                    color: Colors.black,
+                  ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Text("OR"),
+                ),
+                Container(
+                    margin: EdgeInsets.symmetric(vertical: 8),
+                    height: 1,
+                    width: 110,
+                    color: Colors.black,
+                  ),
+                ],
+              ),
+
+              SpacingComponent(height: 8),
 
               const Text("Sign in with"),
               SpacingComponent(height: 20),
 
               // Social Buttons
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     _socialButton("assets/google.png"),
-              //     const SizedBox(width: 16),
-              //     _socialButton("assets/apple.png"),
-              //     const SizedBox(width: 16),
-              //     _socialButton("assets/facebook.png"),
-              //   ],
-              // ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SocialbuttonComponent(asset: ""),
+                  const SizedBox(width: 16),
+                  SocialbuttonComponent(asset: ""),
+                  const SizedBox(width: 16),
+                  SocialbuttonComponent(asset: ""),
+                  const SizedBox(width: 16),
+                ]
+                //   _socialButton("assets/google.png"),
+                //   const SizedBox(width: 16),
+                //   _socialButton("assets/apple.png"),
+                //   const SizedBox(width: 16),
+                //   _socialButton("assets/facebook.png"),
+                // ],
+              ),
             ],
           ),
         ),
       ),
     );
   }
-
-  // Widget _socialButton(String asset) {
-  //   return InkWell(
-  //     onTap: () {},
-  //     child: CircleAvatar(
-  //       radius: 20,
-  //       backgroundColor: Colors.white,
-  //       backgroundImage: AssetImage(asset),
-  //     ),
-  //   );
-  // }
 }
