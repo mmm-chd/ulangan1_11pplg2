@@ -78,7 +78,9 @@ class LoginPage extends StatelessWidget {
                   text: "Sign In",
                   size: 28,
                   weight: FontWeight.bold,
-                  onPressed: () {},
+                  onPressed: () {
+                    authController.login();
+                  },
                 ),
               ),
 
