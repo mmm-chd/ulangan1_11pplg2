@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class CustomText extends StatelessWidget {
   final String text;
   final double size;
+  // final double padding;
   final Color color;
   final FontWeight weight;
   final String? fontFamily;
@@ -12,6 +13,7 @@ class CustomText extends StatelessWidget {
     required this.text,
     required this.color,
     required this.weight,
+    // required this.padding,
     this.fontFamily,
     required this.size,
     });
