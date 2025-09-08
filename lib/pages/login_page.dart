@@ -41,18 +41,19 @@ class LoginPage extends StatelessWidget {
 
               // Username Field
               CustomTextField(
-                hint: "Username",
-                color: Colors.purple,
+                hintText: "Username",
+                outlineColor: Colors.purple,
                 icon: Icons.person,
               ),
               SpacingComponent(height: 16),
 
               // Password Field
               CustomTextField(
-                hint: "Password",
-                color: Colors.purple,
+                hintText: "Password",
+                outlineColor: Colors.purple,
                 icon: Icons.lock,
                 obsecureText: true,
+                showToggle: true,
               ),
               SpacingComponent(height: 40),
 
