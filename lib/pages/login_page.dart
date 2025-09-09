@@ -18,167 +18,183 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomBackground(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SpacingComponent(height: 80),
-              const CustomText(
-                text: "Sign In",
-                size: 50,
-                color: MainColor.primaryColor,
-                weight: FontWeight.bold,
-                fontFamily: "Inter",
-              ),
-              SpacingComponent(height: 2),
-              const CustomText(
-                text: "One small task today, one big step toward your goal.",
-                size: 14,
-                color: TextColor.primaryTextColor,
-                weight: FontWeight.w500,
-                fontFamily: "Inter",
-              ),
-              SpacingComponent(height: 32),
-
-              // Username Field
-              CustomTextField(
-                hintText: "Username",
-                outlineColor: MainColor.primaryColor,
-                icon: Icons.person,
-              ),
-              SpacingComponent(height: 16),
-
-              // Password Field
-              CustomTextField(
-                hintText: "Password",
-                outlineColor: MainColor.primaryColor,
-                icon: Icons.lock,
-                obsecureText: true,
-                showToggle: true,
-              ),
-
-              // Remember Me + Forgot Password
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                        children: [
-                          Checkbox(value: false, onChanged: (bool? value) {}),
-                          const CustomText(
-                            text: "Remember Me", 
-                            color: TextColor.primaryTextColor, 
-                            weight: FontWeight.w500, 
-                            size: 12),
-                        ],
-                      ),
-                  TextButton(
-                    onPressed: () {},
-                    child: const CustomText(
-                      text: "Forgot Password?", 
-                      color: TextColor.primaryTextColor, 
-                      weight: FontWeight.w500, 
-                      size: 12),
-                  ),
-                  
-                ],
-              ),
-              SpacingComponent(height: 20),
-
-              // Sign In Button
-              SizedBox(
-                width: double.infinity,
-                child: ButtonComponent(
-                  height: 49,
-                  width: 376,
-                  color: MainColor.primaryColor,
+        child: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const CustomText(
                   text: "Sign In",
-                  size: 24,
+                  size: 50,
+                  color: MainColor.primaryColor,
                   weight: FontWeight.bold,
-                  onPressed: () {
-                    authController.login();
-                  },
+                  fontFamily: "Inter",
                 ),
-              ),
-
-              SpacingComponent(height: 32),
-
-              // Sign Up Link
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const CustomText(
-                    text: "Don't Have an Account? ", 
-                    color: TextColor.primaryTextColor, 
-                    weight: FontWeight.w500, 
-                    size: 14
-                  ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: const CustomText(
-                      text: " Sign Up", 
-                      color: MainColor.primaryColor, 
-                      weight: FontWeight.w500, 
-                      size: 14),
-                  ),
-                ],
-              ),
-
-              SpacingComponent(height: 8),
-
-              // Container(
-              //       margin: EdgeInsets.symmetric(vertical: 8),
-              //       height: 1,
-              //       width: ,
-              //       color: Colors.black,
-              //     ),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 8),
-                    height: 1,
-                    width: 110,
-                    color: Colors.black,
-                  ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Text("OR"),
+                SpacingComponent(height: 2),
+                const CustomText(
+                  text: "One small task today, one big step toward your goal.",
+                  size: 14,
+                  color: TextColor.primaryTextColor,
+                  weight: FontWeight.w500,
+                  fontFamily: "Inter",
                 ),
-                Container(
-                    margin: EdgeInsets.symmetric(vertical: 8),
-                    height: 1,
-                    width: 110,
-                    color: Colors.black,
+                SpacingComponent(height: 32),
+
+                // Username Field
+                CustomTextField(
+                  hintText: "Username",
+                  outlineColor: MainColor.primaryColor,
+                  icon: Icons.person,
+                ),
+                SpacingComponent(height: 16),
+
+                // Password Field
+                CustomTextField(
+                  hintText: "Password",
+                  outlineColor: MainColor.primaryColor,
+                  icon: Icons.lock,
+                  obsecureText: true,
+                  showToggle: true,
+                ),
+
+                // Remember Me + Forgot Password
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Checkbox(
+                          value: false,
+                          activeColor: MainColor.primaryColor,
+                          checkColor: MainColor.primaryColor,
+                          splashRadius: 18,
+                          onChanged: (bool? value) {
+                            value = true;
+                          },
+                        ),
+                        const CustomText(
+                          text: "Remember Me",
+                          color: TextColor.primaryTextColor,
+                          weight: FontWeight.w500,
+                          size: 12,
+                        ),
+                      ],
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: const CustomText(
+                        text: "Forgot Password?",
+                        color: TextColor.primaryTextColor,
+                        weight: FontWeight.w500,
+                        size: 12,
+                      ),
+                    ),
+                  ],
+                ),
+                SpacingComponent(height: 100),
+
+                // Sign In Button
+                SizedBox(
+                  width: double.infinity,
+                  child: ButtonComponent(
+                    height: 49,
+                    width: 376,
+                    color: MainColor.primaryColor,
+                    text: "Sign In",
+                    size: 24,
+                    weight: FontWeight.bold,
+                    onPressed: () {
+                      authController.login();
+                    },
                   ),
-                ],
-              ),
+                ),
 
-              SpacingComponent(height: 8),
+                SpacingComponent(height: 32),
 
-              const Text("Sign in with"),
-              SpacingComponent(height: 8),
+                // Sign Up Link
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const CustomText(
+                      text: "Don't Have an Account? ",
+                      color: TextColor.primaryTextColor,
+                      weight: FontWeight.w500,
+                      size: 14,
+                    ),
+                    GestureDetector(
+                      onTap: () {},
+                      child: const CustomText(
+                        text: " Sign Up",
+                        color: MainColor.primaryColor,
+                        weight: FontWeight.w500,
+                        size: 14,
+                      ),
+                    ),
+                  ],
+                ),
 
-              // Social Buttons
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SocialbuttonComponent(asset: "assets/images/Apple-removebg-preview.png"),
-                  const SizedBox(width: 16),
-                  SocialbuttonComponent(asset: "assets/images/facebook-removebg-preview.png"),
-                  const SizedBox(width: 16),
-                  SocialbuttonComponent(asset: "assets/images/Google-removebg-preview.png"),
-                  const SizedBox(width: 16),
-                ]
-                //   _socialButton("assets/google.png"),
-                //   const SizedBox(width: 16),
-                //   _socialButton("assets/apple.png"),
-                //   const SizedBox(width: 16),
-                //   _socialButton("assets/facebook.png"),
-                // ],
-              ),
-            ],
+                SpacingComponent(height: 60),
+
+                // Container(
+                //       margin: EdgeInsets.symmetric(vertical: 8),
+                //       height: 1,
+                //       width: ,
+                //       color: Colors.black,
+                //     ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 8),
+                      height: 1,
+                      width: 110,
+                      color: Colors.black,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Text("OR"),
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 8),
+                      height: 1,
+                      width: 110,
+                      color: Colors.black,
+                    ),
+                  ],
+                ),
+
+                SpacingComponent(height: 32),
+
+                const Text("Sign in with"),
+                SpacingComponent(height: 28),
+
+                // Social Buttons
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SocialbuttonComponent(
+                      asset: "assets/images/social_images/apple-icon.png",
+                    ),
+                    const SizedBox(width: 16),
+                    SocialbuttonComponent(
+                      asset: "assets/images/social_images/facebook-icon.png",
+                    ),
+                    const SizedBox(width: 16),
+                    SocialbuttonComponent(
+                      asset: "assets/images/social_images/google-icon.png",
+                    ),
+                    const SizedBox(width: 16),
+                  ],
+                  //   _socialButton("assets/google.png"),
+                  //   const SizedBox(width: 16),
+                  //   _socialButton("assets/apple.png"),
+                  //   const SizedBox(width: 16),
+                  //   _socialButton("assets/facebook.png"),
+                  // ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
