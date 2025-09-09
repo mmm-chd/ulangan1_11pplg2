@@ -1,6 +1,6 @@
 # ulangan1_11pplg2
 
-A new Flutter project.
+This is our Exam Project
 
 ## Getting Started
 
