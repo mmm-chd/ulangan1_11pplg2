@@ -15,6 +15,8 @@ class AuthController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
         colorText: TextColor.primaryTextColor,
         backgroundColor: SupportColor.checkColor,
+        animationDuration: Duration(milliseconds: 300),
+        duration: Duration(milliseconds: 800),
       );
     } else {
       Get.snackbar(
@@ -23,6 +25,8 @@ class AuthController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
         colorText: TextColor.primaryTextColor,
         backgroundColor: SupportColor.errorColor,
+        animationDuration: Duration(milliseconds: 300),
+        duration: Duration(milliseconds: 800),
       );
     }
   }
