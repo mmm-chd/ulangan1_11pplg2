@@ -43,6 +43,7 @@ class LoginPage extends StatelessWidget {
 
                 // Username Field
                 CustomTextField(
+                  controller: authController.usernameController,
                   hintText: "Username",
                   outlineColor: MainColor.primaryColor,
                   icon: Icons.person,
@@ -50,14 +51,17 @@ class LoginPage extends StatelessWidget {
                 SpacingComponent(height: 16),
 
                 // Password Field
-                CustomTextField(
-                  hintText: "Password",
-                  outlineColor: MainColor.primaryColor,
-                  icon: Icons.lock,
-                  obsecureText: true,
-                  suffixIcon: IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.visibility_off),
+                Obx(
+                  () => CustomTextField(
+                    controller: authController.passwordController,
+                    hintText: "Password",
+                    outlineColor: MainColor.primaryColor,
+                    icon: Icons.lock,
+                    obsecureText: authController.showPassword(),
+                    suffixIcon: IconButton(
+                      onPressed: authController.togglePassword,
+                      icon: Icon(authController.getPasswordIcon()),
+                    ),
                   ),
                 ),
 
@@ -67,14 +71,13 @@ class LoginPage extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Checkbox(
-                          value: false,
-                          activeColor: MainColor.primaryColor,
-                          checkColor: MainColor.primaryColor,
-                          splashRadius: 18,
-                          onChanged: (bool? value) {
-                            value = true;
-                          },
+                        Obx(
+                          () => Checkbox(
+                            value: authController.checked(),
+                            activeColor: MainColor.primaryColor,
+                            splashRadius: 18,
+                            onChanged: authController.toogleRememberMe,
+                          ),
                         ),
                         const CustomText(
                           text: "Remember Me",
