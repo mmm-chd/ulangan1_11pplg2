@@ -22,22 +22,24 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      obscureText: obsecureText,
-      decoration: InputDecoration(
-        prefixIcon: Icon(icon),
-        hintText: hintText,
+    return MouseRegion(
+      child: TextField(
+        controller: controller,
+        obscureText: obsecureText,
+        decoration: InputDecoration(
+          prefixIcon: Icon(icon),
+          hintText: hintText,
 
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: outlineColor),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide(color: outlineColor),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide(color: outlineColor),
+          ),
+          suffixIcon: suffixIcon,
         ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: outlineColor),
-        ),
-        suffixIcon: suffixIcon,
       ),
     );
   }
