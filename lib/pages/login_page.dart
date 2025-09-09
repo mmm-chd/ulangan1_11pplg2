@@ -55,7 +55,10 @@ class LoginPage extends StatelessWidget {
                   outlineColor: MainColor.primaryColor,
                   icon: Icons.lock,
                   obsecureText: true,
-                  showToggle: true,
+                  suffixIcon: IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.visibility_off),
+                  ),
                 ),
 
                 // Remember Me + Forgot Password

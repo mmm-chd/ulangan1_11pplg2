@@ -5,9 +5,8 @@ class CustomTextField extends StatelessWidget {
   final Color outlineColor;
   final IconData icon;
   final bool obsecureText;
-  final bool showToggle;
+  final IconButton? suffixIcon;
   final TextEditingController? controller;
-  final VoidCallback? onClick;
   // final RxBool? toggleState;
 
   const CustomTextField({
@@ -16,9 +15,8 @@ class CustomTextField extends StatelessWidget {
     required this.outlineColor,
     required this.icon,
     this.obsecureText = false,
-    this.showToggle = false,
     this.controller,
-    this.onClick,
+    this.suffixIcon,
     // this.toggleState,
   });
 
@@ -39,15 +37,7 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(color: outlineColor),
         ),
-
-        suffixIcon: showToggle
-            ? IconButton(
-                icon: Icon(
-                  obsecureText ? Icons.visibility_off : Icons.visibility,
-                ),
-                onPressed: onClick,
-              )
-            : null,
+        suffixIcon: suffixIcon,
       ),
     );
   }
