@@ -15,8 +15,14 @@ class SocialbuttonComponent extends StatelessWidget {
           child: CircleAvatar(
           radius: 20,
           backgroundColor: Colors.white,
-          backgroundImage: AssetImage(asset),
+          // backgroundImage: AssetImage(asset),
+          child: Padding(
+            padding: const EdgeInsets.all(6.0),
+            child: Image.asset(
+              asset, 
+              fit: BoxFit.contain,),
           ),
+            ),
         );
   }
 }

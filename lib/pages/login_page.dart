@@ -158,17 +158,17 @@ class LoginPage extends StatelessWidget {
               SpacingComponent(height: 8),
 
               const Text("Sign in with"),
-              SpacingComponent(height: 20),
+              SpacingComponent(height: 8),
 
               // Social Buttons
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SocialbuttonComponent(asset: ""),
+                  SocialbuttonComponent(asset: "assets/images/Apple-removebg-preview.png"),
                   const SizedBox(width: 16),
-                  SocialbuttonComponent(asset: ""),
+                  SocialbuttonComponent(asset: "assets/images/facebook-removebg-preview.png"),
                   const SizedBox(width: 16),
-                  SocialbuttonComponent(asset: ""),
+                  SocialbuttonComponent(asset: "assets/images/Google-removebg-preview.png"),
                   const SizedBox(width: 16),
                 ]
                 //   _socialButton("assets/google.png"),
