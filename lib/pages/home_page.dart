@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:ulangan1_11pplg2/components/color/color.dart';
-import 'package:ulangan1_11pplg2/components/widget/background_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/cardview2_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/cardview_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/searchbar_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 
-class DashboardPage extends StatelessWidget {
-  const DashboardPage({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -103,21 +102,24 @@ class DashboardPage extends StatelessWidget {
               children: [
 
                 CardviewComponent(
-                  color: SupportColor.supportColor3, 
+                  color: PriorityColor.primaryColor, 
+                  color2: SupportColor.mustdopb,
                   task: "0 Task", 
                   title: "Must Do"),
 
                   SizedBox(width: 12),
 
                 CardviewComponent(
-                  color: SupportColor.errorColor, 
+                  color: PriorityColor.secondaryColor, 
+                  color2: SupportColor.shoulddopb,
                   task: "0 Task", 
                   title: "Should Do"),
 
                   SizedBox(width: 12),
                 
                 CardviewComponent(
-                  color: SupportColor.supportColor2, 
+                  color: PriorityColor.accentColor, 
+                  color2: SupportColor.coulddopb,
                   task: "0 Task", 
                   title: "Could Do"),
 
@@ -136,7 +138,7 @@ class DashboardPage extends StatelessWidget {
 
             SpacingComponent(height: 12),
 
-            CardTaskComponent(color: SupportColor.supportColor3, title: "Belajar Flutter", desc: "Belajar Component dan layouting Flutter")
+            CardTaskComponent(color: PriorityColor.primaryColor, title: "Belajar Flutter", desc: "Belajar Component dan layouting Flutter")
 
             
 
