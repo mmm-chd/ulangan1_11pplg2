@@ -36,7 +36,7 @@ class AuthController extends GetxController {
         'Login successful',
         snackPosition: SnackPosition.BOTTOM,
         margin: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        colorText: TextColor.primaryTextColor,
+        colorText: SupportColor.whiteColor,
         backgroundColor: SupportColor.checkColor,
         animationDuration: Duration(milliseconds: 300),
         duration: Duration(milliseconds: 800),
