@@ -4,12 +4,14 @@ import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 
 class CardviewComponent extends StatelessWidget {
   final Color color;
+  final Color color2;
   final String task;
   final String title;
 
   const CardviewComponent ({
     super.key,
     required this.color,
+    required this.color2,
     required this.task,
     required this.title,
     });
@@ -54,7 +56,7 @@ class CardviewComponent extends StatelessWidget {
                     minHeight: 6,
                     backgroundColor: Colors.white,
                     valueColor: AlwaysStoppedAnimation<Color>(
-                    SupportColor.errorColor,
+                    color2,
                   ),
                   ),
                   ),
