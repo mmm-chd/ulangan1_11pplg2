@@ -5,9 +5,8 @@ class CustomTextField extends StatelessWidget {
   final Color outlineColor;
   final IconData icon;
   final bool obsecureText;
-  final bool showToggle;
+  final IconButton? suffixIcon;
   final TextEditingController? controller;
-  final VoidCallback? onClick;
   // final RxBool? toggleState;
 
   const CustomTextField({
@@ -16,38 +15,31 @@ class CustomTextField extends StatelessWidget {
     required this.outlineColor,
     required this.icon,
     this.obsecureText = false,
-    this.showToggle = false,
     this.controller,
-    this.onClick,
+    this.suffixIcon,
     // this.toggleState,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      obscureText: obsecureText,
-      decoration: InputDecoration(
-        prefixIcon: Icon(icon),
-        hintText: hintText,
+    return MouseRegion(
+      child: TextField(
+        controller: controller,
+        obscureText: obsecureText,
+        decoration: InputDecoration(
+          prefixIcon: Icon(icon),
+          hintText: hintText,
 
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: outlineColor),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide(color: outlineColor),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide(color: outlineColor),
+          ),
+          suffixIcon: suffixIcon,
         ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: outlineColor),
-        ),
-
-        suffixIcon: showToggle
-            ? IconButton(
-                icon: Icon(
-                  obsecureText ? Icons.visibility_off : Icons.visibility,
-                ),
-                onPressed: onClick,
-              )
-            : null,
       ),
     );
   }

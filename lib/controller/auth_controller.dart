@@ -5,7 +5,29 @@ import 'package:ulangan1_11pplg2/components/color/color.dart';
 class AuthController extends GetxController {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  RxBool isPasswordVisible = false.obs;
+  RxBool isCheck = false.obs;
 
+  //  Toogle Password
+  bool showPassword() => !isPasswordVisible.value;
+
+  void togglePassword() {
+    isPasswordVisible.value = !isPasswordVisible.value;
+    getPasswordIcon();
+  }
+
+  IconData getPasswordIcon() {
+    return isPasswordVisible.value ? Icons.visibility : Icons.visibility_off;
+  }
+
+  // Remember Me
+  bool checked() => isCheck.value;
+
+  void toogleRememberMe(bool? value) {
+    isCheck.value = !isCheck.value;
+  }
+
+  // Login
   void login() {
     if (usernameController.text == 'abcd' &&
         passwordController.text == 'apacoba') {
@@ -13,16 +35,22 @@ class AuthController extends GetxController {
         'Success',
         'Login successful',
         snackPosition: SnackPosition.BOTTOM,
+        margin: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         colorText: TextColor.primaryTextColor,
         backgroundColor: SupportColor.checkColor,
+        animationDuration: Duration(milliseconds: 300),
+        duration: Duration(milliseconds: 800),
       );
     } else {
       Get.snackbar(
         'Wrong!!',
         'Invalid username or password',
         snackPosition: SnackPosition.BOTTOM,
-        colorText: TextColor.primaryTextColor,
+        margin: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        colorText: SupportColor.whiteColor,
         backgroundColor: SupportColor.errorColor,
+        animationDuration: Duration(milliseconds: 300),
+        duration: Duration(milliseconds: 800),
       );
     }
   }
