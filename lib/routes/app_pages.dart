@@ -1,5 +1,6 @@
 import 'package:get/route_manager.dart';
 import 'package:ulangan1_11pplg2/bindings/login_binding.dart';
+import 'package:ulangan1_11pplg2/navbar/navbar_page.dart';
 import 'package:ulangan1_11pplg2/pages/home_page.dart';
 import 'package:ulangan1_11pplg2/pages/login_page.dart';
 import 'package:ulangan1_11pplg2/routes/app_routes.dart';
@@ -14,6 +15,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.homePage, 
       page: () => HomePage(),
+    ),
+    GetPage(
+      name: AppRoutes.navbarPage, 
+      page: () => NavbarPage(),
       )
   ];
 }
