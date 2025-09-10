@@ -39,7 +39,7 @@ class LoginPage extends StatelessWidget {
                   weight: FontWeight.w500,
                   fontFamily: "Inter",
                 ),
-                SpacingComponent(height: 32),
+                SpacingComponent(height: 64),
 
                 // Username Field
                 CustomTextField(
