@@ -38,7 +38,7 @@ class CardTaskComponent extends StatelessWidget {
               ),
 
               SizedBox(height: 6),
-
+                
               CustomText(
                 text: desc,
                 color: SupportColor.whiteColor,
