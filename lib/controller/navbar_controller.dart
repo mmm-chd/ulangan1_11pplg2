@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class DashboardController extends GetxController {
+class NavbarController extends GetxController {
   // var currentIndex = 0.obs;
 
   final List<Widget> pages = [];
