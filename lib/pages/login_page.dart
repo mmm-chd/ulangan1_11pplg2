@@ -24,6 +24,7 @@ class LoginPage extends StatelessWidget {
               padding: const EdgeInsets.all(24),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const CustomText(
                     text: "Sign In",
@@ -192,7 +193,6 @@ class LoginPage extends StatelessWidget {
                       SocialbuttonComponent(
                         asset: "assets/images/social_images/google-icon.png",
                       ),
-                      const SizedBox(width: 16),
                     ],
                     //   _socialButton("assets/google.png"),
                     //   const SizedBox(width: 16),
