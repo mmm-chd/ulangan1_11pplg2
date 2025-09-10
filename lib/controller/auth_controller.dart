@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ulangan1_11pplg2/components/color/color.dart';
+import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
+import 'package:ulangan1_11pplg2/navbar/navbar_page.dart';
 
 class AuthController extends GetxController {
   TextEditingController usernameController = TextEditingController();
@@ -28,7 +29,7 @@ class AuthController extends GetxController {
   }
 
   // Login
-  void login() {
+  void login() async {
     if (usernameController.text == 'abcd' &&
         passwordController.text == 'apacoba') {
       Get.snackbar(
@@ -41,6 +42,9 @@ class AuthController extends GetxController {
         animationDuration: Duration(milliseconds: 300),
         duration: Duration(milliseconds: 800),
       );
+
+      await Future.delayed(Duration(microseconds: 900));
+      await Get.offNamed("/navbarPage");
     } else {
       Get.snackbar(
         'Wrong!!',

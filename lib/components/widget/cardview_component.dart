@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ulangan1_11pplg2/components/color/color.dart';
+import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 
 class CardviewComponent extends StatelessWidget {

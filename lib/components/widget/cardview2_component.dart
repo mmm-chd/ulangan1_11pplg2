@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ulangan1_11pplg2/components/color/color.dart';
+import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 
 class CardTaskComponent extends StatelessWidget {
