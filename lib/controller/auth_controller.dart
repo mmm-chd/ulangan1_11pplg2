@@ -40,10 +40,10 @@ class AuthController extends GetxController {
         colorText: SupportColor.whiteColor,
         backgroundColor: SupportColor.checkColor,
         animationDuration: Duration(milliseconds: 300),
-        duration: Duration(milliseconds: 800),
+        duration: Duration(milliseconds: 700),
       );
 
-      await Future.delayed(Duration(microseconds: 900));
+      await Future.delayed(Duration(seconds: 1));
       await Get.offNamed("/navbarPage");
     } else {
       Get.snackbar(
