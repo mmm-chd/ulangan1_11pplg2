@@ -4,4 +4,5 @@ class AppRoutes {
   static const navbarPage = "/navbarPage";
   static const listtaskPage = "/listtaskPage";
   static const addtaskPage = "/addtaskPage";
+  static const profilePage = "/profilePage";
 }
