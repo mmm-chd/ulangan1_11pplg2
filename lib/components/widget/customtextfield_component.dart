@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
@@ -34,17 +33,11 @@ class CustomTextField extends StatelessWidget {
           hintText: hintText,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderRadius),
-            borderSide: BorderSide(
-              color: outlineColor,
-              width: 1.5,
-              ),
+            borderSide: BorderSide(color: outlineColor, width: 1.5),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderRadius),
-            borderSide: BorderSide(
-              color: outlineColor,
-              width: 1.5,
-              ),
+            borderSide: BorderSide(color: outlineColor, width: 1.5),
           ),
           suffixIcon: suffixIcon,
         ),
