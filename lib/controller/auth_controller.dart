@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
-import 'package:ulangan1_11pplg2/navbar/navbar_page.dart';
 
 class AuthController extends GetxController {
   TextEditingController usernameController = TextEditingController();
