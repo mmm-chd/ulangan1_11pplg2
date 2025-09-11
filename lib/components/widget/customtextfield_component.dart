@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
   final Color outlineColor;
-  final IconData icon;
+  final IconData? icon;
+  final double borderRadius;
   final bool obsecureText;
   final IconButton? suffixIcon;
   final TextEditingController? controller;
@@ -13,7 +15,8 @@ class CustomTextField extends StatelessWidget {
     super.key,
     required this.hintText,
     required this.outlineColor,
-    required this.icon,
+    this.icon,
+    this.borderRadius = 16,
     this.obsecureText = false,
     this.controller,
     this.suffixIcon,
@@ -29,14 +32,19 @@ class CustomTextField extends StatelessWidget {
         decoration: InputDecoration(
           prefixIcon: Icon(icon),
           hintText: hintText,
-
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: BorderSide(color: outlineColor),
+            borderRadius: BorderRadius.circular(borderRadius),
+            borderSide: BorderSide(
+              color: outlineColor,
+              width: 1.5,
+              ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: BorderSide(color: outlineColor),
+            borderRadius: BorderRadius.circular(borderRadius),
+            borderSide: BorderSide(
+              color: outlineColor,
+              width: 1.5,
+              ),
           ),
           suffixIcon: suffixIcon,
         ),
