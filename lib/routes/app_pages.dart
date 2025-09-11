@@ -7,6 +7,7 @@ import 'package:ulangan1_11pplg2/pages/add_task_pade.dart';
 import 'package:ulangan1_11pplg2/pages/home_page.dart';
 import 'package:ulangan1_11pplg2/pages/list_task_page.dart';
 import 'package:ulangan1_11pplg2/pages/login_page.dart';
+import 'package:ulangan1_11pplg2/pages/profile_page.dart';
 import 'package:ulangan1_11pplg2/routes/app_routes.dart';
 
 class AppPages {
@@ -27,6 +28,11 @@ class AppPages {
       page: () => ListTaskPage(),
       binding: ListTaskBinding(),
     ),
-    GetPage(name: AppRoutes.addtaskPage, page: () => AddTaskPage()),
+    GetPage(
+      name: AppRoutes.addtaskPage, 
+      page: () => AddTaskPage()),
+    GetPage(
+      name: AppRoutes.profilePage, 
+      page: () => ProfilePage()),
   ];
 }
