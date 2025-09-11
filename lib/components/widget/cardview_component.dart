@@ -8,61 +8,58 @@ class CardviewComponent extends StatelessWidget {
   final String task;
   final String title;
 
-  const CardviewComponent ({
+  const CardviewComponent({
     super.key,
     required this.color,
     required this.color2,
     required this.task,
     required this.title,
-    });
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-              width: 150,
-              height: 100,
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: color,
-                borderRadius:BorderRadius.circular(15)
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    task, 
-                    style: TextStyle(
-                    fontWeight: FontWeight.bold, 
-                    color: SupportColor.whiteColor,
-                    fontSize: 14,
-                    ), 
-                    ),
+      width: 150,
+      height: 100,
+      padding: EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            task,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: SupportColor.whiteColor,
+              fontSize: 14,
+            ),
+          ),
 
-                  Text(
-                    title, 
-                    style: TextStyle(
-                    fontWeight: FontWeight.bold, 
-                    color: SupportColor.whiteColor,
-                    fontSize: 22,
-                    ),
-                  ),
+          Text(
+            title,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: SupportColor.whiteColor,
+              fontSize: 22,
+            ),
+          ),
 
-                    SpacingComponent(height: 8),
-                  
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: LinearProgressIndicator(
-                    value: 0.4,
-                    minHeight: 6,
-                    backgroundColor: Colors.white,
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                    color2,
-                  ),
-                  ),
-                  ),
-                ],
-              )
-              
-            );
+          SpacingComponent(height: 8),
+
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: LinearProgressIndicator(
+              value: 0.4,
+              minHeight: 6,
+              backgroundColor: Colors.white,
+              valueColor: AlwaysStoppedAnimation<Color>(color2),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
