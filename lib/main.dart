@@ -19,7 +19,11 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Inter',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
       ),
+<<<<<<< HEAD
       initialRoute: AppRoutes.homePage,
+=======
+      initialRoute: AppRoutes.listtaskPage,
+>>>>>>> 343057fc15a6550cef100922d8f16e1ca3a8d914
       getPages: AppPages.appPages,
     );
   }
