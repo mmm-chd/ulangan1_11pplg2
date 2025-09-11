@@ -1,12 +1,16 @@
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_instance/get_instance.dart';
 import 'package:get/route_manager.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:intl/intl.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
+import 'package:ulangan1_11pplg2/controller/list_task_controller.dart';
 
 class ListTaskPage extends StatelessWidget {
-  const ListTaskPage({super.key});
+  ListTaskPage({super.key});
+
+  final ListTaskController listTaskController = Get.find<ListTaskController>();
 
   @override
   Widget build(BuildContext context) {
