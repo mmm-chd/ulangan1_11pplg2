@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/cardview2_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/cardview_component.dart';
@@ -153,13 +154,20 @@ class HomePage extends StatelessWidget {
                       size: 20,
                     ),
                     InkWell(
-                      onTap: (){},
-                      child: CustomText(
-                        text: "See all", 
-                        color: SupportColor.grayColor, 
-                        weight: FontWeight.w500, 
-                        size: 12),
-                    )
+                      onTap: () {
+                        Get.toNamed('listtaskPage');
+                      },
+                      borderRadius: BorderRadius.all(Radius.circular(6)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: CustomText(
+                          text: "See all",
+                          color: SupportColor.grayColor,
+                          weight: FontWeight.w500,
+                          size: 12,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
                 SpacingComponent(height: 12),
