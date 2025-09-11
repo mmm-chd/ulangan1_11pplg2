@@ -1,5 +1,6 @@
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:intl/intl.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
@@ -26,7 +27,9 @@ class ListTaskPage extends StatelessWidget {
                     color: MainColor.primaryColor.withOpacity(0.2),
                   ),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.back();
+                    },
                     icon: Icon(Icons.arrow_back),
                     splashRadius: 22.5,
                   ),
