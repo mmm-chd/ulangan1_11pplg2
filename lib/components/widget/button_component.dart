@@ -29,6 +29,7 @@ class ButtonComponent extends StatelessWidget {
       height: height,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
+          padding: EdgeInsets.all(0),
           backgroundColor: color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius),

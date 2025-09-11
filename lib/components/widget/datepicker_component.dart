@@ -6,7 +6,7 @@ class DatepickerComponent extends StatelessWidget {
   final Color outlineColor;
   final double borderRadius;
 
-  final DateTime? selectedDate; 
+  final DateTime? selectedDate;
   final Function(DateTime) onDateSelected;
 
   const DatepickerComponent({
@@ -16,10 +16,9 @@ class DatepickerComponent extends StatelessWidget {
     this.borderRadius = 16,
     required this.selectedDate,
     required this.onDateSelected,
-    });
+  });
 
-  Future<void> _pickDate(BuildContext context) async{
-
+  Future<void> _pickDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: selectedDate ?? DateTime.now(),
@@ -38,9 +37,9 @@ class DatepickerComponent extends StatelessWidget {
       child: InputDecorator(
         decoration: InputDecoration(
           labelText: label,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(borderRadius)
-            ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(borderRadius),
+          ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderRadius),
             borderSide: BorderSide(color: outlineColor, width: 2),
@@ -49,15 +48,15 @@ class DatepickerComponent extends StatelessWidget {
             borderRadius: BorderRadius.circular(borderRadius),
             borderSide: BorderSide(color: outlineColor, width: 2),
           ),
-          suffixIcon: Icon(Icons.calendar_today),
+          suffixIcon: const Icon(Icons.calendar_today),
         ),
         child: Text(
           selectedDate == null
               ? "Select Date"
               : DateFormat("dd/MM/yyyy").format(selectedDate!),
-            style: TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 16),
         ),
-        ),
+      ),
     );
   }
 }
