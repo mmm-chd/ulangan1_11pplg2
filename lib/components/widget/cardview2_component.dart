@@ -17,7 +17,7 @@ class CardTaskComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 327,
+      width: 345,
       height: 117,
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
