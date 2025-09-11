@@ -3,7 +3,6 @@ import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtextfield_component.dart';
-import 'package:ulangan1_11pplg2/components/widget/datepicker_component.dart';
 
 class AddTaskPage extends StatelessWidget {
   const AddTaskPage({super.key});
@@ -101,12 +100,15 @@ class AddTaskPage extends StatelessWidget {
 
                     const SizedBox(height: 6),
 
-                    // DatepickerComponent(
-                    //   label: "Due Date", 
-                    //   outlineColor: SupportColor.stroke, 
-                    //   selectedDate: , 
-                    //   onDateSelected: onDateSelected
-                    // ),
+                    CustomTextField(
+                      hintText: "Due Date",
+                      outlineColor: SupportColor.stroke,
+                      suffixIcon: IconButton(
+                        icon: const Icon(Icons.date_range),
+                        onPressed: () {},
+                      ),
+                      borderRadius: 5,
+                    ),
                     const SizedBox(height: 15),
                     Row(
                       children: [
@@ -180,7 +182,7 @@ class AddTaskPage extends StatelessWidget {
                       children: [
                         ButtonComponent(
                           height: 30,
-                          width: 120,
+                          width: 100,
                           size: 13,
                           borderRadius: 10,
                           color: PriorityColor.primaryColor,
