@@ -13,7 +13,7 @@ class CustomSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 320,
+      width: 350,
       height: 40,
       child: TextField(
         decoration: InputDecoration(

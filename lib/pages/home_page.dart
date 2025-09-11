@@ -143,11 +143,24 @@ class HomePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomText(
-                  text: "Today's Tasks",
-                  color: TextColor.primaryTextColor,
-                  weight: FontWeight.w700,
-                  size: 20,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomText(
+                      text: "Today's Tasks",
+                      color: TextColor.primaryTextColor,
+                      weight: FontWeight.w700,
+                      size: 20,
+                    ),
+                    InkWell(
+                      onTap: (){},
+                      child: CustomText(
+                        text: "See all", 
+                        color: SupportColor.grayColor, 
+                        weight: FontWeight.w500, 
+                        size: 12),
+                    )
+                  ],
                 ),
                 SpacingComponent(height: 12),
 
