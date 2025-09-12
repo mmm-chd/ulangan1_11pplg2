@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
-import 'package:intl/intl.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/cardview2_component.dart';
@@ -14,8 +13,6 @@ class ListTaskPage extends StatelessWidget {
   ListTaskPage({super.key});
 
   final ListTaskController listTaskController = Get.find<ListTaskController>();
-
-  DateFormat dateFormat = DateFormat.Hms();
 
   @override
   Widget build(BuildContext context) {
