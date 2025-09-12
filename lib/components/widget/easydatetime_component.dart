@@ -1,15 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
+import 'package:ulangan1_11pplg2/controller/list_task_controller.dart';
 
 class DateTimelineComponent extends StatelessWidget {
-  const DateTimelineComponent({super.key});
+  final DateTime initialDate;
+  final Function(DateTime) onChange;
+
+  DateTimelineComponent({
+    super.key,
+    required this.initialDate,
+    required this.onChange,
+  });
+
+  final ListTaskController listTaskController = Get.find<ListTaskController>();
 
   @override
   Widget build(BuildContext context) {
     return EasyDateTimeLine(
-      initialDate: DateTime.now(),
+      initialDate: initialDate,
+      onDateChange: (date) {
+        onChange(date);
+      },
       itemBuilder: (context, date, isSelected, onTap) => GestureDetector(
         onTap: () => onTap(),
         child: Container(
@@ -24,7 +38,9 @@ class DateTimelineComponent extends StatelessWidget {
                 width: 60,
                 height: 70,
                 decoration: BoxDecoration(
-                  color: isSelected ? MainColor.primaryColor : Colors.transparent,
+                  color: isSelected
+                      ? MainColor.primaryColor
+                      : Colors.transparent,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Column(
@@ -54,7 +70,9 @@ class DateTimelineComponent extends StatelessWidget {
                 height: 4,
                 width: isSelected ? 24 : 0,
                 decoration: BoxDecoration(
-                  color: isSelected ? MainColor.primaryColor : Colors.transparent,
+                  color: isSelected
+                      ? MainColor.primaryColor
+                      : Colors.transparent,
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
