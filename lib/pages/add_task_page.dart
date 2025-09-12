@@ -4,7 +4,6 @@ import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtextfield2_component.dart';
 
-
 class AddTaskPage extends StatelessWidget {
   const AddTaskPage({super.key});
 
@@ -43,7 +42,7 @@ class AddTaskPage extends StatelessWidget {
                 ),
               ],
             ),
-            
+
             const SizedBox(height: 40),
 
             Expanded(
@@ -109,9 +108,9 @@ class AddTaskPage extends StatelessWidget {
                         onPressed: () {},
                       ),
                     ),
-                    
+
                     const SizedBox(height: 15),
-                    
+
                     Row(
                       children: [
                         Expanded(
@@ -126,9 +125,9 @@ class AddTaskPage extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              
+
                               SizedBox(height: 5),
-                              
+
                               CustomTextField2(
                                 hintText: "Start Time",
                                 outlineColor: SupportColor.stroke,
@@ -154,9 +153,9 @@ class AddTaskPage extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              
+
                               SizedBox(height: 5),
-                              
+
                               CustomTextField2(
                                 hintText: "End Time",
                                 outlineColor: SupportColor.stroke,
@@ -181,57 +180,65 @@ class AddTaskPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    
+
                     Row(
                       children: [
-                        ButtonComponent(
-                          height: 30,
-                          width: 80,
-                          size: 13,
-                          borderRadius: 10,
-                          color: PriorityColor.primaryColor,
-                          text: "Must Do",
-                          weight: FontWeight.bold,
-                          onPressed: () {},
+                        Expanded(
+                          child: ButtonComponent(
+                            height: 40,
+                            width: 100,
+                            size: 13,
+                            borderRadius: 10,
+                            color: PriorityColor.primaryColor,
+                            text: "Must Do",
+                            weight: FontWeight.bold,
+                            onPressed: () {},
+                          ),
                         ),
                         const SizedBox(width: 10),
-                        ButtonComponent(
-                          height: 30,
-                          width: 80,
-                          size: 13,
-                          borderRadius: 10,
-                          color: PriorityColor.secondaryColor,
-                          text: "Should Do",
-                          weight: FontWeight.bold,
-                          onPressed: () {},
+                        Expanded(
+                          child: ButtonComponent(
+                            height: 40,
+                            width: 80,
+                            size: 13,
+                            borderRadius: 10,
+                            color: PriorityColor.secondaryColor,
+                            text: "Should Do",
+                            weight: FontWeight.bold,
+                            onPressed: () {},
+                          ),
                         ),
                         const SizedBox(width: 10),
-                        ButtonComponent(
-                          height: 30,
-                          width: 80,
-                          size: 13,
-                          borderRadius: 10,
-                          color: PriorityColor.accentColor,
-                          text: "Could Do",
-                          weight: FontWeight.bold,
-                          onPressed: () {},
+                        Expanded(
+                          child: ButtonComponent(
+                            height: 40,
+                            width: 80,
+                            size: 13,
+                            borderRadius: 10,
+                            color: PriorityColor.accentColor,
+                            text: "Could Do",
+                            weight: FontWeight.bold,
+                            onPressed: () {},
+                          ),
                         ),
                       ],
                     ),
-
-                    SizedBox(
-                      width: double.infinity,
-                      child: ButtonComponent(
-                        height: 60,
-                        width: 376,
-                        color: MainColor.primaryColor,
-                        text: "Add Task",
-                        size: 24,
-                        weight: FontWeight.bold,
-                        onPressed: () {},
-                      ),
-                    ),
                   ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 28),
+              child: SizedBox(
+                width: double.infinity,
+                child: ButtonComponent(
+                  height: 60,
+                  width: 376,
+                  color: MainColor.primaryColor,
+                  text: "Add Task",
+                  size: 24,
+                  weight: FontWeight.bold,
+                  onPressed: () {},
                 ),
               ),
             ),

@@ -12,7 +12,9 @@ class ButtonComponent extends StatelessWidget {
   final FontWeight weight;
   final IconData? icon;
 
-  const ButtonComponent({
+  final bool? initialValue;
+
+  ButtonComponent({
     super.key,
     this.height,
     this.width,
@@ -24,7 +26,12 @@ class ButtonComponent extends StatelessWidget {
     this.size = 18,
     this.icon,
     this.iconColor,
-  });
+    this.initialValue,
+  }) {
+    if (initialValue != null) {
+      
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +42,7 @@ class ButtonComponent extends StatelessWidget {
     return SizedBox(
       width: width,
       height: height,
-      child: icon == null
+      child: (icon == null)
           ? ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: color,
@@ -65,11 +72,7 @@ class ButtonComponent extends StatelessWidget {
                   vertical: 10,
                 ),
               ),
-              icon: Icon(
-                icon,
-                color: iconColor ?? Colors.white,
-                size: 20,
-              ),
+              icon: Icon(icon, color: iconColor ?? Colors.white, size: 20),
               label: Text(
                 text,
                 style: TextStyle(
