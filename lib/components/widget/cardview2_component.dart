@@ -21,6 +21,7 @@ class CardTaskComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(vertical: 8),
       width: 345,
       height: 117,
       padding: EdgeInsets.all(16),
@@ -29,7 +30,7 @@ class CardTaskComponent extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,25 +52,38 @@ class CardTaskComponent extends StatelessWidget {
               ),
 
               SizedBox(height: 6),
-              
+
               Row(
                 children: [
-                  Icon(Icons.access_time, size: 16, color: SupportColor.whiteColor),
+                  Icon(
+                    Icons.access_time,
+                    size: 16,
+                    color: SupportColor.whiteColor,
+                  ),
                   SizedBox(width: 4),
                   Text(
                     startTime,
-                    style: const TextStyle(color: SupportColor.whiteColor, fontSize: 14),
+                    style: const TextStyle(
+                      color: SupportColor.whiteColor,
+                      fontSize: 14,
+                    ),
                   ),
                   const Text(
                     " - ",
-                    style: TextStyle(color: SupportColor.whiteColor, fontSize: 14),
+                    style: TextStyle(
+                      color: SupportColor.whiteColor,
+                      fontSize: 14,
+                    ),
                   ),
                   Text(
                     endTime,
-                    style: const TextStyle(color: SupportColor.whiteColor, fontSize: 14),
-                  )
+                    style: const TextStyle(
+                      color: SupportColor.whiteColor,
+                      fontSize: 14,
+                    ),
+                  ),
                 ],
-              )
+              ),
             ],
           ),
           SizedBox(width: 20),
