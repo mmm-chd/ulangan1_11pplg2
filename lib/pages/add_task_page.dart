@@ -4,6 +4,7 @@ import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtextfield2_component.dart';
 
+
 class AddTaskPage extends StatelessWidget {
   const AddTaskPage({super.key});
 
@@ -42,7 +43,7 @@ class AddTaskPage extends StatelessWidget {
                 ),
               ],
             ),
-
+            
             const SizedBox(height: 40),
 
             Expanded(
@@ -108,8 +109,9 @@ class AddTaskPage extends StatelessWidget {
                         onPressed: () {},
                       ),
                     ),
-
+                    
                     const SizedBox(height: 15),
+                    
                     Row(
                       children: [
                         Expanded(
@@ -124,7 +126,9 @@ class AddTaskPage extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
+                              
                               SizedBox(height: 5),
+                              
                               CustomTextField2(
                                 hintText: "Start Time",
                                 outlineColor: SupportColor.stroke,
@@ -150,7 +154,9 @@ class AddTaskPage extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
+                              
                               SizedBox(height: 5),
+                              
                               CustomTextField2(
                                 hintText: "End Time",
                                 outlineColor: SupportColor.stroke,

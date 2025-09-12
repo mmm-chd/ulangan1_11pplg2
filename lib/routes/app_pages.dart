@@ -28,11 +28,7 @@ class AppPages {
       page: () => ListTaskPage(),
       binding: ListTaskBinding(),
     ),
-    GetPage(
-      name: AppRoutes.addtaskPage, 
-      page: () => AddTaskPage()),
-    GetPage(
-      name: AppRoutes.profilePage, 
-      page: () => ProfilePage()),
+    GetPage(name: AppRoutes.addtaskPage, page: () => AddTaskPage()),
+    GetPage(name: AppRoutes.profilePage, page: () => ProfilePage()),
   ];
 }
