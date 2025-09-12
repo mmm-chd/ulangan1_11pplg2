@@ -6,12 +6,16 @@ class CardTaskComponent extends StatelessWidget {
   final Color color;
   final String title;
   final String desc;
+  final String startTime;
+  final String endTime;
 
   const CardTaskComponent({
     super.key,
     required this.color,
     required this.title,
     required this.desc,
+    required this.startTime,
+    required this.endTime,
   });
 
   @override
@@ -47,25 +51,25 @@ class CardTaskComponent extends StatelessWidget {
               ),
 
               SizedBox(height: 6),
-
-              Text.rich(
-                TextSpan(
-                  children: [
-                    WidgetSpan(
-                      alignment: PlaceholderAlignment.middle, // bikin sejajar
-                      child: Icon(
-                        Icons.access_time,
-                        size: 16,
-                        color: Colors.white,
-                      ),
-                    ),
-                    TextSpan(
-                      text: "18.30 - 20.30",
-                      style: TextStyle(color: Colors.white, fontSize: 14),
-                    ),
-                  ],
-                ),
-              ),
+              
+              Row(
+                children: [
+                  Icon(Icons.access_time, size: 16, color: SupportColor.whiteColor),
+                  SizedBox(width: 4),
+                  Text(
+                    startTime,
+                    style: const TextStyle(color: SupportColor.whiteColor, fontSize: 14),
+                  ),
+                  const Text(
+                    " - ",
+                    style: TextStyle(color: SupportColor.whiteColor, fontSize: 14),
+                  ),
+                  Text(
+                    endTime,
+                    style: const TextStyle(color: SupportColor.whiteColor, fontSize: 14),
+                  )
+                ],
+              )
             ],
           ),
           SizedBox(width: 20),
