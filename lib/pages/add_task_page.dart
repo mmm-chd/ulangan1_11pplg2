@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
-import 'package:ulangan1_11pplg2/components/widget/customtextfield_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/customtextfield2_component.dart';
+
 
 class AddTaskPage extends StatelessWidget {
   const AddTaskPage({super.key});
@@ -11,10 +12,9 @@ class AddTaskPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.only(left: 16, right: 16, top: 50),
         child: Column(
           children: [
-            // Header
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -43,8 +43,8 @@ class AddTaskPage extends StatelessWidget {
                 ),
               ],
             ),
-
-            const SizedBox(height: 20),
+            
+            const SizedBox(height: 40),
 
             Expanded(
               child: SingleChildScrollView(
@@ -62,7 +62,7 @@ class AddTaskPage extends StatelessWidget {
 
                     const SizedBox(height: 6),
 
-                    CustomTextField(
+                    CustomTextField2(
                       hintText: "Enter task title...",
                       outlineColor: SupportColor.stroke,
                       borderRadius: 5,
@@ -81,7 +81,7 @@ class AddTaskPage extends StatelessWidget {
 
                     const SizedBox(height: 6),
 
-                    CustomTextField(
+                    CustomTextField2(
                       hintText: "Enter description task...",
                       outlineColor: SupportColor.stroke,
                       borderRadius: 5,
@@ -100,16 +100,18 @@ class AddTaskPage extends StatelessWidget {
 
                     const SizedBox(height: 6),
 
-                    CustomTextField(
+                    CustomTextField2(
                       hintText: "Due Date",
                       outlineColor: SupportColor.stroke,
+                      borderRadius: 5,
                       suffixIcon: IconButton(
                         icon: const Icon(Icons.date_range),
                         onPressed: () {},
                       ),
-                      borderRadius: 5,
                     ),
+                    
                     const SizedBox(height: 15),
+                    
                     Row(
                       children: [
                         Expanded(
@@ -124,15 +126,17 @@ class AddTaskPage extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
+                              
                               SizedBox(height: 5),
-                              CustomTextField(
+                              
+                              CustomTextField2(
                                 hintText: "Start Time",
                                 outlineColor: SupportColor.stroke,
-                                suffixIcon: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.access_time),
-                                ),
                                 borderRadius: 5,
+                                suffixIcon: IconButton(
+                                  icon: const Icon(Icons.date_range),
+                                  onPressed: () {},
+                                ),
                               ),
                             ],
                           ),
@@ -150,8 +154,10 @@ class AddTaskPage extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
+                              
                               SizedBox(height: 5),
-                              CustomTextField(
+                              
+                              CustomTextField2(
                                 hintText: "End Time",
                                 outlineColor: SupportColor.stroke,
                                 suffixIcon: IconButton(
@@ -175,14 +181,12 @@ class AddTaskPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 10),
-
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child:Row(
+                    
+                    Row(
                       children: [
                         ButtonComponent(
                           height: 30,
-                          width: 100,
+                          width: 80,
                           size: 13,
                           borderRadius: 10,
                           color: PriorityColor.primaryColor,
@@ -193,7 +197,7 @@ class AddTaskPage extends StatelessWidget {
                         const SizedBox(width: 10),
                         ButtonComponent(
                           height: 30,
-                          width: 120,
+                          width: 80,
                           size: 13,
                           borderRadius: 10,
                           color: PriorityColor.secondaryColor,
@@ -204,7 +208,7 @@ class AddTaskPage extends StatelessWidget {
                         const SizedBox(width: 10),
                         ButtonComponent(
                           height: 30,
-                          width: 120,
+                          width: 80,
                           size: 13,
                           borderRadius: 10,
                           color: PriorityColor.accentColor,
@@ -214,21 +218,19 @@ class AddTaskPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    ),
 
-                    const SizedBox(height: 30),
                     SizedBox(
-                    width: double.infinity,
-                    child: ButtonComponent(
-                      height: 60,
-                      width: 376,
-                      color: MainColor.primaryColor,
-                      text: "Add Task",
-                      size: 24,
-                      weight: FontWeight.bold,
-                      onPressed: () {},
+                      width: double.infinity,
+                      child: ButtonComponent(
+                        height: 60,
+                        width: 376,
+                        color: MainColor.primaryColor,
+                        text: "Add Task",
+                        size: 24,
+                        weight: FontWeight.bold,
+                        onPressed: () {},
+                      ),
                     ),
-                  ),
                   ],
                 ),
               ),

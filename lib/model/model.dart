@@ -1,10 +1,11 @@
+
 class ToDoItem {
   final int id;
   final String title;
   final String desc;
   final DateTime date;
-  final DateTime startTime;
-  final DateTime endTime;
+  final String startTime;
+  final String endTime;
   final String priority;
 
   ToDoItem({

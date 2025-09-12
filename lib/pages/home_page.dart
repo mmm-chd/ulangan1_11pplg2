@@ -180,6 +180,8 @@ class HomePage extends StatelessWidget {
                   color: PriorityColor.primaryColor,
                   title: "Belajar Flutter",
                   desc: "Belajar Component dan layouting Flutter",
+                  startTime: "18.30",
+                  endTime: "20.30",
                 ),
               ],
             ),

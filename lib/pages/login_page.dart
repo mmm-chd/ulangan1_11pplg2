@@ -107,7 +107,7 @@ class LoginPage extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ButtonComponent(
-                      height: 49,
+                      height: 53,
                       width: 376,
                       color: MainColor.primaryColor,
                       text: "Sign In",

@@ -3,6 +3,8 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
+import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/cardview2_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/easydatetime_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/list_task_controller.dart';
@@ -27,7 +29,6 @@ class ListTaskPage extends StatelessWidget {
                   height: 45,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    // ignore: deprecated_member_use
                     color: MainColor.primaryColor.withOpacity(0.2),
                   ),
                   child: IconButton(
@@ -38,24 +39,16 @@ class ListTaskPage extends StatelessWidget {
                     splashRadius: 22.5,
                   ),
                 ),
-                ElevatedButton.icon(
+
+                ButtonComponent(
+                  iconColor: SupportColor.whiteColor,
+                  color: MainColor.primaryColor,
+                  icon: Icons.add,
+                  text: "Add Task",
+                  weight: FontWeight.bold,
                   onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: MainColor.primaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-                  ),
-                  icon: Icon(
-                    Icons.add,
-                    color: SupportColor.whiteColor,
-                    size: 24,
-                  ),
-                  label: const Text(
-                    "Add Task",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
+                  size: 18,
+                  borderRadius: 8,
                 ),
               ],
             ),
@@ -71,45 +64,22 @@ class ListTaskPage extends StatelessWidget {
           ),
 
           Expanded(
-            child: Container(
-              margin: EdgeInsets.only(top: 8, left: 16, right: 16),
-              child: Obx(
-                () => ListView.builder(
-                  itemCount: listTaskController.filteredList.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin: EdgeInsets.only(top: 10, bottom: 10),
-                      child: InkWell(
-                        onTap: () {},
-                        child: Row(
-                          spacing: 16,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  listTaskController.filteredList[index].title,
-                                ),
-                                Text(
-                                  listTaskController.filteredList[index].desc,
-                                ),
-                                Text(
-                                  listTaskController.filteredList[index].date
-                                      .toString(),
-                                ),
-                                Text(
-                                  listTaskController
-                                      .filteredList[index]
-                                      .priority,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
+            child: Obx(
+              () => ListView.builder(
+                shrinkWrap: true,
+                itemCount: listTaskController.filteredList.length,
+                padding: EdgeInsets.only(top: 8, left: 16, right: 16),
+                itemBuilder: (context, index) {
+                  return CardTaskComponent(
+                    color: PriorityColor.primaryColor,
+                    title: listTaskController.filteredList[index].title,
+                    desc: listTaskController.filteredList[index].desc,
+                    startTime: listTaskController.filteredList[index].startTime
+                        .toString(),
+                    endTime: listTaskController.filteredList[index].endTime
+                        .toString(),
+                  );
+                },
               ),
             ),
           ),
