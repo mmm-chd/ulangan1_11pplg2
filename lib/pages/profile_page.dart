@@ -42,7 +42,7 @@ class ProfilePage extends StatelessWidget {
             ),
             SizedBox(height: 20),
 
-            Container(
+            SizedBox(
               width: 320,
               child: Card(
                 color:

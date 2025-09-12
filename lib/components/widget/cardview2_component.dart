@@ -38,7 +38,7 @@ class CardTaskComponent extends StatelessWidget {
               ),
 
               SizedBox(height: 6),
-                
+
               CustomText(
                 text: desc,
                 color: SupportColor.whiteColor,
@@ -60,7 +60,7 @@ class CardTaskComponent extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: " 18.30 - 20.30",
+                      text: "18.30 - 20.30",
                       style: TextStyle(color: Colors.white, fontSize: 14),
                     ),
                   ],

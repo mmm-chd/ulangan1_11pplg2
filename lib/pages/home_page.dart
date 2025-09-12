@@ -10,6 +10,7 @@ import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -172,6 +173,9 @@ class HomePage extends StatelessWidget {
                 ),
                 SpacingComponent(height: 12),
 
+                // ListView.builder(
+                //   itemCount: ,
+                //   itemBuilder: (context, index) {}),
                 CardTaskComponent(
                   color: PriorityColor.primaryColor,
                   title: "Belajar Flutter",
