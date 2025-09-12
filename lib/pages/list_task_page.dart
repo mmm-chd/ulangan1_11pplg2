@@ -3,6 +3,7 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
+import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/easydatetime_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/list_task_controller.dart';
@@ -27,7 +28,6 @@ class ListTaskPage extends StatelessWidget {
                   height: 45,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    // ignore: deprecated_member_use
                     color: MainColor.primaryColor.withOpacity(0.2),
                   ),
                   child: IconButton(
@@ -38,25 +38,17 @@ class ListTaskPage extends StatelessWidget {
                     splashRadius: 22.5,
                   ),
                 ),
-                ElevatedButton.icon(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: MainColor.primaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-                  ),
-                  icon: Icon(
-                    Icons.add,
-                    color: SupportColor.whiteColor,
-                    size: 24,
-                  ),
-                  label: const Text(
-                    "Add Task",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                ),
+
+                ButtonComponent(
+                  iconColor: SupportColor.whiteColor,
+                  color: MainColor.primaryColor, 
+                  icon: Icons.add,
+                  text: "Add Task", 
+                  weight: FontWeight.bold, 
+                  onPressed: (){}, 
+                  size: 18,
+                  borderRadius: 8,
+                )
               ],
             ),
           ),
