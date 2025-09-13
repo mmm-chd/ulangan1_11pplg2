@@ -156,7 +156,7 @@ class HomePage extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                        Get.toNamed('/listtaskPage');
+                        Get.toNamed('/listTaskPage');
                       },
                       borderRadius: BorderRadius.all(Radius.circular(6)),
                       child: Padding(

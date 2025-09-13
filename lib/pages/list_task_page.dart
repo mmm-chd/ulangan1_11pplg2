@@ -42,11 +42,13 @@ class ListTaskPage extends StatelessWidget {
 
                 ButtonComponent(
                   iconColor: SupportColor.whiteColor,
-                  color: MainColor.primaryColor,
+                  backgroundColor: MainColor.primaryColor,
                   icon: Icons.add,
                   text: "Add Task",
                   weight: FontWeight.bold,
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed('/addTaskPage');
+                  },
                   size: 18,
                   borderRadius: 8,
                 ),
@@ -71,7 +73,7 @@ class ListTaskPage extends StatelessWidget {
                 padding: EdgeInsets.only(top: 8, left: 16, right: 16),
                 itemBuilder: (context, index) {
                   return CardTaskComponent(
-                    color: PriorityColor.primaryColor,
+                    color: listTaskController.filteredList[index].priority,
                     title: listTaskController.filteredList[index].title,
                     desc: listTaskController.filteredList[index].desc,
                     startTime: listTaskController.filteredList[index].startTime
