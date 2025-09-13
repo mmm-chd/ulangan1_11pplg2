@@ -1,15 +1,15 @@
 
+import 'package:flutter/widgets.dart';
+
 class ToDoItem {
-  final int id;
   final String title;
   final String desc;
   final DateTime date;
   final String startTime;
   final String endTime;
-  final String priority;
+  final Color priority;
 
   ToDoItem({
-    required this.id,
     required this.title,
     required this.desc,
     required this.date,
