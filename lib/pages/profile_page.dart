@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/profile_option.dart';
+import 'package:ulangan1_11pplg2/controller/profile_controller.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  ProfilePage({super.key});
+
+  final ProfileController profileController = Get.find<ProfileController>();
 
   @override
   Widget build(BuildContext context) {
@@ -45,14 +49,10 @@ class ProfilePage extends StatelessWidget {
             SizedBox(
               width: 320,
               child: Card(
-                color:
-                    MainColor.primaryColor,
+                color: MainColor.primaryColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
-                  side: BorderSide(
-                    color: SupportColor.stroke,
-                    width: 1,
-                  ),
+                  side: BorderSide(color: SupportColor.stroke, width: 1),
                 ),
                 elevation: 5,
                 child: Padding(
