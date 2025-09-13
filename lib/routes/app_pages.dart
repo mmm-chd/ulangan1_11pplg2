@@ -2,7 +2,7 @@ import 'package:get/route_manager.dart';
 import 'package:ulangan1_11pplg2/bindings/add_task_binding.dart';
 import 'package:ulangan1_11pplg2/bindings/list_task_binding.dart';
 import 'package:ulangan1_11pplg2/bindings/login_binding.dart';
-import 'package:ulangan1_11pplg2/bindings/navbar_binding.dart';
+import 'package:ulangan1_11pplg2/navbar/navbar_binding.dart';
 import 'package:ulangan1_11pplg2/navbar/navbar_page.dart';
 import 'package:ulangan1_11pplg2/pages/add_task_page.dart';
 import 'package:ulangan1_11pplg2/pages/home_page.dart';
