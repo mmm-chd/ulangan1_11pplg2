@@ -44,7 +44,7 @@ class ButtonComponent extends StatelessWidget {
               // Add splash color for better feedback
               splashColor: textColor.withOpacity(0.1),
               highlightColor: textColor.withOpacity(0.05),
-              child: Container(
+              child: AnimatedContainer(
                 width: width,
                 height: height,
                 padding: const EdgeInsets.symmetric(horizontal: 14),
@@ -55,6 +55,7 @@ class ButtonComponent extends StatelessWidget {
                       ? Border.all(color: outlineColor, width: 1.5)
                       : null,
                 ),
+                duration: Duration(milliseconds: 300),
                 child: Center(
                   child: Text(
                     text,

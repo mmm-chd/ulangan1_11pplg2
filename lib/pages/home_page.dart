@@ -196,61 +196,6 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-
-            // Container(
-            //   width: 327,
-            //   height: 117,
-            //   padding: EdgeInsets.all(16),
-            //   decoration: BoxDecoration(
-            //     color: SupportColor.supportColor3,
-            //     borderRadius:BorderRadius.circular(15)
-            //   ),
-            //   child: Column(
-            //     crossAxisAlignment: CrossAxisAlignment.start,
-            //     children: [
-            //       Row(
-            //         children: [
-            //           CustomText(
-            //             text: "Belajar Flutter",
-            //             color: SupportColor.whiteColor,
-            //             weight: FontWeight.bold,
-            //             size: 22),
-
-            //           SizedBox(width: 113,),
-
-            //           const Icon(Icons.more_vert, size: 20, color:SupportColor.whiteColor)
-
-            //         ],
-            //       ),
-
-            //       SizedBox(height: 6),
-
-            //       CustomText(
-            //         text: "Belajar Component dan layouting Flutter",
-            //         color: SupportColor.whiteColor,
-            //         weight: FontWeight.w500,
-            //         size: 13),
-
-            //       SizedBox(height: 6),
-
-            //       Text.rich(
-            //         TextSpan(
-            //           children: [
-            //             WidgetSpan(
-            //               alignment: PlaceholderAlignment.middle, // bikin sejajar
-            //               child: Icon(Icons.access_time, size: 16, color: Colors.white),
-            //             ),
-            //         TextSpan(
-            //           text: " 18.30 - 20.30",
-            //           style: TextStyle(color: Colors.white, fontSize: 14),
-            //         ),
-            //           ],
-            //         ),
-            //       )
-            //     ],
-            //   )
-
-            // )
           ],
         ),
       ),

@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/model/model.dart';
@@ -6,7 +7,7 @@ class DataTodo {
   DateFormat dateFormat = DateFormat.yM();
   DateFormat timeFormat = DateFormat();
 
-  var toDoItem = <ToDoItem>[
+  RxList<ToDoItem> toDoItem = <ToDoItem>[
     ToDoItem(
       title: 'Belajar Dasar Flutter',
       desc: 'Belajar Component dan layouting Flutter',
@@ -43,5 +44,5 @@ class DataTodo {
           .toString(),
       priority: PriorityColor.accentColor,
     ),
-  ];
+  ].obs;
 }
