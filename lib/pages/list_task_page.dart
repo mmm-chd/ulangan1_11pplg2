@@ -73,6 +73,9 @@ class ListTaskPage extends StatelessWidget {
                 padding: EdgeInsets.only(top: 8, left: 16, right: 16),
                 itemBuilder: (context, index) {
                   return CardTaskComponent(
+                    onTapItem: (p0) {
+                      
+                    },
                     color: listTaskController.filteredList[index].priority,
                     title: listTaskController.filteredList[index].title,
                     desc: listTaskController.filteredList[index].desc,

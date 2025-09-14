@@ -24,21 +24,44 @@ class HomeController extends GetxController {
         .toList();
   }
 
-  int get taskQuantMust {
+  Rx<int> get totalTasks {
+    return dataTodo.toDoItem
+        .length
+        .obs;
+  }
+
+  Rx<int> get taskQuantMust {
     return dataTodo.toDoItem
         .where((item) => item.priority == primaryColor)
-        .length;
+        .length
+        .obs;
   }
 
-  int get taskQuantShould {
+  Rx<int> get taskQuantShould {
     return dataTodo.toDoItem
         .where((item) => item.priority == secondaryColor)
-        .length;
+        .length
+        .obs;
   }
 
-  int get taskQuantCould {
+  Rx<int> get taskQuantCould {
     return dataTodo.toDoItem
         .where((item) => item.priority == accentColor)
-        .length;
+        .length
+        .obs;
+  }
+
+  void onTapItem(String value, index) {
+    switch (value) {
+      case 'completed':
+        dataTodo.toDoItem[index].priority == SupportColor.grayColor;
+        break;
+      case 'edit':
+        Get.toNamed('/addTaskPage', arguments: index);
+        break;
+      case 'delete':
+        dataTodo.toDoItem.removeAt(index);
+        break;
+    }
   }
 }

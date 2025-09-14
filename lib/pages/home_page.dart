@@ -50,42 +50,57 @@ class HomePage extends StatelessWidget {
                   ),
                   SpacingComponent(height: 4),
 
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "You Have ",
-                          style: TextStyle(
-                            color: TextColor.primaryTextColor,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 18,
-                          ),
-                        ),
-                        TextSpan(
-                          text: "15 tasks ",
-                          style: TextStyle(
-                            color: MainColor.primaryColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                          ),
-                        ),
-                        TextSpan(
-                          text: "to complete\n",
-                          style: TextStyle(
-                            color: TextColor.primaryTextColor,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 18,
-                          ),
-                        ),
-                        TextSpan(
-                          text: "this month.",
-                          style: TextStyle(
-                            color: TextColor.primaryTextColor,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ],
+                  Obx(
+                    () => RichText(
+                      text: (homeController.totalTasks.value == 0)
+                          ? TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: "It's like you don't have any tasks",
+                                  style: TextStyle(
+                                    color: TextColor.primaryTextColor,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ],
+                            )
+                          : TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: "You Have ",
+                                  style: TextStyle(
+                                    color: TextColor.primaryTextColor,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "${homeController.totalTasks} tasks ",
+                                  style: TextStyle(
+                                    color: MainColor.primaryColor,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "to complete\n",
+                                  style: TextStyle(
+                                    color: TextColor.primaryTextColor,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "this year.",
+                                  style: TextStyle(
+                                    color: TextColor.primaryTextColor,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ],
+                            ),
                     ),
                   ),
 
@@ -111,29 +126,36 @@ class HomePage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  CardviewComponent(
-                    color: PriorityColor.primaryColor,
-                    color2: SupportColor.mustdopb,
-                    task: "${homeController.taskQuantMust.toString()} Tasks",
-                    title: "Must Do",
+                  Obx(
+                    () => CardviewComponent(
+                      color: PriorityColor.primaryColor,
+                      color2: SupportColor.mustdopb,
+                      task: "${homeController.taskQuantMust.toString()} Tasks",
+                      title: "Must Do",
+                    ),
                   ),
 
                   SizedBox(width: 12),
 
-                  CardviewComponent(
-                    color: PriorityColor.secondaryColor,
-                    color2: SupportColor.shoulddopb,
-                    task: "${homeController.taskQuantShould.toString()} Tasks",
-                    title: "Should Do",
+                  Obx(
+                    () => CardviewComponent(
+                      color: PriorityColor.secondaryColor,
+                      color2: SupportColor.shoulddopb,
+                      task:
+                          "${homeController.taskQuantShould.toString()} Tasks",
+                      title: "Should Do",
+                    ),
                   ),
 
                   SizedBox(width: 12),
 
-                  CardviewComponent(
-                    color: PriorityColor.accentColor,
-                    color2: SupportColor.coulddopb,
-                    task: "${homeController.taskQuantCould.toString()} Tasks",
-                    title: "Could Do",
+                  Obx(
+                    () => CardviewComponent(
+                      color: PriorityColor.accentColor,
+                      color2: SupportColor.coulddopb,
+                      task: "${homeController.taskQuantCould.toString()} Tasks",
+                      title: "Could Do",
+                    ),
                   ),
 
                   SizedBox(width: 12),
@@ -182,6 +204,9 @@ class HomePage extends StatelessWidget {
                       itemCount: homeController.todayList.length,
                       itemBuilder: (context, index) {
                         return CardTaskComponent(
+                          onTapItem: (p0) {
+                            homeController.onTapItem(p0, index);
+                          },
                           color: homeController.todayList[index].priority,
                           title: homeController.todayList[index].title,
                           desc: homeController.todayList[index].desc,
