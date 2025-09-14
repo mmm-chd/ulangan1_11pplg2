@@ -8,6 +8,7 @@ class CardTaskComponent extends StatelessWidget {
   final String desc;
   final String startTime;
   final String endTime;
+  final VoidCallback? onTapItem;
 
   const CardTaskComponent({
     super.key,
@@ -16,6 +17,7 @@ class CardTaskComponent extends StatelessWidget {
     required this.desc,
     required this.startTime,
     required this.endTime,
+    this.onTapItem,
   });
 
   @override
@@ -32,89 +34,97 @@ class CardTaskComponent extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomText(
-                text: title,
-                color: SupportColor.whiteColor,
-                weight: FontWeight.bold,
-                size: 22,
-              ),
+          Expanded(
+            flex: 10,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomText(
+                  text: title,
+                  color: SupportColor.whiteColor,
+                  weight: FontWeight.bold,
+                  size: 22,
+                ),
 
-              SizedBox(height: 6),
+                SizedBox(height: 6),
 
-              CustomText(
-                text: desc,
-                color: SupportColor.whiteColor,
-                weight: FontWeight.w500,
-                size: 13,
-              ),
+                CustomText(
+                  text: desc,
+                  color: SupportColor.whiteColor,
+                  weight: FontWeight.w500,
+                  size: 13,
+                ),
 
-              SizedBox(height: 6),
+                SizedBox(height: 6),
 
-              Row(
-                children: [
-                  Icon(
-                    Icons.access_time,
-                    size: 16,
+                Row(
+                  children: [
+                    Icon(
+                      Icons.access_time,
+                      size: 16,
+                      color: SupportColor.whiteColor,
+                    ),
+                    SizedBox(width: 4),
+                    Text(
+                      startTime,
+                      style: const TextStyle(
+                        color: SupportColor.whiteColor,
+                        fontSize: 14,
+                      ),
+                    ),
+                    const Text(
+                      " - ",
+                      style: TextStyle(
+                        color: SupportColor.whiteColor,
+                        fontSize: 14,
+                      ),
+                    ),
+                    Text(
+                      endTime,
+                      style: const TextStyle(
+                        color: SupportColor.whiteColor,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          SizedBox(width: 8),
+
+          Flexible(
+            flex: 1,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                PopupMenuButton<String>(
+                  icon: const Icon(
+                    Icons.more_vert,
+                    size: 20,
                     color: SupportColor.whiteColor,
                   ),
-                  SizedBox(width: 4),
-                  Text(
-                    startTime,
-                    style: const TextStyle(
-                      color: SupportColor.whiteColor,
-                      fontSize: 14,
+                  itemBuilder: (context) => [
+                    PopupMenuItem(
+                      value: 'Completed',
+                      onTap: onTapItem,
+                      child: Text('Completed'),
                     ),
-                  ),
-                  const Text(
-                    " - ",
-                    style: TextStyle(
-                      color: SupportColor.whiteColor,
-                      fontSize: 14,
+                    PopupMenuDivider(thickness: 1),
+                    PopupMenuItem(
+                      value: 'edit',
+                      onTap: onTapItem,
+                      child: Text('Edit'),
                     ),
-                  ),
-                  Text(
-                    endTime,
-                    style: const TextStyle(
-                      color: SupportColor.whiteColor,
-                      fontSize: 14,
+                    PopupMenuItem(
+                      value: 'delete',
+                      onTap: onTapItem,
+                      child: Text('Delete'),
                     ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          SizedBox(width: 20),
-
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const Icon(
-                Icons.more_vert,
-                size: 20,
-                color: SupportColor.whiteColor,
-              ),
-            ],
-          ),
-
-          PopupMenuButton<String>(
-            icon: const Icon(
-              Icons.more_vert,
-              size: 20,
-              color: SupportColor.whiteColor,
+                  ],
+                ),
+              ],
             ),
-            onSelected: (value) {
-              if (value == 'edit') {
-              } 
-              else if (value == 'delete') {
-              }
-            },
-            itemBuilder: (context) => [
-              const PopupMenuItem(value: 'edit', child: Text('Edit')),
-              const PopupMenuItem(value: 'delete', child: Text('Delete')),
-            ],
           ),
         ],
       ),
