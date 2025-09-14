@@ -1,5 +1,6 @@
 import 'package:get/route_manager.dart';
 import 'package:ulangan1_11pplg2/bindings/add_task_binding.dart';
+import 'package:ulangan1_11pplg2/bindings/history_binding.dart';
 import 'package:ulangan1_11pplg2/bindings/home_binding.dart';
 import 'package:ulangan1_11pplg2/bindings/list_task_binding.dart';
 import 'package:ulangan1_11pplg2/bindings/login_binding.dart';
@@ -40,13 +41,11 @@ class AppPages {
       page: () => AddTaskPage(),
       binding: AddTaskBinding(),
     ),
+    GetPage(name: AppRoutes.profilePage, page: () => ProfilePage()),
     GetPage(
-      name: AppRoutes.profilePage, 
-      page: () => ProfilePage()
-    ),
-    GetPage(
-      name: AppRoutes.historyPage, 
-      page: () => HistoryPage()
+      name: AppRoutes.historyPage,
+      page: () => HistoryPage(),
+      binding: HistoryBinding(),
     ),
   ];
 }
