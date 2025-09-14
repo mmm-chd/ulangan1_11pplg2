@@ -98,6 +98,24 @@ class CardTaskComponent extends StatelessWidget {
               ),
             ],
           ),
+
+          PopupMenuButton<String>(
+            icon: const Icon(
+              Icons.more_vert,
+              size: 20,
+              color: SupportColor.whiteColor,
+            ),
+            onSelected: (value) {
+              if (value == 'edit') {
+              } 
+              else if (value == 'delete') {
+              }
+            },
+            itemBuilder: (context) => [
+              const PopupMenuItem(value: 'edit', child: Text('Edit')),
+              const PopupMenuItem(value: 'delete', child: Text('Delete')),
+            ],
+          ),
         ],
       ),
     );
