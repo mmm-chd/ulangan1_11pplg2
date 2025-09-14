@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
-import 'package:ulangan1_11pplg2/controller/navbar_controller.dart';
+import 'package:ulangan1_11pplg2/navbar/navbar_controller.dart';
 
 class NavbarPage extends StatelessWidget {
   NavbarPage({super.key});
@@ -11,13 +11,13 @@ class NavbarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: navbarController.pages[navbarController.currentIndex.value],
-      bottomNavigationBar: Obx(
-        () => BottomNavigationBar(
+    return Obx(
+      () => Scaffold(
+        body: navbarController.pages[navbarController.currentIndex.value],
+        bottomNavigationBar: BottomNavigationBar(
           elevation: 10,
           currentIndex: navbarController.currentIndex.value,
-          onTap: (value) => navbarController.changeIndex(value),
+          onTap: navbarController.changeIndex,
           items: [
             BottomNavigationBarItem(
               icon: SvgPicture.asset(

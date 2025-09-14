@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomTextField2 extends StatelessWidget {
   final String hintText;
@@ -7,6 +8,10 @@ class CustomTextField2 extends StatelessWidget {
   final bool obsecureText;
   final IconButton? suffixIcon;
   final TextEditingController? controller;
+  final bool readOnly;
+
+  final List<TextInputFormatter>? inputFormatter;
+  final VoidCallback? onTap;
 
   const CustomTextField2({
     super.key,
@@ -16,14 +21,19 @@ class CustomTextField2 extends StatelessWidget {
     this.obsecureText = false,
     this.controller,
     this.suffixIcon,
+    this.inputFormatter,
+    this.onTap, this.readOnly = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
       child: TextField(
+        readOnly: readOnly,
+        onTap: onTap,
         controller: controller,
         obscureText: obsecureText,
+        inputFormatters: inputFormatter,
         decoration: InputDecoration(
           hintText: hintText,
           enabledBorder: OutlineInputBorder(

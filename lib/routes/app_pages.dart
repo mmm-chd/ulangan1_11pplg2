@@ -1,7 +1,9 @@
 import 'package:get/route_manager.dart';
+import 'package:ulangan1_11pplg2/bindings/add_task_binding.dart';
+import 'package:ulangan1_11pplg2/bindings/home_binding.dart';
 import 'package:ulangan1_11pplg2/bindings/list_task_binding.dart';
 import 'package:ulangan1_11pplg2/bindings/login_binding.dart';
-import 'package:ulangan1_11pplg2/bindings/navbar_binding.dart';
+import 'package:ulangan1_11pplg2/navbar/navbar_binding.dart';
 import 'package:ulangan1_11pplg2/navbar/navbar_page.dart';
 import 'package:ulangan1_11pplg2/pages/add_task_page.dart';
 import 'package:ulangan1_11pplg2/pages/history_page.dart';
@@ -18,7 +20,11 @@ class AppPages {
       page: () => LoginPage(),
       binding: LoginBinding(),
     ),
-    GetPage(name: AppRoutes.homePage, page: () => HomePage()),
+    GetPage(
+      name: AppRoutes.homePage,
+      page: () => HomePage(),
+      binding: HomeBinding(),
+    ),
     GetPage(
       name: AppRoutes.navbarPage,
       page: () => NavbarPage(),
@@ -30,13 +36,17 @@ class AppPages {
       binding: ListTaskBinding(),
     ),
     GetPage(
-      name: AppRoutes.addtaskPage, 
-      page: () => AddTaskPage()),
+      name: AppRoutes.addtaskPage,
+      page: () => AddTaskPage(),
+      binding: AddTaskBinding(),
+    ),
     GetPage(
       name: AppRoutes.profilePage, 
-      page: () => ProfilePage()),
+      page: () => ProfilePage()
+    ),
     GetPage(
       name: AppRoutes.historyPage, 
-      page: () => HistoryPage()),
+      page: () => HistoryPage()
+    ),
   ];
 }

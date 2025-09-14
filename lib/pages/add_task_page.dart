@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtextfield2_component.dart';
+import 'package:ulangan1_11pplg2/controller/add_edit_task_controller.dart';
 
 class AddTaskPage extends StatelessWidget {
-  const AddTaskPage({super.key});
+  AddTaskPage({super.key});
+
+  final AddEditTaskController addEditTaskController =
+      Get.find<AddEditTaskController>();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +25,7 @@ class AddTaskPage extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    Navigator.pop(context);
+                    Get.back();
                   },
                   child: Container(
                     width: 45,
@@ -62,6 +68,7 @@ class AddTaskPage extends StatelessWidget {
                     const SizedBox(height: 6),
 
                     CustomTextField2(
+                      controller: addEditTaskController.titleEditingController,
                       hintText: "Enter task title...",
                       outlineColor: SupportColor.stroke,
                       borderRadius: 5,
@@ -81,6 +88,7 @@ class AddTaskPage extends StatelessWidget {
                     const SizedBox(height: 6),
 
                     CustomTextField2(
+                      controller: addEditTaskController.descEditingController,
                       hintText: "Enter description task...",
                       outlineColor: SupportColor.stroke,
                       borderRadius: 5,
@@ -99,13 +107,18 @@ class AddTaskPage extends StatelessWidget {
 
                     const SizedBox(height: 6),
 
-                    CustomTextField2(
-                      hintText: "Due Date",
-                      outlineColor: SupportColor.stroke,
-                      borderRadius: 5,
-                      suffixIcon: IconButton(
-                        icon: const Icon(Icons.date_range),
-                        onPressed: () {},
+                    Obx(
+                      () => CustomTextField2(
+                        controller: addEditTaskController.dateEditingController,
+                        readOnly: true,
+                        hintText: addEditTaskController.dueDate(),
+                        outlineColor: SupportColor.stroke,
+                        borderRadius: 5,
+                        suffixIcon: IconButton(
+                          icon: const Icon(Icons.date_range),
+                          onPressed: () =>
+                              addEditTaskController.pickerDate(context),
+                        ),
                       ),
                     ),
 
@@ -128,13 +141,19 @@ class AddTaskPage extends StatelessWidget {
 
                               SizedBox(height: 5),
 
-                              CustomTextField2(
-                                hintText: "Start Time",
-                                outlineColor: SupportColor.stroke,
-                                borderRadius: 5,
-                                suffixIcon: IconButton(
-                                  icon: const Icon(Icons.date_range),
-                                  onPressed: () {},
+                              Obx(
+                                () => CustomTextField2(
+                                  controller: addEditTaskController
+                                      .startTimeEditingController,
+                                  readOnly: true,
+                                  hintText: addEditTaskController.sTimer(),
+                                  outlineColor: SupportColor.stroke,
+                                  borderRadius: 5,
+                                  suffixIcon: IconButton(
+                                    icon: const Icon(Icons.date_range),
+                                    onPressed: () => addEditTaskController
+                                        .spickerTime(context),
+                                  ),
                                 ),
                               ),
                             ],
@@ -157,10 +176,14 @@ class AddTaskPage extends StatelessWidget {
                               SizedBox(height: 5),
 
                               CustomTextField2(
-                                hintText: "End Time",
+                                controller: addEditTaskController
+                                    .endTimeEditingController,
+                                readOnly: true,
+                                hintText: addEditTaskController.eTimer(),
                                 outlineColor: SupportColor.stroke,
                                 suffixIcon: IconButton(
-                                  onPressed: () {},
+                                  onPressed: () => addEditTaskController
+                                      .epickerTime(context),
                                   icon: Icon(Icons.access_time),
                                 ),
                                 borderRadius: 5,
@@ -171,6 +194,7 @@ class AddTaskPage extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 20),
+
                     const Text(
                       "Priority",
                       style: TextStyle(
@@ -181,47 +205,38 @@ class AddTaskPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
 
-                    Row(
-                      children: [
-                        Expanded(
-                          child: ButtonComponent(
-                            height: 40,
-                            width: 100,
-                            size: 13,
-                            borderRadius: 10,
-                            color: PriorityColor.primaryColor,
-                            text: "Must Do",
-                            weight: FontWeight.bold,
-                            onPressed: () {},
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                        Expanded(
-                          child: ButtonComponent(
-                            height: 40,
-                            width: 80,
-                            size: 13,
-                            borderRadius: 10,
-                            color: PriorityColor.secondaryColor,
-                            text: "Should Do",
-                            weight: FontWeight.bold,
-                            onPressed: () {},
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                        Expanded(
-                          child: ButtonComponent(
-                            height: 40,
-                            width: 80,
-                            size: 13,
-                            borderRadius: 10,
-                            color: PriorityColor.accentColor,
-                            text: "Could Do",
-                            weight: FontWeight.bold,
-                            onPressed: () {},
-                          ),
-                        ),
-                      ],
+                    SizedBox(
+                      height: 40,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        itemCount: addEditTaskController.listPriority.length,
+                        itemBuilder: (context, index) {
+                          return Obx(
+                            () => ButtonComponent(
+                              weight: FontWeight.w600,
+                              backgroundColor:
+                                  addEditTaskController
+                                      .listPriority[index]
+                                      .priorityBool
+                                      .value
+                                  ? addEditTaskController
+                                        .listPriority[index]
+                                        .color
+                                  : Colors.transparent,
+                              outlineColor: addEditTaskController
+                                  .listPriority[index]
+                                  .color,
+                              text: addEditTaskController
+                                  .listPriority[index]
+                                  .priorityText,
+                              onPressed: () {
+                                addEditTaskController.onHandle(index);
+                              },
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   ],
                 ),
@@ -234,11 +249,11 @@ class AddTaskPage extends StatelessWidget {
                 child: ButtonComponent(
                   height: 60,
                   width: 376,
-                  color: MainColor.primaryColor,
+                  backgroundColor: MainColor.primaryColor,
                   text: "Add Task",
                   size: 24,
                   weight: FontWeight.bold,
-                  onPressed: () {},
+                  onPressed: addEditTaskController.addTask,
                 ),
               ),
             ),
