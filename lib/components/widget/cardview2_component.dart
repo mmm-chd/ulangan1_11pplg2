@@ -8,7 +8,7 @@ class CardTaskComponent extends StatelessWidget {
   final String desc;
   final String startTime;
   final String endTime;
-  final VoidCallback? onTapItem;
+  final Function(String) onTapItem;
 
   const CardTaskComponent({
     super.key,
@@ -17,7 +17,7 @@ class CardTaskComponent extends StatelessWidget {
     required this.desc,
     required this.startTime,
     required this.endTime,
-    this.onTapItem,
+    required this.onTapItem,
   });
 
   @override
@@ -104,23 +104,12 @@ class CardTaskComponent extends StatelessWidget {
                     size: 20,
                     color: SupportColor.whiteColor,
                   ),
+                  onSelected: (value) => onTapItem(value),
                   itemBuilder: (context) => [
-                    PopupMenuItem(
-                      value: 'Completed',
-                      onTap: onTapItem,
-                      child: Text('Completed'),
-                    ),
+                    PopupMenuItem(value: 'completed', child: Text('Completed')),
                     PopupMenuDivider(thickness: 1),
-                    PopupMenuItem(
-                      value: 'edit',
-                      onTap: onTapItem,
-                      child: Text('Edit'),
-                    ),
-                    PopupMenuItem(
-                      value: 'delete',
-                      onTap: onTapItem,
-                      child: Text('Delete'),
-                    ),
+                    PopupMenuItem(value: 'edit', child: Text('Edit')),
+                    PopupMenuItem(value: 'delete', child: Text('Delete')),
                   ],
                 ),
               ],
