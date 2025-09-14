@@ -5,4 +5,5 @@ class AppRoutes {
   static const listtaskPage = "/listTaskPage";
   static const addtaskPage = "/addTaskPage";
   static const profilePage = "/profilePage";
+  static const historyPage = "/historyPage";
 }
