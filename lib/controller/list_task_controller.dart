@@ -11,8 +11,19 @@ class ListTaskController extends GetxController {
 
   var selectedDate = Rxn<DateTime>(DateTime.now());
 
+  @override
+  void onInit() {
+    super.onInit();
+    // Set initial selected date
+    if (selectedDate.value == null) {
+      selectedDate.value = DateTime.now();
+    }
+  }
+
   void onSelectedDate(DateTime dateTime) {
     selectedDate.value = dateTime;
+
+    update();
   }
 
   List<ToDoItem> get filteredList {
@@ -36,6 +47,10 @@ class ListTaskController extends GetxController {
 
     if (actualIndex != -1) {
       taskMenuController.onTapItem(value, actualIndex, isCompleted);
+
+      if (value == 'completed') {
+        update();
+      }
     }
   }
 }

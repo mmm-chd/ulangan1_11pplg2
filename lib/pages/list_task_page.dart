@@ -66,32 +66,57 @@ class ListTaskPage extends StatelessWidget {
           ),
 
           Expanded(
-            child: Obx(
-              () => ListView.builder(
+            child: Obx(() {
+              final listTask = listTaskController.filteredList;
+
+              if (listTask.isEmpty) {
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.task_alt, size: 64, color: Colors.grey[400]),
+                      SizedBox(height: 16),
+                      Text(
+                        'No tasks for this date',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.grey[600],
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                        'Tap "Add Task" to create a new task',
+                        style: TextStyle(fontSize: 14, color: Colors.grey[500]),
+                      ),
+                    ],
+                  ),
+                );
+              }
+
+              return ListView.builder(
                 shrinkWrap: true,
-                itemCount: listTaskController.filteredList.length,
+                itemCount: listTask.length,
                 padding: EdgeInsets.only(top: 8, left: 16, right: 16),
                 itemBuilder: (context, index) {
                   return CardTaskComponent(
-                    color: listTaskController.filteredList[index].priority,
-                    title: listTaskController.filteredList[index].title,
-                    desc: listTaskController.filteredList[index].desc,
-                    startTime: listTaskController.filteredList[index].startTime
-                        .toString(),
-                    endTime: listTaskController.filteredList[index].endTime,
-                    isCompleted:
-                        listTaskController.filteredList[index].isCompleted,
+                    color: listTask[index].priority,
+                    title: listTask[index].title,
+                    desc: listTask[index].desc,
+                    startTime: listTask[index].startTime.toString(),
+                    endTime: listTask[index].endTime,
+                    isCompleted: listTask[index].isCompleted,
                     onTapItem: (value) {
                       listTaskController.onTapMenu(
                         value,
                         index,
-                        listTaskController.filteredList[index].isCompleted,
+                        listTask[index].isCompleted,
                       );
                     },
                   );
                 },
-              ),
-            ),
+              );
+            }),
           ),
         ],
       ),
