@@ -185,21 +185,15 @@ class LoginPage extends StatelessWidget {
                       SocialbuttonComponent(
                         asset: "assets/images/social_images/apple-icon.png",
                       ),
-                      const SizedBox(width: 16),
+                      const SpacingComponent(height: 16),
                       SocialbuttonComponent(
                         asset: "assets/images/social_images/facebook-icon.png",
                       ),
-                      const SizedBox(width: 16),
+                      const SpacingComponent(height: 16),
                       SocialbuttonComponent(
                         asset: "assets/images/social_images/google-icon.png",
                       ),
                     ],
-                    //   _socialButton("assets/google.png"),
-                    //   const SizedBox(width: 16),
-                    //   _socialButton("assets/apple.png"),
-                    //   const SizedBox(width: 16),
-                    //   _socialButton("assets/facebook.png"),
-                    // ],
                   ),
                 ],
               ),
