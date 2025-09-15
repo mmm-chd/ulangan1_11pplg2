@@ -2,16 +2,20 @@ import 'dart:ui';
 
 import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
+import 'package:ulangan1_11pplg2/controller/task_menu_controller.dart';
 import 'package:ulangan1_11pplg2/data/data_todo.dart';
 import 'package:ulangan1_11pplg2/model/model.dart';
 
 class HomeController extends GetxController {
   final DataTodo dataTodo = Get.find<DataTodo>();
+  final TaskMenuController taskMenuController = Get.find<TaskMenuController>();
 
   Rx<DateTime> dateNow = DateTime.now().obs;
   Color primaryColor = PriorityColor.primaryColor;
   Color secondaryColor = PriorityColor.secondaryColor;
   Color accentColor = PriorityColor.accentColor;
+
+  RxBool complete = false.obs;
 
   List<ToDoItem> get todayList {
     return dataTodo.toDoItem
@@ -19,47 +23,50 @@ class HomeController extends GetxController {
           (item) =>
               item.date.year == dateNow.value.year &&
               item.date.month == dateNow.value.month &&
-              item.date.day == dateNow.value.day,
+              item.date.day == dateNow.value.day &&
+              item.isCompleted == complete.value,
         )
-        .toList();
-  }
-
-  Rx<int> get totalTasks {
-    return dataTodo.toDoItem.length.obs;
-  }
-
-  Rx<int> get taskQuantMust {
-    return dataTodo.toDoItem
-        .where((item) => item.priority == primaryColor)
-        .length
+        .toList()
         .obs;
   }
 
-  Rx<int> get taskQuantShould {
+  int get totalTasks {
     return dataTodo.toDoItem
-        .where((item) => item.priority == secondaryColor)
-        .length
-        .obs;
+        .where((item) => item.isCompleted == complete.value)
+        .length;
   }
 
-  Rx<int> get taskQuantCould {
+  int get taskQuantMust {
     return dataTodo.toDoItem
-        .where((item) => item.priority == accentColor)
-        .length
-        .obs;
+        .where(
+          (item) =>
+              item.priority == primaryColor &&
+              item.isCompleted == complete.value,
+        )
+        .length;
   }
 
-  void onTapItem(String value, index) {
-    switch (value) {
-      case 'completed':
-        dataTodo.toDoItem[index].priorityStr == 'completed';
-        break;
-      case 'edit':
-        Get.toNamed('/addTaskPage', arguments: index);
-        break;
-      case 'delete':
-        dataTodo.toDoItem.removeAt(index);
-        break;
-    }
+  int get taskQuantShould {
+    return dataTodo.toDoItem
+        .where(
+          (item) =>
+              item.priority == secondaryColor &&
+              item.isCompleted == complete.value,
+        )
+        .length;
+  }
+
+  int get taskQuantCould {
+    return dataTodo.toDoItem
+        .where(
+          (item) =>
+              item.priority == accentColor &&
+              item.isCompleted == complete.value,
+        )
+        .length;
+  }
+
+  void onTapMenu(String value, int index) {
+    taskMenuController.onTapItem(value, index);
   }
 }

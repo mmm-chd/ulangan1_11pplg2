@@ -107,6 +107,7 @@ class AddEditTaskController extends GetxController {
       endTime: endTimeEditingController.text.trim(),
       priority: priorityColor,
       priorityStr: priorityStr,
+      isCompleted: false,
     );
 
     clearControllers();
@@ -301,6 +302,7 @@ class AddEditTaskController extends GetxController {
         endTime: endTimeEditingController.text.trim(),
         priority: priorityColor,
         priorityStr: priorityStr,
+        isCompleted: false,
       ),
     );
     clearControllers();
