@@ -9,11 +9,7 @@ class TaskMenuController extends GetxController {
     switch (value) {
       case 'completed':
         dataTodo.toDoItem[index].isCompleted = !isCompleted;
-        if (currentRoute == '/navbarPage') {
-          Get.offAndToNamed('/navbarPage');
-        } else if (currentRoute == '/listTaskPage') {
-          Get.offAndToNamed('/listTaskPage');
-        }
+        dataTodo.toDoItem.refresh();
         print(currentRoute);
         break;
       case 'edit':

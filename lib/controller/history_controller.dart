@@ -21,6 +21,10 @@ class HistoryController extends GetxController {
 
     if (actualIndex != -1) {
       taskMenuController.onTapItem(value, actualIndex, isCompleted);
+
+      if (value == 'completed') {
+        update();
+      }
     }
   }
 }
