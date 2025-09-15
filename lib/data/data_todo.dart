@@ -19,7 +19,7 @@ class DataTodo {
           .format(DateTime.parse('2025-08-12 18:30:00').add(Duration(hours: 2)))
           .toString(),
       priority: PriorityColor.primaryColor,
-      priorityStr: 'Must Do',
+      priorityStr: 'must do',
     ),
     ToDoItem(
       title: 'title',
@@ -32,7 +32,7 @@ class DataTodo {
           .format(DateTime.parse('2025-08-12 18:30:00').add(Duration(hours: 2)))
           .toString(),
       priority: PriorityColor.secondaryColor,
-      priorityStr: 'Should Do',
+      priorityStr: 'should do',
     ),
     ToDoItem(
       title: 'title1',
@@ -45,7 +45,7 @@ class DataTodo {
           .format(DateTime.parse('2025-08-12 18:30:00').add(Duration(hours: 2)))
           .toString(),
       priority: PriorityColor.accentColor,
-      priorityStr: 'Could Do',
+      priorityStr: 'could do',
     ),
   ].obs;
 }

@@ -25,9 +25,7 @@ class HomeController extends GetxController {
   }
 
   Rx<int> get totalTasks {
-    return dataTodo.toDoItem
-        .length
-        .obs;
+    return dataTodo.toDoItem.length.obs;
   }
 
   Rx<int> get taskQuantMust {
@@ -54,7 +52,7 @@ class HomeController extends GetxController {
   void onTapItem(String value, index) {
     switch (value) {
       case 'completed':
-        dataTodo.toDoItem[index].priority == SupportColor.grayColor;
+        dataTodo.toDoItem[index].priorityStr == 'completed';
         break;
       case 'edit':
         Get.toNamed('/addTaskPage', arguments: index);

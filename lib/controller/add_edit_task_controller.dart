@@ -32,7 +32,7 @@ class AddEditTaskController extends GetxController {
 
   Color priorityColor = PriorityColor.primaryColor;
 
-  String priorityStr = 'Must Do';
+  String priorityStr = 'must do';
   String buttonText = 'Add Task';
 
   ValueChanged<bool>? onTap;
@@ -49,7 +49,7 @@ class AddEditTaskController extends GetxController {
       fillIn();
     } else {
       dataTodo = Get.find<DataTodo>();
-      priorityStr = 'Must Do';
+      priorityStr = 'must do';
     }
   }
 
@@ -73,25 +73,25 @@ class AddEditTaskController extends GetxController {
   void setPriorityFromString(String priorityStr) {
     resetState();
     switch (priorityStr) {
-      case 'Must Do':
+      case 'must do':
         isMust.value = true;
         priorityColor = PriorityColor.primaryColor;
-        priorityStr = 'Must Do';
+        priorityStr = 'must do';
         break;
-      case 'Should Do':
+      case 'should do':
         isShould.value = true;
         priorityColor = PriorityColor.secondaryColor;
-        priorityStr = 'Should Do';
+        priorityStr = 'should do';
         break;
-      case 'Could Do':
+      case 'could do':
         isCould.value = true;
         priorityColor = PriorityColor.accentColor;
-        priorityStr = 'Could Do';
+        priorityStr = 'could do';
         break;
       default:
         isMust.value = true;
         priorityColor = PriorityColor.primaryColor;
-        priorityStr = 'Must Do';
+        priorityStr = 'must do';
     }
   }
 
@@ -336,6 +336,6 @@ class AddEditTaskController extends GetxController {
     isShould.value = false;
     isCould.value = false;
     priorityColor = PriorityColor.primaryColor;
-    priorityStr = 'Must Do';
+    priorityStr = 'must do';
   }
 }
