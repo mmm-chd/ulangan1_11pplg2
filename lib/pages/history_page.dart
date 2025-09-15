@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/cardview2_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
@@ -41,34 +42,68 @@ class HistoryPage extends StatelessWidget {
             const SizedBox(height: 16),
 
             Expanded(
-              child: Obx(
-                () => ListView.builder(
+              child: Obx(() {
+                final completedList = historyController.completedList;
+
+                if (completedList.isEmpty) {
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Lottie.asset(
+                          'assets/animation/ghost.json',
+                          width: 200,
+                          height: 200,
+                          frameRate: FrameRate(30),
+                          backgroundLoading: true,
+                          filterQuality: FilterQuality.low,
+                        ),
+                        // Icon(Icons.task, size: 64, color: Colors.grey[400]),
+                        SizedBox(height: 16),
+                        Text(
+                          'Finish Your Task',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.grey[600],
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          'Make it completed, so your task will be show here',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey[500],
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+
+                return ListView.builder(
                   shrinkWrap: true,
-                  itemCount: historyController.completedList.length,
+                  itemCount: completedList.length,
                   itemBuilder: (context, index) {
                     return CardTaskComponent(
-                      color: historyController.completedList[index].priority,
-                      title: historyController.completedList[index].title,
-                      desc: historyController.completedList[index].desc,
-                      startTime: historyController
-                          .completedList[index]
-                          .startTime
-                          .toString(),
-                      endTime: historyController.completedList[index].endTime
-                          .toString(),
-                      isCompleted:
-                          historyController.completedList[index].isCompleted,
+                      color: completedList[index].priority,
+                      title: completedList[index].title,
+                      desc: completedList[index].desc,
+                      startTime: completedList[index].startTime.toString(),
+                      endTime: completedList[index].endTime.toString(),
+                      isCompleted: completedList[index].isCompleted,
                       onTapItem: (value) {
                         historyController.onTapMenu(
                           value,
                           index,
-                          historyController.completedList[index].isCompleted,
+                          completedList[index].isCompleted,
                         );
                       },
                     );
                   },
-                ),
-              ),
+                );
+              }),
             ),
           ],
         ),
