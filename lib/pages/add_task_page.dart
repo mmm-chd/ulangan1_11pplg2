@@ -23,21 +23,19 @@ class AddTaskPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                InkWell(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Container(
-                    width: 45,
-                    height: 45,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xFFF4E2EC),
-                    ),
-                    child: const Icon(
-                      Icons.arrow_back,
-                      color: MainColor.primaryColor,
-                    ),
+                Container(
+                  width: 45,
+                  height: 45,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: MainColor.primaryColor.withOpacity(0.2),
+                  ),
+                  child: IconButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: Icon(Icons.arrow_back, color: MainColor.primaryColor),
+                    splashRadius: 22.5,
                   ),
                 ),
                 const CustomText(
