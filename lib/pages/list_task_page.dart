@@ -35,7 +35,7 @@ class ListTaskPage extends StatelessWidget {
                     onPressed: () {
                       Get.back();
                     },
-                    icon: Icon(Icons.arrow_back),
+                    icon: Icon(Icons.arrow_back, color: MainColor.primaryColor),
                     splashRadius: 22.5,
                   ),
                 ),
