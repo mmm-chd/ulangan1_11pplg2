@@ -135,7 +135,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
 
-                  SizedBox(width: 12),
+                  SpacingComponent(width: 12),
 
                   Obx(
                     () => CardviewComponent(
@@ -147,7 +147,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
 
-                  SizedBox(width: 12),
+                  SpacingComponent(width: 12),
 
                   Obx(
                     () => CardviewComponent(
@@ -158,7 +158,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
 
-                  SizedBox(width: 12),
+                  SpacingComponent(width: 12),
                 ],
               ),
             ),
@@ -187,7 +187,7 @@ class HomePage extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: CustomText(
-                            text: "See all",
+                            text: "Details",
                             color: SupportColor.grayColor,
                             weight: FontWeight.w500,
                             size: 12,
@@ -197,33 +197,67 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
 
-                  Obx(
-                    () => ListView.builder(
+                  Obx(() {
+                    final todayList = homeController.todayList;
+
+                    if (todayList.isEmpty) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 80.0),
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.task_alt,
+                                size: 64,
+                                color: Colors.grey[400],
+                              ),
+                              SpacingComponent(height: 16),
+                              Text(
+                                'No tasks for today',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.grey[600],
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              SpacingComponent(height: 8),
+                              Text(
+                                'Tap "Details" to see and create a new task',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey[500],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+
+                    return ListView.builder(
                       shrinkWrap: true,
                       primary: false,
-                      itemCount: homeController.todayList.length,
+                      itemCount: todayList.length,
                       itemBuilder: (context, index) {
                         return CardTaskComponent(
-                          color: homeController.todayList[index].priority,
-                          title: homeController.todayList[index].title,
-                          desc: homeController.todayList[index].desc,
-                          startTime: homeController.todayList[index].startTime
-                              .toString(),
-                          endTime: homeController.todayList[index].endTime
-                              .toString(),
-                          isCompleted:
-                              homeController.todayList[index].isCompleted,
+                          color: todayList[index].priority,
+                          title: todayList[index].title,
+                          desc: todayList[index].desc,
+                          startTime: todayList[index].startTime.toString(),
+                          endTime: todayList[index].endTime.toString(),
+                          isCompleted: todayList[index].isCompleted,
                           onTapItem: (value) {
                             homeController.onTapMenu(
                               value,
                               index,
-                              homeController.todayList[index].isCompleted,
+                              todayList[index].isCompleted,
                             );
                           },
                         );
                       },
-                    ),
-                  ),
+                    );
+                  }),
                 ],
               ),
             ),
