@@ -75,7 +75,8 @@ class ListTaskPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.task_alt, size: 64, color: Colors.grey[400]),
-                      SizedBox(height: 16),
+                      const SpacingComponent(height: 16),
+
                       Text(
                         'No tasks for this date',
                         style: TextStyle(
@@ -84,7 +85,7 @@ class ListTaskPage extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      SizedBox(height: 8),
+                      const SpacingComponent(height: 8),
                       Text(
                         'Tap "Add Task" to create a new task',
                         style: TextStyle(fontSize: 14, color: Colors.grey[500]),
