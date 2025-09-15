@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/profile_option.dart';
+import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/profile_controller.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -25,12 +26,12 @@ class ProfilePage extends StatelessWidget {
               weight: FontWeight.bold,
               size: 40,
             ),
-            SizedBox(height: 16),
+            const SpacingComponent(height: 16),
             CircleAvatar(
               radius: 60,
               backgroundImage: AssetImage('assets/images/profile.jpg'),
             ),
-            SizedBox(height: 16),
+            const SpacingComponent(height: 16),
             Text(
               "Matthew",
               style: TextStyle(
@@ -39,12 +40,12 @@ class ProfilePage extends StatelessWidget {
                 color: TextColor.primaryTextColor,
               ),
             ),
-            SizedBox(height: 8),
+            const SpacingComponent(height: 8),
             Text(
               "Matthew@gmail.com",
               style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
-            SizedBox(height: 20),
+            const SpacingComponent(height: 20),
 
             SizedBox(
               width: 320,
@@ -83,6 +84,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                       ),
                       Container(
+                        margin: EdgeInsets.symmetric(horizontal: 4),
                         width: 1.5,
                         height: 50,
                         color: SupportColor.whiteColor,
@@ -110,6 +112,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                       ),
                       Container(
+                        margin: EdgeInsets.symmetric(horizontal: 4),
                         width: 1.5,
                         height: 50,
                         color: SupportColor.whiteColor,
@@ -142,7 +145,7 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 32),
+            const SpacingComponent(height: 32),
 
             Card(
               color: SupportColor.whiteColor,
