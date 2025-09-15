@@ -13,7 +13,7 @@ class NavbarBinding extends Bindings {
     Get.lazyPut<HomeController>(() => HomeController(), fenix: true);
     Get.lazyPut<ProfileController>(() => ProfileController(), fenix: true);
     Get.lazyPut<HistoryController>(() => HistoryController(), fenix: true);
-    Get.lazyPut<DataTodo>(() => DataTodo());
-    Get.lazyPut<TaskMenuController>(() => TaskMenuController());
+    Get.lazyPut<DataTodo>(() => DataTodo(), fenix: true);
+    Get.lazyPut<TaskMenuController>(() => TaskMenuController(), fenix: true);
   }
 }

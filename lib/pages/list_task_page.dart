@@ -73,16 +73,21 @@ class ListTaskPage extends StatelessWidget {
                 padding: EdgeInsets.only(top: 8, left: 16, right: 16),
                 itemBuilder: (context, index) {
                   return CardTaskComponent(
-                    onTapItem: (p0) {
-                      
-                    },
                     color: listTaskController.filteredList[index].priority,
                     title: listTaskController.filteredList[index].title,
                     desc: listTaskController.filteredList[index].desc,
                     startTime: listTaskController.filteredList[index].startTime
                         .toString(),
-                    endTime: listTaskController.filteredList[index].endTime
-                        .toString(),
+                    endTime: listTaskController.filteredList[index].endTime,
+                    isCompleted:
+                        listTaskController.filteredList[index].isCompleted,
+                    onTapItem: (value) {
+                      listTaskController.onTapMenu(
+                        value,
+                        index,
+                        listTaskController.filteredList[index].isCompleted,
+                      );
+                    },
                   );
                 },
               ),

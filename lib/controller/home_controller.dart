@@ -26,8 +26,7 @@ class HomeController extends GetxController {
               item.date.day == dateNow.value.day &&
               item.isCompleted == complete.value,
         )
-        .toList()
-        .obs;
+        .toList();
   }
 
   int get totalTasks {
@@ -66,7 +65,12 @@ class HomeController extends GetxController {
         .length;
   }
 
-  void onTapMenu(String value, int index) {
-    taskMenuController.onTapItem(value, index);
+  void onTapMenu(String value, int index, bool isCompleted) {
+    final todoItem = todayList[index];
+    final actualIndex = dataTodo.toDoItem.indexOf(todoItem);
+
+    if (actualIndex != -1) {
+      taskMenuController.onTapItem(value, actualIndex, isCompleted);
+    }
   }
 }

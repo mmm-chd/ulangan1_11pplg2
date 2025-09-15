@@ -3,13 +3,18 @@ import 'package:ulangan1_11pplg2/data/data_todo.dart';
 
 class TaskMenuController extends GetxController {
   final DataTodo dataTodo = Get.find<DataTodo>();
-  RxBool complete = true.obs;
+  String currentRoute = Get.currentRoute;
 
-  void onTapItem(String value, index) {
+  void onTapItem(String value, int index, bool isCompleted) {
     switch (value) {
       case 'completed':
-        dataTodo.toDoItem[index].isCompleted =
-            !dataTodo.toDoItem[index].isCompleted;
+        dataTodo.toDoItem[index].isCompleted = !isCompleted;
+        if (currentRoute == '/navbarPage') {
+          Get.offAndToNamed('/navbarPage');
+        } else if (currentRoute == '/listTaskPage') {
+          Get.offAndToNamed('/listTaskPage');
+        }
+        print(currentRoute);
         break;
       case 'edit':
         Get.toNamed('/addTaskPage', arguments: index);
@@ -18,5 +23,9 @@ class TaskMenuController extends GetxController {
         dataTodo.toDoItem.removeAt(index);
         break;
     }
+  }
+
+  String getMenuText(bool isCompleted) {
+    return isCompleted ? 'Restore' : 'Completed';
   }
 }

@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/model/model.dart';
 
-class DataTodo {
+class DataTodo extends GetxController {
   DateFormat dateFormat = DateFormat.yM();
   DateFormat timeFormat = DateFormat();
 

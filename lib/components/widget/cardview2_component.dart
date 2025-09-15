@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
+import 'package:ulangan1_11pplg2/controller/task_menu_controller.dart';
 
 class CardTaskComponent extends StatelessWidget {
   final Color color;
@@ -8,15 +10,19 @@ class CardTaskComponent extends StatelessWidget {
   final String desc;
   final String startTime;
   final String endTime;
+  final bool isCompleted;
   final Function(String) onTapItem;
 
-  const CardTaskComponent({
+  final TaskMenuController taskMenuController = Get.find<TaskMenuController>();
+
+  CardTaskComponent({
     super.key,
     required this.color,
     required this.title,
     required this.desc,
     required this.startTime,
     required this.endTime,
+    required this.isCompleted,
     required this.onTapItem,
   });
 
@@ -106,9 +112,13 @@ class CardTaskComponent extends StatelessWidget {
                   ),
                   onSelected: (value) => onTapItem(value),
                   itemBuilder: (context) => [
-                    PopupMenuItem(value: 'completed', child: Text('Completed')),
+                    PopupMenuItem(
+                      value: 'completed',
+                      child: Text(taskMenuController.getMenuText(isCompleted)),
+                    ),
                     PopupMenuDivider(thickness: 1),
-                    PopupMenuItem(value: 'edit', child: Text('Edit')),
+                    if (isCompleted == false)
+                      PopupMenuItem(value: 'edit', child: Text('Edit')),
                     PopupMenuItem(value: 'delete', child: Text('Delete')),
                   ],
                 ),
