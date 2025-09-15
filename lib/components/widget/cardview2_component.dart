@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/task_menu_controller.dart';
 
 class CardTaskComponent extends StatelessWidget {
@@ -52,7 +53,7 @@ class CardTaskComponent extends StatelessWidget {
                   size: 22,
                 ),
 
-                SizedBox(height: 6),
+                SpacingComponent(height: 6),
 
                 CustomText(
                   text: desc,
@@ -61,7 +62,7 @@ class CardTaskComponent extends StatelessWidget {
                   size: 13,
                 ),
 
-                SizedBox(height: 6),
+                SpacingComponent(height: 6),
 
                 Row(
                   children: [
@@ -70,7 +71,7 @@ class CardTaskComponent extends StatelessWidget {
                       size: 16,
                       color: SupportColor.whiteColor,
                     ),
-                    SizedBox(width: 4),
+                    SpacingComponent(width: 4),
                     Text(
                       startTime,
                       style: const TextStyle(
@@ -97,7 +98,7 @@ class CardTaskComponent extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(width: 8),
+          SpacingComponent(width: 8),
 
           Flexible(
             flex: 1,

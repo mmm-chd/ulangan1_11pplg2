@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
+import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/list_task_controller.dart';
 
 class DateTimelineComponent extends StatelessWidget {
@@ -53,7 +54,7 @@ class DateTimelineComponent extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    const SpacingComponent(height: 8),
                     Text(
                       date.day.toString(),
                       style: TextStyle(
