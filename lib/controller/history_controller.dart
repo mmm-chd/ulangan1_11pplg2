@@ -9,10 +9,15 @@ class HistoryController extends GetxController {
 
   RxBool complete = true.obs;
 
-  List<ToDoItem> get completedList {
+  RxList<ToDoItem> get completedList {
     return dataTodo.toDoItem
         .where((item) => item.isCompleted == complete.value)
-        .toList();
+        .toList()
+        .obs;
+  }
+
+  void deleteAll() {
+    dataTodo.toDoItem.removeWhere((item) => item.isCompleted == complete.value);
   }
 
   void onTapMenu(String value, int index, bool isCompleted) {
