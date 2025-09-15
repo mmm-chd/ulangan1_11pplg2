@@ -56,8 +56,14 @@ class HistoryPage extends StatelessWidget {
                           .toString(),
                       endTime: historyController.completedList[index].endTime
                           .toString(),
+                      isCompleted:
+                          historyController.completedList[index].isCompleted,
                       onTapItem: (value) {
-                        historyController.onTapMenu(value, index);
+                        historyController.onTapMenu(
+                          value,
+                          index,
+                          historyController.completedList[index].isCompleted,
+                        );
                       },
                     );
                   },

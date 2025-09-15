@@ -1,9 +1,13 @@
 import 'package:get/get.dart';
+import 'package:ulangan1_11pplg2/controller/task_menu_controller.dart';
 import 'package:ulangan1_11pplg2/data/data_todo.dart';
 import 'package:ulangan1_11pplg2/model/model.dart';
 
 class ListTaskController extends GetxController {
   final DataTodo dataTodo = Get.find<DataTodo>();
+  final TaskMenuController taskMenuController = Get.find<TaskMenuController>();
+
+  RxBool complete = false.obs;
 
   var selectedDate = Rxn<DateTime>(DateTime.now());
 
@@ -18,10 +22,20 @@ class ListTaskController extends GetxController {
             (item) =>
                 item.date.year == selectedDate.value!.year &&
                 item.date.month == selectedDate.value!.month &&
-                item.date.day == selectedDate.value!.day,
+                item.date.day == selectedDate.value!.day &&
+                item.isCompleted == complete.value,
           )
           .toList();
     }
     return dataTodo.toDoItem;
+  }
+
+  void onTapMenu(String value, int index, bool isCompleted) {
+    final todoItem = filteredList[index];
+    final actualIndex = dataTodo.toDoItem.indexOf(todoItem);
+
+    if (actualIndex != -1) {
+      taskMenuController.onTapItem(value, actualIndex, isCompleted);
+    }
   }
 }

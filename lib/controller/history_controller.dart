@@ -12,10 +12,15 @@ class HistoryController extends GetxController {
   List<ToDoItem> get completedList {
     return dataTodo.toDoItem
         .where((item) => item.isCompleted == complete.value)
-        .toList().obs;
+        .toList();
   }
 
-  void onTapMenu(String value, int index) {
-    taskMenuController.onTapItem(value, index);
+  void onTapMenu(String value, int index, bool isCompleted) {
+    final todoItem = completedList[index];
+    final actualIndex = dataTodo.toDoItem.indexOf(todoItem);
+
+    if (actualIndex != -1) {
+      taskMenuController.onTapItem(value, actualIndex, isCompleted);
+    }
   }
 }

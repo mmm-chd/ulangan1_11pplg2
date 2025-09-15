@@ -5,8 +5,10 @@ import 'package:ulangan1_11pplg2/data/data_todo.dart';
 class AddTaskBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<AddEditTaskController>(() => AddEditTaskController());
-    Get.lazyPut<DataTodo>(() => DataTodo());
-
+    Get.lazyPut<AddEditTaskController>(
+      () => AddEditTaskController(),
+      fenix: true,
+    );
+    Get.lazyPut<DataTodo>(() => DataTodo(), fenix: true);
   }
 }

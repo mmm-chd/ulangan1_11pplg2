@@ -204,9 +204,6 @@ class HomePage extends StatelessWidget {
                       itemCount: homeController.todayList.length,
                       itemBuilder: (context, index) {
                         return CardTaskComponent(
-                          onTapItem: (value) {
-                            homeController.onTapMenu(value, index);
-                          },
                           color: homeController.todayList[index].priority,
                           title: homeController.todayList[index].title,
                           desc: homeController.todayList[index].desc,
@@ -214,6 +211,15 @@ class HomePage extends StatelessWidget {
                               .toString(),
                           endTime: homeController.todayList[index].endTime
                               .toString(),
+                          isCompleted:
+                              homeController.todayList[index].isCompleted,
+                          onTapItem: (value) {
+                            homeController.onTapMenu(
+                              value,
+                              index,
+                              homeController.todayList[index].isCompleted,
+                            );
+                          },
                         );
                       },
                     ),
