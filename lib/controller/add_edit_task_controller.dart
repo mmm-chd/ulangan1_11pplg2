@@ -7,13 +7,15 @@ import 'package:ulangan1_11pplg2/model/model.dart';
 import 'package:ulangan1_11pplg2/model/model_priority.dart';
 
 class AddEditTaskController extends GetxController {
-  final DataTodo dataTodo = Get.find<DataTodo>();
+  late DataTodo dataTodo;
 
   TextEditingController titleEditingController = TextEditingController();
   TextEditingController descEditingController = TextEditingController();
   TextEditingController dateEditingController = TextEditingController();
   TextEditingController startTimeEditingController = TextEditingController();
   TextEditingController endTimeEditingController = TextEditingController();
+
+  int? index;
 
   RxBool isMust = true.obs;
   RxBool isShould = false.obs;
@@ -30,7 +32,107 @@ class AddEditTaskController extends GetxController {
 
   Color priorityColor = PriorityColor.primaryColor;
 
+  String priorityStr = 'Must Do';
+  String buttonText = 'Add Task';
+
   ValueChanged<bool>? onTap;
+
+  bool get isEditMode => index != null;
+
+  @override
+  void onInit() {
+    super.onInit();
+    final arguments = Get.arguments;
+    if (arguments is int) {
+      index = arguments;
+      dataTodo = Get.find<DataTodo>();
+      fillIn();
+    } else {
+      dataTodo = Get.find<DataTodo>();
+      priorityStr = 'Must Do';
+    }
+  }
+
+  void fillIn() {
+    if (!isEditMode) return;
+
+    final todoItem = dataTodo.toDoItem[index!];
+    titleEditingController.text = todoItem.title;
+    descEditingController.text = todoItem.desc;
+    dateEditingController.text = todoItem.date.toString();
+    startTimeEditingController.text = todoItem.startTime;
+    endTimeEditingController.text = todoItem.endTime;
+
+    // Set the date value for the date picker
+    date.value = todoItem.date;
+
+    // Set priority based on existing item
+    setPriorityFromString(todoItem.priorityStr);
+  }
+
+  void setPriorityFromString(String priorityStr) {
+    resetState();
+    switch (priorityStr) {
+      case 'Must Do':
+        isMust.value = true;
+        priorityColor = PriorityColor.primaryColor;
+        priorityStr = 'Must Do';
+        break;
+      case 'Should Do':
+        isShould.value = true;
+        priorityColor = PriorityColor.secondaryColor;
+        priorityStr = 'Should Do';
+        break;
+      case 'Could Do':
+        isCould.value = true;
+        priorityColor = PriorityColor.accentColor;
+        priorityStr = 'Could Do';
+        break;
+      default:
+        isMust.value = true;
+        priorityColor = PriorityColor.primaryColor;
+        priorityStr = 'Must Do';
+    }
+  }
+
+  void editTask() {
+    if (!validateFields() || !isEditMode) return;
+
+    // Update the existing item
+    dataTodo.toDoItem[index!] = ToDoItem(
+      title: titleEditingController.text.trim(),
+      desc: descEditingController.text.trim(),
+      date: date.value,
+      startTime: startTimeEditingController.text.trim(),
+      endTime: endTimeEditingController.text.trim(),
+      priority: priorityColor,
+      priorityStr: priorityStr,
+    );
+
+    clearControllers();
+    Get.back(); // Go back instead of going to navbar page
+  }
+
+  int get selectedPriorityIndex {
+    if (isMust.value) return 0;
+    if (isShould.value) return 1;
+    if (isCould.value) return 2;
+    return 0; // Default to Must Do
+  }
+
+  // Check if a specific priority index is selected
+  bool isPrioritySelected(int index) {
+    switch (index) {
+      case 0:
+        return isMust.value;
+      case 1:
+        return isShould.value;
+      case 2:
+        return isCould.value;
+      default:
+        return false;
+    }
+  }
 
   List<PriorityList> get listPriority => [
     PriorityList(isMust, PriorityColor.primaryColor, priorityText: 'Must Do'),
@@ -62,25 +164,26 @@ class AddEditTaskController extends GetxController {
         break;
     }
 
-    // If already selected, do nothing (keep it selected - can't deselect)
     if (isCurrentlySelected) {
       return;
     }
 
-    // Reset all and select the new one
     resetState();
     switch (index) {
       case 0:
         isMust.value = true;
-        priorityColor = PriorityColor.primaryColor;
+        priorityColor = listPriority[index].color;
+        priorityStr = listPriority[index].priorityText;
         break;
       case 1:
         isShould.value = true;
-        priorityColor = PriorityColor.secondaryColor;
+        priorityColor = listPriority[index].color;
+        priorityStr = listPriority[index].priorityText;
         break;
       case 2:
         isCould.value = true;
-        priorityColor = PriorityColor.accentColor;
+        priorityColor = listPriority[index].color;
+        priorityStr = listPriority[index].priorityText;
         break;
     }
 
@@ -170,9 +273,20 @@ class AddEditTaskController extends GetxController {
     } else if (endTimeEditingController.text.trim().isEmpty) {
       Get.snackbar('Error', 'End time is required');
       return false;
-    } else {
-      return true;
     }
+
+    if (_isEndTimeBeforeStartTime()) {
+      Get.snackbar('Error', 'End time must be after start time');
+      return false;
+    }
+
+    return true;
+  }
+
+  bool _isEndTimeBeforeStartTime() {
+    final startMinutes = myStartTime.hour * 60 + myStartTime.minute;
+    final endMinutes = myEndTime.hour * 60 + myEndTime.minute;
+    return endMinutes <= startMinutes;
   }
 
   void addTask() {
@@ -186,10 +300,26 @@ class AddEditTaskController extends GetxController {
         startTime: startTimeEditingController.text.trim(),
         endTime: endTimeEditingController.text.trim(),
         priority: priorityColor,
+        priorityStr: priorityStr,
       ),
     );
     clearControllers();
     Get.offNamed('/navbarPage');
+  }
+
+  String getButtonText() {
+    if (isEditMode) {
+      return buttonText = 'Update Task';
+    }
+    return buttonText;
+  }
+
+  void saveTask() {
+    if (isEditMode) {
+      editTask();
+    } else {
+      addTask();
+    }
   }
 
   void clearControllers() {
@@ -199,7 +329,6 @@ class AddEditTaskController extends GetxController {
     startTimeEditingController.clear();
     endTimeEditingController.clear();
 
-    // Reset to default values
     date.value = DateTime.now();
     startTime.value = TimeOfDay.now();
     endTime.value = TimeOfDay.now();
@@ -207,5 +336,6 @@ class AddEditTaskController extends GetxController {
     isShould.value = false;
     isCould.value = false;
     priorityColor = PriorityColor.primaryColor;
+    priorityStr = 'Must Do';
   }
 }

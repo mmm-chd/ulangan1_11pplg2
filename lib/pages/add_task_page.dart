@@ -114,7 +114,7 @@ class AddTaskPage extends StatelessWidget {
                         outlineColor: SupportColor.stroke,
                         borderRadius: 5,
                         suffixIcon: IconButton(
-                          icon: const Icon(Icons.date_range),
+                          icon: const Icon(Icons.calendar_today),
                           onPressed: () =>
                               addEditTaskController.pickerDate(context),
                         ),
@@ -149,7 +149,7 @@ class AddTaskPage extends StatelessWidget {
                                   outlineColor: SupportColor.stroke,
                                   borderRadius: 5,
                                   suffixIcon: IconButton(
-                                    icon: const Icon(Icons.date_range),
+                                    icon: const Icon(Icons.access_time),
                                     onPressed: () => addEditTaskController
                                         .spickerTime(context),
                                   ),
@@ -174,18 +174,20 @@ class AddTaskPage extends StatelessWidget {
 
                               SizedBox(height: 5),
 
-                              CustomTextField2(
-                                controller: addEditTaskController
-                                    .endTimeEditingController,
-                                readOnly: true,
-                                hintText: addEditTaskController.eTimer(),
-                                outlineColor: SupportColor.stroke,
-                                suffixIcon: IconButton(
-                                  onPressed: () => addEditTaskController
-                                      .epickerTime(context),
-                                  icon: Icon(Icons.access_time),
+                              Obx(
+                                () => CustomTextField2(
+                                  controller: addEditTaskController
+                                      .endTimeEditingController,
+                                  readOnly: true,
+                                  hintText: addEditTaskController.eTimer(),
+                                  outlineColor: SupportColor.stroke,
+                                  suffixIcon: IconButton(
+                                    onPressed: () => addEditTaskController
+                                        .epickerTime(context),
+                                    icon: Icon(Icons.access_time),
+                                  ),
+                                  borderRadius: 5,
                                 ),
-                                borderRadius: 5,
                               ),
                             ],
                           ),
@@ -249,10 +251,10 @@ class AddTaskPage extends StatelessWidget {
                   height: 60,
                   width: 376,
                   backgroundColor: MainColor.primaryColor,
-                  text: "Add Task",
+                  text: addEditTaskController.getButtonText(),
                   size: 24,
                   weight: FontWeight.bold,
-                  onPressed: addEditTaskController.addTask,
+                  onPressed: addEditTaskController.saveTask,
                 ),
               ),
             ),

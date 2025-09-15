@@ -1,4 +1,3 @@
-
 import 'package:flutter/widgets.dart';
 
 class ToDoItem {
@@ -8,6 +7,7 @@ class ToDoItem {
   final String startTime;
   final String endTime;
   final Color priority;
+  final String priorityStr;
 
   ToDoItem({
     required this.title,
@@ -16,5 +16,6 @@ class ToDoItem {
     required this.startTime,
     required this.endTime,
     required this.priority,
+    required this.priorityStr,
   });
 }
