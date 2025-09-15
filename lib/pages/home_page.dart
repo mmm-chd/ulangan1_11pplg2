@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
 
                   Obx(
                     () => RichText(
-                      text: (homeController.totalTasks.value == 0)
+                      text: (homeController.totalTasks == 0)
                           ? TextSpan(
                               children: [
                                 TextSpan(
@@ -204,8 +204,8 @@ class HomePage extends StatelessWidget {
                       itemCount: homeController.todayList.length,
                       itemBuilder: (context, index) {
                         return CardTaskComponent(
-                          onTapItem: (p0) {
-                            homeController.onTapItem(p0, index);
+                          onTapItem: (value) {
+                            homeController.onTapMenu(value, index);
                           },
                           color: homeController.todayList[index].priority,
                           title: homeController.todayList[index].title,

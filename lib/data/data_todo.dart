@@ -20,6 +20,7 @@ class DataTodo {
           .toString(),
       priority: PriorityColor.primaryColor,
       priorityStr: 'must do',
+      isCompleted: false,
     ),
     ToDoItem(
       title: 'title',
@@ -33,6 +34,7 @@ class DataTodo {
           .toString(),
       priority: PriorityColor.secondaryColor,
       priorityStr: 'should do',
+      isCompleted: false,
     ),
     ToDoItem(
       title: 'title1',
@@ -46,6 +48,7 @@ class DataTodo {
           .toString(),
       priority: PriorityColor.accentColor,
       priorityStr: 'could do',
+      isCompleted: false,
     ),
   ].obs;
 }

@@ -8,6 +8,7 @@ class ToDoItem {
   final String endTime;
   final Color priority;
   final String priorityStr;
+  bool isCompleted;
 
   ToDoItem({
     required this.title,
@@ -17,5 +18,6 @@ class ToDoItem {
     required this.endTime,
     required this.priority,
     required this.priorityStr,
+    required this.isCompleted,
   });
 }
