@@ -4,6 +4,7 @@ import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtextfield2_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/add_edit_task_controller.dart';
 
 class AddTaskPage extends StatelessWidget {
@@ -48,7 +49,7 @@ class AddTaskPage extends StatelessWidget {
               ],
             ),
 
-            const SizedBox(height: 40),
+            const SpacingComponent(height: 40),
 
             Expanded(
               child: SingleChildScrollView(
@@ -64,7 +65,7 @@ class AddTaskPage extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(height: 6),
+                    const SpacingComponent(height: 6),
 
                     CustomTextField2(
                       controller: addEditTaskController.titleEditingController,
@@ -73,7 +74,7 @@ class AddTaskPage extends StatelessWidget {
                       borderRadius: 5,
                     ),
 
-                    const SizedBox(height: 15),
+                    const SpacingComponent(height: 15),
 
                     const Text(
                       "Descriptions",
@@ -84,7 +85,7 @@ class AddTaskPage extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(height: 6),
+                    const SpacingComponent(height: 6),
 
                     CustomTextField2(
                       controller: addEditTaskController.descEditingController,
@@ -93,7 +94,7 @@ class AddTaskPage extends StatelessWidget {
                       borderRadius: 5,
                     ),
 
-                    const SizedBox(height: 15),
+                    const SpacingComponent(height: 15),
 
                     const Text(
                       "Due Date",
@@ -104,7 +105,7 @@ class AddTaskPage extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(height: 6),
+                    const SpacingComponent(height: 6),
 
                     Obx(
                       () => CustomTextField2(
@@ -121,7 +122,7 @@ class AddTaskPage extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(height: 15),
+                    const SpacingComponent(height: 15),
 
                     Row(
                       children: [
@@ -138,7 +139,7 @@ class AddTaskPage extends StatelessWidget {
                                 ),
                               ),
 
-                              SizedBox(height: 5),
+                              SpacingComponent(height: 5),
 
                               Obx(
                                 () => CustomTextField2(
@@ -158,7 +159,7 @@ class AddTaskPage extends StatelessWidget {
                             ],
                           ),
                         ),
-                        const SizedBox(width: 10),
+                        const SpacingComponent(width: 10),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -172,7 +173,7 @@ class AddTaskPage extends StatelessWidget {
                                 ),
                               ),
 
-                              SizedBox(height: 5),
+                              const SpacingComponent(height: 5),
 
                               Obx(
                                 () => CustomTextField2(
@@ -194,7 +195,7 @@ class AddTaskPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    const SpacingComponent(height: 20),
 
                     const Text(
                       "Priority",
@@ -204,7 +205,7 @@ class AddTaskPage extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    const SpacingComponent(height: 10),
 
                     SizedBox(
                       height: 40,
