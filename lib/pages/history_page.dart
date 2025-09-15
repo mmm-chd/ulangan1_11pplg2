@@ -21,6 +21,7 @@ class HistoryPage extends StatelessWidget {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const CustomText(
                   text: "Completed",
@@ -28,14 +29,21 @@ class HistoryPage extends StatelessWidget {
                   weight: FontWeight.bold,
                   size: 36,
                 ),
-                InkWell(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Icon(
+                PopupMenuButton<String>(
+                  icon: const Icon(
                     Icons.more_vert,
+                    size: 24,
                     color: MainColor.primaryColor,
                   ),
+                  itemBuilder: (context) => [
+                    PopupMenuItem(
+                      onTap: () {
+                        historyController.deleteAll();
+                      },
+                      value: 'delete all',
+                      child: Text('Delete All'),
+                    ),
+                  ],
                 ),
               ],
             ),
