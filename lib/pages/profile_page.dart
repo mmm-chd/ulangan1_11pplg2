@@ -65,12 +65,14 @@ class ProfilePage extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              '59',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: SupportColor.whiteColor,
+                            Obx(
+                              () => Text(
+                                profileController.totalTasks.toString(),
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: SupportColor.whiteColor,
+                                ),
                               ),
                             ),
                             Text(
@@ -93,12 +95,14 @@ class ProfilePage extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              '8',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: SupportColor.whiteColor,
+                            Obx(
+                              () => Text(
+                                profileController.todayTasks.toString(),
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: SupportColor.whiteColor,
+                                ),
                               ),
                             ),
                             Text(
@@ -121,12 +125,14 @@ class ProfilePage extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              '28',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: SupportColor.whiteColor,
+                            Obx(
+                              () => Text(
+                                profileController.completedTasks.toString(),
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: SupportColor.whiteColor,
+                                ),
                               ),
                             ),
                             Text(

@@ -145,12 +145,6 @@ class LoginPage extends StatelessWidget {
 
                   SpacingComponent(height: 32),
 
-                  // Container(
-                  //       margin: EdgeInsets.symmetric(vertical: 8),
-                  //       height: 1,
-                  //       width: ,
-                  //       color: Colors.black,
-                  //     ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -185,11 +179,11 @@ class LoginPage extends StatelessWidget {
                       SocialbuttonComponent(
                         asset: "assets/images/social_images/apple-icon.png",
                       ),
-                      const SpacingComponent(height: 16),
+                      const SpacingComponent(width: 16),
                       SocialbuttonComponent(
                         asset: "assets/images/social_images/facebook-icon.png",
                       ),
-                      const SpacingComponent(height: 16),
+                      const SpacingComponent(width: 16),
                       SocialbuttonComponent(
                         asset: "assets/images/social_images/google-icon.png",
                       ),
