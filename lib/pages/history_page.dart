@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/cardview2_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/history_controller.dart';
 
 class HistoryPage extends StatelessWidget {
@@ -47,7 +48,7 @@ class HistoryPage extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 16),
+            const SpacingComponent(height: 16),
 
             Expanded(
               child: Obx(() {
@@ -67,7 +68,7 @@ class HistoryPage extends StatelessWidget {
                           filterQuality: FilterQuality.low,
                         ),
                         // Icon(Icons.task, size: 64, color: Colors.grey[400]),
-                        SizedBox(height: 16),
+                        const SpacingComponent(height: 16),
                         Text(
                           'Finish Your Task',
                           style: TextStyle(
@@ -76,7 +77,7 @@ class HistoryPage extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        SizedBox(height: 8),
+                        const SpacingComponent(height: 16),
                         Text(
                           'Make it completed, so your task will be show here',
                           textAlign: TextAlign.center,
