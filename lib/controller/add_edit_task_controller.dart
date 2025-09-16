@@ -63,10 +63,8 @@ class AddEditTaskController extends GetxController {
     startTimeEditingController.text = todoItem.startTime;
     endTimeEditingController.text = todoItem.endTime;
 
-    // Set the date value for the date picker
     date.value = todoItem.date;
 
-    // Set priority based on existing item
     setPriorityFromString(todoItem.priorityStr);
   }
 
@@ -98,7 +96,6 @@ class AddEditTaskController extends GetxController {
   void editTask() {
     if (!validateFields() || !isEditMode) return;
 
-    // Update the existing item
     dataTodo.toDoItem[index!] = ToDoItem(
       title: titleEditingController.text.trim(),
       desc: descEditingController.text.trim(),
@@ -110,17 +107,16 @@ class AddEditTaskController extends GetxController {
     );
 
     clearControllers();
-    Get.back(); // Go back instead of going to navbar page
+    Get.back();
   }
 
   int get selectedPriorityIndex {
     if (isMust.value) return 0;
     if (isShould.value) return 1;
     if (isCould.value) return 2;
-    return 0; // Default to Must Do
+    return 0;
   }
 
-  // Check if a specific priority index is selected
   bool isPrioritySelected(int index) {
     switch (index) {
       case 0:
@@ -198,7 +194,7 @@ class AddEditTaskController extends GetxController {
       context: context,
       initialDate: initialDate,
       firstDate: DateTime.now(),
-      lastDate: DateTime(DateTime.now().year + 2),
+      lastDate: DateTime(DateTime.now().year + 1),
       confirmText: "Set",
     );
 
@@ -274,20 +270,14 @@ class AddEditTaskController extends GetxController {
       Get.snackbar('Error', 'End time is required');
       return false;
     }
-
-    if (_isEndTimeBeforeStartTime()) {
-      Get.snackbar('Error', 'End time must be after start time');
-      return false;
-    }
-
     return true;
   }
 
-  bool _isEndTimeBeforeStartTime() {
-    final startMinutes = myStartTime.hour * 60 + myStartTime.minute;
-    final endMinutes = myEndTime.hour * 60 + myEndTime.minute;
-    return endMinutes <= startMinutes;
-  }
+  // bool _isEndTimeBeforeStartTime() {
+  //   final startMinutes = myStartTime.hour * 60 + myStartTime.minute;
+  //   final endMinutes = myEndTime.hour * 60 + myEndTime.minute;
+  //   return endMinutes <= startMinutes;
+  // }
 
   void addTask() {
     if (!validateFields()) return;
