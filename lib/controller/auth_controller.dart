@@ -29,8 +29,8 @@ class AuthController extends GetxController {
 
   // Login
   void login() async {
-    if (usernameController.text == 'abcd' &&
-        passwordController.text == 'apacoba') {
+    if (usernameController.text == 'Matthew' &&
+        passwordController.text == 'abcd') {
       Get.snackbar(
         'Success',
         'Login successful',
