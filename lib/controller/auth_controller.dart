@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
+import 'package:ulangan1_11pplg2/routes/app_routes.dart';
 
 class AuthController extends GetxController {
   TextEditingController usernameController = TextEditingController();
@@ -43,7 +44,7 @@ class AuthController extends GetxController {
       );
 
       await Future.delayed(Duration(seconds: 1));
-      await Get.offNamed("/navbarPage");
+      await Get.offNamed(AppRoutes.navbarPage);
     } else {
       Get.snackbar(
         'Wrong!!',
