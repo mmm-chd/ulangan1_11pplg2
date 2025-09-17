@@ -28,30 +28,18 @@ class AddEditTaskController extends GetxController {
   Rx<TimeOfDay> endTime = TimeOfDay.now().obs;
   TimeOfDay get myStartTime => startTime.value;
   TimeOfDay get myEndTime => endTime.value;
-  DateFormat timeFormat = DateFormat('HH.mm');
 
   Color priorityColor = PriorityColor.primaryColor;
 
+  String startTimeStr = '';
+  String endTimeStr = '';
   String priorityStr = 'must do';
   String buttonText = 'Add Task';
+  String headerText = 'Add Task';
 
   ValueChanged<bool>? onTap;
 
   bool get isEditMode => index != null;
-
-  @override
-  void onInit() {
-    super.onInit();
-    final arguments = Get.arguments;
-    if (arguments is int) {
-      index = arguments;
-      dataTodo = Get.find<DataTodo>();
-      fillIn();
-    } else {
-      dataTodo = Get.find<DataTodo>();
-      priorityStr = 'must do';
-    }
-  }
 
   void fillIn() {
     if (!isEditMode) return;
@@ -65,7 +53,40 @@ class AddEditTaskController extends GetxController {
 
     date.value = todoItem.date;
 
+    startTime.value = _parseTimeString(todoItem.startTime);
+    endTime.value = _parseTimeString(todoItem.endTime);
+
     setPriorityFromString(todoItem.priorityStr);
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    final arguments = Get.arguments;
+    if (arguments is int) {
+      index = arguments;
+      dataTodo = Get.find<DataTodo>();
+      fillIn();
+      print(startTimeStr);
+    } else {
+      dataTodo = Get.find<DataTodo>();
+      priorityStr = 'must do';
+    }
+  }
+
+  TimeOfDay _parseTimeString(String timeString) {
+    final parts = timeString.split('.');
+    if (parts.length != 2) {
+      return TimeOfDay.now();
+    }
+    final hour = int.tryParse(parts[0]) ?? 0;
+    final minute = int.tryParse(parts[1]) ?? 0;
+    return TimeOfDay(hour: hour, minute: minute);
+  }
+
+  // Helper method to format time as HH.mm
+  String _formatTime(TimeOfDay time) {
+    return '${time.hour.toString().padLeft(2, '0')}.${time.minute.toString().padLeft(2, '0')}';
   }
 
   void setPriorityFromString(String priorityStr) {
@@ -74,22 +95,22 @@ class AddEditTaskController extends GetxController {
       case 'must do':
         isMust.value = true;
         priorityColor = PriorityColor.primaryColor;
-        priorityStr = 'must do';
+        this.priorityStr = 'must do';
         break;
       case 'should do':
         isShould.value = true;
         priorityColor = PriorityColor.secondaryColor;
-        priorityStr = 'should do';
+        this.priorityStr = 'should do';
         break;
       case 'could do':
         isCould.value = true;
         priorityColor = PriorityColor.accentColor;
-        priorityStr = 'could do';
+        this.priorityStr = 'could do';
         break;
       default:
         isMust.value = true;
         priorityColor = PriorityColor.primaryColor;
-        priorityStr = 'must do';
+        this.priorityStr = 'must do';
     }
   }
 
@@ -100,11 +121,11 @@ class AddEditTaskController extends GetxController {
       title: titleEditingController.text.trim(),
       desc: descEditingController.text.trim(),
       date: date.value,
-      startTime: startTimeEditingController.text.trim(),
-      endTime: endTimeEditingController.text.trim(),
+      startTime: _formatTime(startTime.value),
+      endTime: _formatTime(endTime.value),
       priority: priorityColor,
       priorityStr: priorityStr,
-      isCompleted: false,
+      isCompleted: dataTodo.toDoItem[index!].isCompleted,
     );
 
     clearControllers();
@@ -190,7 +211,9 @@ class AddEditTaskController extends GetxController {
   }
 
   Future pickerDate(BuildContext context) async {
-    final initialDate = DateTime.now();
+    final initialDate = dateEditingController.text.isEmpty
+        ? DateTime.now()
+        : date.value;
     final newDate = await showDatePicker(
       context: context,
       initialDate: initialDate,
@@ -210,7 +233,7 @@ class AddEditTaskController extends GetxController {
   }
 
   Future spickerTime(BuildContext context) async {
-    final initialTime = TimeOfDay.now();
+    final initialTime = isEditMode ? startTime.value : TimeOfDay.now();
     final newTime = await showTimePicker(
       context: context,
       initialTime: initialTime,
@@ -224,20 +247,11 @@ class AddEditTaskController extends GetxController {
   }
 
   String sTimer() {
-    final now = DateTime.now();
-    return startTimeEditingController.text = timeFormat.format(
-      DateTime(
-        now.year,
-        now.month,
-        now.day,
-        myStartTime.hour,
-        myStartTime.minute,
-      ),
-    );
+    return startTimeEditingController.text = _formatTime(myStartTime);
   }
 
   Future epickerTime(BuildContext context) async {
-    final initialTime = TimeOfDay.now();
+    final initialTime = isEditMode ? endTime.value : TimeOfDay.now();
     final newTime = await showTimePicker(
       context: context,
       initialTime: initialTime,
@@ -251,10 +265,7 @@ class AddEditTaskController extends GetxController {
   }
 
   String eTimer() {
-    final now = DateTime.now();
-    return endTimeEditingController.text = timeFormat.format(
-      DateTime(now.year, now.month, now.day, myEndTime.hour, myEndTime.minute),
-    );
+    return endTimeEditingController.text = _formatTime(myEndTime);
   }
 
   bool validateFields() {
@@ -274,12 +285,6 @@ class AddEditTaskController extends GetxController {
     return true;
   }
 
-  // bool _isEndTimeBeforeStartTime() {
-  //   final startMinutes = myStartTime.hour * 60 + myStartTime.minute;
-  //   final endMinutes = myEndTime.hour * 60 + myEndTime.minute;
-  //   return endMinutes <= startMinutes;
-  // }
-
   void addTask() {
     if (!validateFields()) return;
 
@@ -288,8 +293,8 @@ class AddEditTaskController extends GetxController {
         title: titleEditingController.text.trim(),
         desc: descEditingController.text.trim(),
         date: date.value,
-        startTime: startTimeEditingController.text.trim(),
-        endTime: endTimeEditingController.text.trim(),
+        startTime: _formatTime(startTime.value),
+        endTime: _formatTime(endTime.value),
         priority: priorityColor,
         priorityStr: priorityStr,
         isCompleted: false,
@@ -304,6 +309,13 @@ class AddEditTaskController extends GetxController {
       return buttonText = 'Update Task';
     }
     return buttonText;
+  }
+
+  String getHeaderText() {
+    if (isEditMode) {
+      return headerText = 'Update Task';
+    }
+    return headerText;
   }
 
   void saveTask() {

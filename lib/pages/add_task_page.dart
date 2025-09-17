@@ -38,8 +38,8 @@ class AddTaskPage extends StatelessWidget {
                     splashRadius: 22.5,
                   ),
                 ),
-                const CustomText(
-                  text: "Add Task",
+                CustomText(
+                  text: addEditTaskController.getHeaderText(),
                   color: MainColor.primaryColor,
                   weight: FontWeight.bold,
                   size: 36,
