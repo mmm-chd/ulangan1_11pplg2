@@ -8,6 +8,7 @@ import 'package:ulangan1_11pplg2/components/widget/cardview2_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/easydatetime_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/list_task_controller.dart';
+import 'package:ulangan1_11pplg2/routes/app_routes.dart';
 
 class ListTaskPage extends StatelessWidget {
   ListTaskPage({super.key});
@@ -47,7 +48,7 @@ class ListTaskPage extends StatelessWidget {
                   text: "Add Task",
                   weight: FontWeight.bold,
                   onPressed: () {
-                    Get.toNamed('/addTaskPage');
+                    Get.toNamed(AppRoutes.addtaskPage);
                   },
                   size: 18,
                   borderRadius: 8,
