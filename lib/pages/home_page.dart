@@ -7,6 +7,7 @@ import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/searchbar_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/home_controller.dart';
+import 'package:ulangan1_11pplg2/routes/app_routes.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -181,7 +182,7 @@ class HomePage extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          Get.toNamed('/listTaskPage');
+                          Get.toNamed(AppRoutes.listtaskPage);
                         },
                         borderRadius: BorderRadius.all(Radius.circular(6)),
                         child: Padding(
