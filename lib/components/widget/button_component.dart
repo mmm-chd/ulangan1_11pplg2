@@ -30,7 +30,6 @@ class ButtonComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Dynamic text color based on background
     Color textColor = backgroundColor == Colors.transparent
         ? outlineColor
         : Colors.white;
@@ -41,7 +40,6 @@ class ButtonComponent extends StatelessWidget {
             child: InkWell(
               onTap: onPressed,
               borderRadius: BorderRadius.circular(borderRadius),
-              // Add splash color for better feedback
               splashColor: textColor.withOpacity(0.1),
               highlightColor: textColor.withOpacity(0.05),
               child: AnimatedContainer(
