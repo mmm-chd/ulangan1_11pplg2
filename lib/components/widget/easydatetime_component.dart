@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
-import 'package:ulangan1_11pplg2/controller/list_task_controller.dart';
 
 class DateTimelineComponent extends StatelessWidget {
   final DateTime initialDate;
   final Function(DateTime) onChange;
 
-  DateTimelineComponent({
+  const DateTimelineComponent({
     super.key,
     required this.initialDate,
     required this.onChange,
   });
-
-  final ListTaskController listTaskController = Get.find<ListTaskController>();
 
   @override
   Widget build(BuildContext context) {
