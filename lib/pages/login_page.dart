@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/background_component.dart';
@@ -176,16 +177,16 @@ class LoginPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SocialbuttonComponent(
-                        asset: "assets/images/social_images/apple-icon.png",
+                      SvgPicture.asset(
+                        "assets/images/social_images/apple_icon.svg",
                       ),
                       const SpacingComponent(width: 16),
-                      SocialbuttonComponent(
-                        asset: "assets/images/social_images/facebook-icon.png",
+                      SvgPicture.asset(
+                        "assets/images/social_images/facebook_icon.svg",
                       ),
                       const SpacingComponent(width: 16),
-                      SocialbuttonComponent(
-                        asset: "assets/images/social_images/google-icon.png",
+                      SvgPicture.asset(
+                        "assets/images/social_images/google_icon.svg",
                       ),
                     ],
                   ),
