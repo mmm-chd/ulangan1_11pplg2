@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/routes/app_routes.dart';
 
@@ -32,6 +33,9 @@ class AuthController extends GetxController {
   void login() async {
     if (usernameController.text == 'Matthew' &&
         passwordController.text == 'abcd') {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('username', usernameController.text);
+      await prefs.setString('password', passwordController.text);
       Get.snackbar(
         'Success',
         'Login successful',
@@ -42,7 +46,6 @@ class AuthController extends GetxController {
         animationDuration: Duration(milliseconds: 300),
         duration: Duration(milliseconds: 700),
       );
-
       await Future.delayed(Duration(seconds: 1));
       await Get.offNamed(AppRoutes.navbarPage);
     } else {
