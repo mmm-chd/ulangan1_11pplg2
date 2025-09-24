@@ -194,9 +194,7 @@ class ProfilePage extends StatelessWidget {
                   text: "Log Out",
                   size: 24,
                   weight: FontWeight.bold,
-                  onPressed: () {
-                    profileController.logout();
-                  },
+                  onPressed: profileController.logout,
                 ),
               ),
             ],
@@ -206,4 +204,3 @@ class ProfilePage extends StatelessWidget {
     );
   }
 }
-
