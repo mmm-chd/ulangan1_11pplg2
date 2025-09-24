@@ -195,7 +195,9 @@ class ProfilePage extends StatelessWidget {
                   text: "Log Out",
                   size: 24,
                   weight: FontWeight.bold,
-                  onPressed: () {},
+                  onPressed: () {
+                    authController.logout();
+                  },
                 ),
               ),
             ],
