@@ -5,6 +5,7 @@ import 'package:get/route_manager.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/cardview2_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/easydatetime_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/list_task_controller.dart';
@@ -78,18 +79,20 @@ class ListTaskPage extends StatelessWidget {
                       Icon(Icons.task_alt, size: 64, color: Colors.grey[400]),
                       const SpacingComponent(height: 16),
 
-                      Text(
-                        'No tasks for this date',
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.grey[600],
-                          fontWeight: FontWeight.w500,
-                        ),
+                      CustomText(
+                        text: 'No tasks for this date',
+                        color: SupportColor.grayColor,
+                        weight: FontWeight.w500,
+                        size: 18,
                       ),
+
                       const SpacingComponent(height: 8),
-                      Text(
-                        'Tap "Add Task" to create a new task',
-                        style: TextStyle(fontSize: 14, color: Colors.grey[500]),
+
+                      CustomText(
+                        text: 'Tap "Add Task" to create a new task',
+                        color: SupportColor.grayColor,
+                        weight: FontWeight.w400,
+                        size: 14,
                       ),
                     ],
                   ),

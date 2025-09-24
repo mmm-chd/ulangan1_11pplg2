@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/cardview2_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/cardview_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/custom_richtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/searchbar_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
@@ -27,81 +28,76 @@ class HomePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "Hello, ",
-                          style: TextStyle(
-                            color: TextColor.primaryTextColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 28,
-                          ),
+                  CustomRichText(
+                    children: [
+                      TextSpan(
+                        text: "Hello, ",
+                        style: TextStyle(
+                          color: TextColor.primaryTextColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 28,
                         ),
-                        TextSpan(
-                          text: "Matthew !",
-                          style: TextStyle(
-                            color: MainColor.primaryColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 28,
-                          ),
+                      ),
+                      TextSpan(
+                        text: "Matthew !",
+                        style: TextStyle(
+                          color: MainColor.primaryColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 28,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
+
                   SpacingComponent(height: 4),
 
                   Obx(
-                    () => RichText(
-                      text: (homeController.totalTasks == 0)
-                          ? TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: "It's like you don't have any tasks",
-                                  style: TextStyle(
-                                    color: TextColor.primaryTextColor,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 18,
-                                  ),
+                    () => CustomRichText(
+                      children: (homeController.totalTasks == 0)
+                          ? [
+                              TextSpan(
+                                text: "It's like you don't have any tasks",
+                                style: TextStyle(
+                                  color: TextColor.primaryTextColor,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18,
                                 ),
-                              ],
-                            )
-                          : TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: "You Have ",
-                                  style: TextStyle(
-                                    color: TextColor.primaryTextColor,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 18,
-                                  ),
+                              ),
+                            ]
+                          : [
+                              TextSpan(
+                                text: "You Have ",
+                                style: TextStyle(
+                                  color: TextColor.primaryTextColor,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18,
                                 ),
-                                TextSpan(
-                                  text: "${homeController.totalTasks} tasks ",
-                                  style: TextStyle(
-                                    color: MainColor.primaryColor,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
-                                  ),
+                              ),
+                              TextSpan(
+                                text: "${homeController.totalTasks} tasks ",
+                                style: TextStyle(
+                                  color: MainColor.primaryColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
                                 ),
-                                TextSpan(
-                                  text: "to complete\n",
-                                  style: TextStyle(
-                                    color: TextColor.primaryTextColor,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 18,
-                                  ),
+                              ),
+                              TextSpan(
+                                text: "to complete\n",
+                                style: TextStyle(
+                                  color: TextColor.primaryTextColor,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18,
                                 ),
-                                TextSpan(
-                                  text: "this year.",
-                                  style: TextStyle(
-                                    color: TextColor.primaryTextColor,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 18,
-                                  ),
+                              ),
+                              TextSpan(
+                                text: "this year.",
+                                style: TextStyle(
+                                  color: TextColor.primaryTextColor,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18,
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                     ),
                   ),
 

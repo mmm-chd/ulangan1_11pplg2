@@ -54,14 +54,11 @@ class AddTaskPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      "Title",
-                      style: TextStyle(
-                        color: TextColor.primaryTextColor,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    const CustomText(
+                      text: "Title", 
+                      color: TextColor.primaryTextColor, 
+                      weight: FontWeight.bold, 
+                      size: 18),
 
                     const SpacingComponent(height: 6),
 
@@ -74,14 +71,11 @@ class AddTaskPage extends StatelessWidget {
 
                     const SpacingComponent(height: 15),
 
-                    const Text(
-                      "Descriptions",
-                      style: TextStyle(
-                        color: TextColor.primaryTextColor,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    const CustomText(
+                      text: "Descriptions", 
+                      color: TextColor.primaryTextColor, 
+                      weight: FontWeight.bold, 
+                      size: 18),
 
                     const SpacingComponent(height: 6),
 
@@ -94,14 +88,11 @@ class AddTaskPage extends StatelessWidget {
 
                     const SpacingComponent(height: 15),
 
-                    const Text(
-                      "Due Date",
-                      style: TextStyle(
-                        color: TextColor.primaryTextColor,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    const CustomText(
+                      text: "Due Date", 
+                      color: TextColor.primaryTextColor, 
+                      weight: FontWeight.bold, 
+                      size: 18),
 
                     const SpacingComponent(height: 6),
 
@@ -128,14 +119,11 @@ class AddTaskPage extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
-                                "Start Time",
-                                style: TextStyle(
-                                  color: TextColor.primaryTextColor,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                              const CustomText(
+                                text: "Start Time", 
+                                color: TextColor.primaryTextColor, 
+                                weight: FontWeight.bold, 
+                                size: 18),
 
                               SpacingComponent(height: 5),
 
@@ -162,14 +150,11 @@ class AddTaskPage extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
-                                "End Time",
-                                style: TextStyle(
-                                  color: TextColor.primaryTextColor,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                              const CustomText(
+                                text: "End Time", 
+                                color: TextColor.primaryTextColor, 
+                                weight: FontWeight.bold, 
+                                size: 18),
 
                               const SpacingComponent(height: 5),
 
@@ -195,14 +180,12 @@ class AddTaskPage extends StatelessWidget {
                     ),
                     const SpacingComponent(height: 20),
 
-                    const Text(
-                      "Priority",
-                      style: TextStyle(
-                        color: TextColor.primaryTextColor,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    const CustomText(
+                      text: "Priority", 
+                      color: TextColor.primaryTextColor, 
+                      weight: FontWeight.bold, 
+                      size: 18),
+                      
                     const SpacingComponent(height: 10),
 
                     SizedBox(

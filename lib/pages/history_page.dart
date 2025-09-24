@@ -67,7 +67,6 @@ class HistoryPage extends StatelessWidget {
                           backgroundLoading: true,
                           filterQuality: FilterQuality.low,
                         ),
-                        // Icon(Icons.task, size: 64, color: Colors.grey[400]),
                         const SpacingComponent(height: 16),
                         Text(
                           'Finish Your Task',
