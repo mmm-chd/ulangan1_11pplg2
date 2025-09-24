@@ -22,6 +22,8 @@ class AppPages {
       name: AppRoutes.loginPage,
       page: () => LoginPage(),
       binding: LoginBinding(),
+      transition: Transition.fadeIn,
+      transitionDuration: const Duration(milliseconds: 500),
     ),
     GetPage(
       name: AppRoutes.homePage,
@@ -32,6 +34,8 @@ class AppPages {
       name: AppRoutes.navbarPage,
       page: () => NavbarPage(),
       binding: NavbarBinding(),
+      transition: Transition.fadeIn,
+      transitionDuration: const Duration(milliseconds: 500),
     ),
     GetPage(
       name: AppRoutes.listtaskPage,
@@ -53,6 +57,8 @@ class AppPages {
       name: AppRoutes.splashPage,
       page: () => SplashPage(),
       binding: SplashBinding(),
+      transition: Transition.fadeIn,
+      transitionDuration: const Duration(milliseconds: 500),
     ),
   ];
 }

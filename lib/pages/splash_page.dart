@@ -16,6 +16,8 @@ class SplashPage extends StatelessWidget {
           'assets/animation/splash.json',
           width: 200,
           height: 200,
+          frameRate: FrameRate(30),
+          backgroundLoading: true,
         ),
       ),
     );
