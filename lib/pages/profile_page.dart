@@ -12,7 +12,6 @@ class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
 
   final ProfileController profileController = Get.find<ProfileController>();
-  final AuthController authController = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -196,7 +195,7 @@ class ProfilePage extends StatelessWidget {
                   size: 24,
                   weight: FontWeight.bold,
                   onPressed: () {
-                    authController.logout();
+                    profileController.logout();
                   },
                 ),
               ),
