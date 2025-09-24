@@ -1,3 +1,4 @@
+
 class AppRoutes {
   static const loginPage = "/loginPage";
   static const homePage = "/homePage";
@@ -6,4 +7,5 @@ class AppRoutes {
   static const addtaskPage = "/addTaskPage";
   static const profilePage = "/profilePage";
   static const historyPage = "/historyPage";
+  static const splashPage = "/splashPage";
 }
