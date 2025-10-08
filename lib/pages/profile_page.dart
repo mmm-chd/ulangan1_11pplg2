@@ -5,14 +5,12 @@ import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/profile_option.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
-import 'package:ulangan1_11pplg2/controller/auth_controller.dart';
 import 'package:ulangan1_11pplg2/controller/profile_controller.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
 
   final ProfileController profileController = Get.find<ProfileController>();
-  final AuthController authController = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -196,7 +194,7 @@ class ProfilePage extends StatelessWidget {
                   size: 24,
                   weight: FontWeight.bold,
                   onPressed: () {
-                    authController.signOut();
+                    profileController.signOut();
                   },
                 ),
               ),
