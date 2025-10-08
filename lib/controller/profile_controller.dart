@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ulangan1_11pplg2/data/data_todo.dart';
+import 'package:ulangan1_11pplg2/routes/app_routes.dart';
 
 class ProfileController extends GetxController {
   final DataTodo dataTodo = Get.find<DataTodo>();
@@ -30,5 +32,11 @@ class ProfileController extends GetxController {
     return dataTodo.toDoItem
         .where((item) => item.isCompleted == completed.value)
         .length;
+  }
+
+    void logout() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove("username");
+    Get.offAllNamed(AppRoutes.splashPage);
   }
 }

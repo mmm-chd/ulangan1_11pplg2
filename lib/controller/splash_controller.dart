@@ -9,7 +9,7 @@ class SplashController extends GetxController {
     checkIsLogin();
   }
 
-  checkIsLogin() async {
+  void checkIsLogin() async {
     final prefs = await SharedPreferences.getInstance();
     await Future.delayed(const Duration(seconds: 3));
     if (prefs.getString('username') != null &&
@@ -18,11 +18,5 @@ class SplashController extends GetxController {
     } else {
       Get.offAllNamed(AppRoutes.loginPage);
     }
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    SplashController().dispose();
   }
 }
