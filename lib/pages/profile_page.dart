@@ -5,7 +5,6 @@ import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/profile_option.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
-import 'package:ulangan1_11pplg2/controller/auth_controller.dart';
 import 'package:ulangan1_11pplg2/controller/profile_controller.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -194,7 +193,9 @@ class ProfilePage extends StatelessWidget {
                   text: "Sign Out",
                   size: 24,
                   weight: FontWeight.bold,
-                  onPressed: profileController.logout,
+                  onPressed: () {
+                    profileController.signOut();
+                  },
                 ),
               ),
             ],
