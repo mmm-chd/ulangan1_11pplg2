@@ -191,7 +191,7 @@ class ProfilePage extends StatelessWidget {
                   height: 53,
                   width: 376,
                   backgroundColor: MainColor.primaryColor,
-                  text: "Log Out",
+                  text: "Sign Out",
                   size: 24,
                   weight: FontWeight.bold,
                   onPressed: profileController.logout,
