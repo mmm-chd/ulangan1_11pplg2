@@ -196,7 +196,7 @@ class ProfilePage extends StatelessWidget {
                   size: 24,
                   weight: FontWeight.bold,
                   onPressed: () {
-                    authController.logout();
+                    authController.signOut();
                   },
                 ),
               ),
@@ -207,4 +207,3 @@ class ProfilePage extends StatelessWidget {
     );
   }
 }
-
