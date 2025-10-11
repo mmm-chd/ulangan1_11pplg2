@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/data/data_todo.dart';
+import 'package:ulangan1_11pplg2/data/db_helper.dart';
 import 'package:ulangan1_11pplg2/model/model.dart';
 import 'package:ulangan1_11pplg2/model/model_priority.dart';
 
@@ -21,7 +22,7 @@ class AddEditTaskController extends GetxController {
   RxBool isShould = false.obs;
   RxBool isCould = false.obs;
 
-  DateFormat dateFormat = DateFormat('EEE, MMM d, yyyy');
+  DateFormat dateFormat = DateFormat('EEE, MMM d yyyy');
   Rx<DateTime> date = DateTime.now().obs;
 
   Rx<TimeOfDay> startTime = TimeOfDay.now().obs;
@@ -31,8 +32,6 @@ class AddEditTaskController extends GetxController {
 
   Color priorityColor = PriorityColor.primaryColor;
 
-  String startTimeStr = '';
-  String endTimeStr = '';
   String priorityStr = 'must do';
   String buttonText = 'Add Task';
   String headerText = 'Add Task';
@@ -40,6 +39,14 @@ class AddEditTaskController extends GetxController {
   ValueChanged<bool>? onTap;
 
   bool get isEditMode => index != null;
+
+  final _dbhelper = DbHelper();
+
+  Future<void> fetchData() async {
+    await _dbhelper.initDatabase();
+    final data = await _dbhelper.getList();
+    dataTodo.toDoItem.assignAll(data);
+  }
 
   void fillIn() {
     if (!isEditMode) return;
@@ -62,12 +69,12 @@ class AddEditTaskController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+
     final arguments = Get.arguments;
     if (arguments is int) {
       index = arguments;
       dataTodo = Get.find<DataTodo>();
       fillIn();
-      print(startTimeStr);
     } else {
       dataTodo = Get.find<DataTodo>();
       priorityStr = 'must do';
@@ -114,6 +121,7 @@ class AddEditTaskController extends GetxController {
     }
   }
 
+  // Edit Task
   void editTask() {
     if (!validateFields() || !isEditMode) return;
 
@@ -285,23 +293,46 @@ class AddEditTaskController extends GetxController {
     return true;
   }
 
-  void addTask() {
+  // Add Task
+  void addTask() async {
     if (!validateFields()) return;
 
-    dataTodo.toDoItem.add(
-      ToDoItem(
-        title: titleEditingController.text.trim(),
-        desc: descEditingController.text.trim(),
-        date: date.value,
-        startTime: _formatTime(startTime.value),
-        endTime: _formatTime(endTime.value),
-        priority: priorityColor,
-        priorityStr: priorityStr,
-        isCompleted: false,
-      ),
+    final String titleTxt = titleEditingController.text.trim();
+    final String descTxt = descEditingController.text.trim();
+    final String dateTxt = date.value.toIso8601String();
+    final String startTimeTxt = _formatTime(startTime.value);
+    final String endTimeTextTxt = _formatTime(endTime.value);
+    final int priorityCo = priorityColor.value.toInt();
+    final String priorityStrg = priorityStr;
+    final int isCompleted = 0;
+
+    await _dbhelper.insertList(
+      titleTxt,
+      descTxt,
+      dateTxt,
+      startTimeTxt,
+      endTimeTextTxt,
+      priorityCo,
+      priorityStrg,
+      isCompleted,
     );
+
+    // dataTodo.toDoItem.add(
+    //   ToDoItem(
+    //     title: titleEditingController.text.trim(),
+    //     desc: descEditingController.text.trim(),
+    //     date: date.value,
+    //     startTime: _formatTime(startTime.value),
+    //     endTime: _formatTime(endTime.value),
+    //     priority: priorityColor,
+    //     priorityStr: priorityStr,
+    //     isCompleted: false,
+    //   ),
+    // );
+
     clearControllers();
-    Get.offNamed('/navbarPage');
+    await fetchData();
+    Get.offAllNamed('/navbarPage');
   }
 
   String getButtonText() {

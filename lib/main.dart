@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ulangan1_11pplg2/bindings/main_binding.dart';
+import 'package:ulangan1_11pplg2/bindings/splash_binding.dart';
 import 'package:ulangan1_11pplg2/routes/app_pages.dart';
 import 'package:ulangan1_11pplg2/routes/app_routes.dart';
 
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Inter',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
       ),
-      initialBinding: MainBinding(),
+      initialBinding: SplashBinding(),
       initialRoute: AppRoutes.splashPage,
       getPages: AppPages.appPages,
     );
