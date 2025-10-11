@@ -40,8 +40,10 @@ class AddEditTaskController extends GetxController {
 
   bool get isEditMode => index != null;
 
+// Database
   final _dbhelper = DbHelper();
 
+// Fetch Database for Create, edit
   Future<void> fetchData() async {
     await _dbhelper.initDatabase();
     final data = await _dbhelper.getList();
