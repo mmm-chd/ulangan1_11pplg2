@@ -16,7 +16,7 @@ class HomeController extends GetxController {
   Color accentColor = PriorityColor.accentColor;
 
   RxBool complete = false.obs;
-
+  
   List<ToDoItem> get todayList {
     return dataTodo.toDoItem
         .where(

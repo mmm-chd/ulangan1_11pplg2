@@ -22,8 +22,6 @@ class ListTaskController extends GetxController {
 
   void onSelectedDate(DateTime dateTime) {
     selectedDate.value = dateTime;
-
-    update();
   }
 
   List<ToDoItem> get filteredList {
