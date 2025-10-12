@@ -28,8 +28,7 @@ class SplashController extends GetxController {
     final prefs = await SharedPreferences.getInstance();
     if (prefs.getString('username') != null &&
         prefs.getString('password') != null) {
-      Get.offAllNamed(AppRoutes.navbarPageMobile);
-      Get.offAllNamed(AppRoutes.navbarPageWide);
+      Get.offAllNamed(AppRoutes.navbarPage);
     } else {
       Get.offAllNamed(AppRoutes.loginPage);
     }

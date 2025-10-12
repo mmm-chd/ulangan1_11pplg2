@@ -18,7 +18,6 @@ class HomePageWide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: SupportColor.backgroundpb,
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 48),
         child: Column(
