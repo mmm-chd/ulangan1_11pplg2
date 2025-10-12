@@ -10,8 +10,8 @@ import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/home_controller.dart';
 import 'package:ulangan1_11pplg2/routes/app_routes.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
+class HomePageMobile extends StatelessWidget {
+  HomePageMobile({super.key});
 
   final HomeController homeController = Get.find<HomeController>();
 
