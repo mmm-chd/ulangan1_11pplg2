@@ -2,18 +2,20 @@ import 'package:flutter/material.dart';
 
 class CustomSearchBar extends StatelessWidget {
   final String hint;
+  final double? width;
   final ValueChanged<String>? onChanged;
 
   const CustomSearchBar({
     super.key,
     this.hint = "Search Your Tasks",
     this.onChanged,
+    this.width = 350,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 350,
+      width: width,
       height: 40,
       child: TextField(
         decoration: InputDecoration(
@@ -51,7 +53,7 @@ class CustomSearchBar extends StatelessWidget {
           contentPadding: const EdgeInsets.symmetric(
             vertical: 8,
             horizontal: 12,
-          ), // biar teks sejajar
+          ),
         ),
       ),
     );

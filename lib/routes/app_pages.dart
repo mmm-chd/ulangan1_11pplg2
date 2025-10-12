@@ -4,6 +4,7 @@ import 'package:ulangan1_11pplg2/bindings/history_binding.dart';
 import 'package:ulangan1_11pplg2/bindings/home_binding.dart';
 import 'package:ulangan1_11pplg2/bindings/list_task_binding.dart';
 import 'package:ulangan1_11pplg2/bindings/login_binding.dart';
+import 'package:ulangan1_11pplg2/bindings/responsive_binding.dart';
 import 'package:ulangan1_11pplg2/bindings/splash_binding.dart';
 import 'package:ulangan1_11pplg2/navbarMobile/navbar_binding.dart';
 import 'package:ulangan1_11pplg2/navbarMobile/navbar_page_mobile.dart';
@@ -11,6 +12,7 @@ import 'package:ulangan1_11pplg2/navbarWide/navbar_page_wide.dart';
 import 'package:ulangan1_11pplg2/pages/AddTaskListPage/add_task_page.dart';
 import 'package:ulangan1_11pplg2/pages/HistoryPage/history_page.dart';
 import 'package:ulangan1_11pplg2/pages/HomePage/home_page.dart';
+import 'package:ulangan1_11pplg2/pages/HomePage/home_page_widescreen.dart';
 import 'package:ulangan1_11pplg2/pages/ListTaskPage/list_task_page.dart';
 import 'package:ulangan1_11pplg2/pages/LoginPage/login_page.dart';
 import 'package:ulangan1_11pplg2/pages/ProfilePage/profile_page.dart';
@@ -29,7 +31,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.homePage,
       page: () => HomePage(),
-      binding: HomeBinding(),
+      bindings : [
+        HomeBinding(), 
+        ResponsiveBinding()
+      ],
     ),
     GetPage(
       name: AppRoutes.navbarPageMobile,
@@ -37,6 +42,11 @@ class AppPages {
       binding: NavbarBinding(),
       transition: Transition.fadeIn,
       transitionDuration: const Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: AppRoutes.homePageWide,
+      page: () => HomePageWide(),
+      binding: HomeBinding(),
     ),
     GetPage(
       name: AppRoutes.navbarPageWide,
@@ -55,9 +65,7 @@ class AppPages {
       page: () => AddTaskPage(),
       binding: AddTaskBinding(),
     ),
-    GetPage(
-      name: AppRoutes.profilePage, 
-      page: () => ProfilePage()),
+    GetPage(name: AppRoutes.profilePage, page: () => ProfilePage()),
     GetPage(
       name: AppRoutes.historyPage,
       page: () => HistoryPage(),
