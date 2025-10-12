@@ -7,8 +7,8 @@ import 'package:ulangan1_11pplg2/components/widget/customtextfield2_component.da
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/add_edit_task_controller.dart';
 
-class AddTaskPage extends StatelessWidget {
-  AddTaskPage({super.key});
+class AddTaskPageMobile extends StatelessWidget {
+  AddTaskPageMobile({super.key});
 
   final AddEditTaskController addEditTaskController =
       Get.find<AddEditTaskController>();
