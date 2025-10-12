@@ -23,7 +23,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.loginPage,
       page: () => LoginPage(),
-      binding: LoginBinding(),
+      bindings : [
+        LoginBinding(),
+        ResponsiveBinding()
+      ],
       transition: Transition.fadeIn,
       transitionDuration: const Duration(milliseconds: 500),
     ),
