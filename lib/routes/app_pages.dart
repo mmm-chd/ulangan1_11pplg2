@@ -8,8 +8,6 @@ import 'package:ulangan1_11pplg2/bindings/responsive_binding.dart';
 import 'package:ulangan1_11pplg2/bindings/splash_binding.dart';
 import 'package:ulangan1_11pplg2/navbarMobile/navbar_binding.dart';
 import 'package:ulangan1_11pplg2/navbarMobile/navbar_page.dart';
-import 'package:ulangan1_11pplg2/navbarMobile/navbar_page_mobile.dart';
-import 'package:ulangan1_11pplg2/navbarMobile/navbar_page_wide.dart';
 import 'package:ulangan1_11pplg2/pages/AddTaskListPage/add_task_page.dart';
 import 'package:ulangan1_11pplg2/pages/HistoryPage/history_page.dart';
 import 'package:ulangan1_11pplg2/pages/HomePage/home_page.dart';
