@@ -9,8 +9,8 @@ import 'package:ulangan1_11pplg2/components/widget/customtextfield_component.dar
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/auth_controller.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+class LoginPageMobile extends StatelessWidget {
+  LoginPageMobile({super.key});
 
   final AuthController authController = Get.find<AuthController>();
 
