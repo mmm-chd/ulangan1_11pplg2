@@ -7,8 +7,8 @@ import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/history_controller.dart';
 
-class HistoryPage extends StatelessWidget {
-  HistoryPage({super.key});
+class HistoryPageMobile extends StatelessWidget {
+  HistoryPageMobile({super.key});
 
   final HistoryController historyController = Get.find<HistoryController>();
 
