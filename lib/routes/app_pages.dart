@@ -9,10 +9,10 @@ import 'package:ulangan1_11pplg2/navbarMobile/navbar_binding.dart';
 import 'package:ulangan1_11pplg2/navbarMobile/navbar_page.dart';
 import 'package:ulangan1_11pplg2/pages/HomePage/home_page.dart';
 import 'package:ulangan1_11pplg2/pages/LoginPage/login_page.dart';
+import 'package:ulangan1_11pplg2/pages/ProfilePage/profile_page.dart';
 import 'package:ulangan1_11pplg2/pages/add_task_page.dart';
 import 'package:ulangan1_11pplg2/pages/history_page.dart';
 import 'package:ulangan1_11pplg2/pages/list_task_page.dart';
-import 'package:ulangan1_11pplg2/pages/profile_page.dart';
 import 'package:ulangan1_11pplg2/pages/splash_page.dart';
 import 'package:ulangan1_11pplg2/routes/app_routes.dart';
 
@@ -47,7 +47,9 @@ class AppPages {
       page: () => AddTaskPage(),
       binding: AddTaskBinding(),
     ),
-    GetPage(name: AppRoutes.profilePage, page: () => ProfilePage()),
+    GetPage(
+      name: AppRoutes.profilePage, 
+      page: () => ProfilePage()),
     GetPage(
       name: AppRoutes.historyPage,
       page: () => HistoryPage(),
