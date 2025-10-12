@@ -7,8 +7,8 @@ import 'package:ulangan1_11pplg2/components/widget/profile_option.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/profile_controller.dart';
 
-class ProfilePage extends StatelessWidget {
-  ProfilePage({super.key});
+class ProfilePageMobile extends StatelessWidget {
+  ProfilePageMobile({super.key});
 
   final ProfileController profileController = Get.find<ProfileController>();
 
