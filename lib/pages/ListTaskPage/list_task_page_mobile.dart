@@ -11,8 +11,8 @@ import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/list_task_controller.dart';
 import 'package:ulangan1_11pplg2/routes/app_routes.dart';
 
-class ListTaskPage extends StatelessWidget {
-  ListTaskPage({super.key});
+class ListTaskPageMobile extends StatelessWidget {
+  ListTaskPageMobile({super.key});
 
   final ListTaskController listTaskController = Get.find<ListTaskController>();
 
