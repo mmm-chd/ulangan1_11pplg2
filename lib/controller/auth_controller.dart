@@ -47,7 +47,8 @@ class AuthController extends GetxController {
         duration: Duration(milliseconds: 700),
       );
       await Future.delayed(Duration(seconds: 1));
-      await Get.offNamed(AppRoutes.navbarPage);
+      await Get.offNamed(AppRoutes.navbarPageMobile);
+      await Get.offNamed(AppRoutes.navbarPageWide);
     } else {
       Get.snackbar(
         'Wrong!!',
