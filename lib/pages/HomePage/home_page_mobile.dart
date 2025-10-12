@@ -103,7 +103,7 @@ class HomePageMobile extends StatelessWidget {
 
                   SpacingComponent(height: 16),
 
-                  CustomSearchBar(),
+                  CustomSearchBar(width: double.infinity,),
                   SpacingComponent(height: 20),
 
                   CustomText(
