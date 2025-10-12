@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
       ),
       initialBinding: SplashBinding(),
-      initialRoute: AppRoutes.loginPage,
+      initialRoute: AppRoutes.splashPage,
       getPages: AppPages.appPages,
     );
   }
