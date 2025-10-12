@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/navbarMobile/navbar_controller.dart';
 
-class NavbarPage extends StatelessWidget {
-  NavbarPage({super.key});
+class NavbarPageMobile extends StatelessWidget {
+  NavbarPageMobile({super.key});
 
   final NavbarController navbarController = Get.find<NavbarController>();
 
