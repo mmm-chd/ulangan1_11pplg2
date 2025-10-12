@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/controller/responsive_controller.dart';
-import 'package:ulangan1_11pplg2/pages/AddTaskListPage/add_task_page_mobile.dart';
-import 'package:ulangan1_11pplg2/pages/AddTaskListPage/add_task_page_widescreen.dart';
+import 'package:ulangan1_11pplg2/pages/ListTaskPage/list_task_page_mobile.dart';
+import 'package:ulangan1_11pplg2/pages/ListTaskPage/list_task_page_widescreen.dart';
 
-class AddTaskPage extends StatelessWidget {
-  AddTaskPage({super.key});
+class ListTaskPage extends StatelessWidget {
+  ListTaskPage({super.key});
 
   final controller = Get.find<ResponsiveController>();
 
@@ -16,10 +16,10 @@ class AddTaskPage extends StatelessWidget {
         builder: (context, constraints){
           controller.updateLayout(constraints);
           return Obx(
-            ()=> controller.isMobile.value ? AddTaskPageMobile() : AddTaskPageWide()
+            ()=> controller.isMobile.value ? ListTaskPageMobile() : ListTaskPageWide()
           );
         }
         ),
     );
   }
-}
+} 

@@ -10,9 +10,9 @@ import 'package:ulangan1_11pplg2/navbarMobile/navbar_page.dart';
 import 'package:ulangan1_11pplg2/pages/AddTaskListPage/add_task_page.dart';
 import 'package:ulangan1_11pplg2/pages/HistoryPage/history_page.dart';
 import 'package:ulangan1_11pplg2/pages/HomePage/home_page.dart';
+import 'package:ulangan1_11pplg2/pages/ListTaskPage/list_task_page.dart';
 import 'package:ulangan1_11pplg2/pages/LoginPage/login_page.dart';
 import 'package:ulangan1_11pplg2/pages/ProfilePage/profile_page.dart';
-import 'package:ulangan1_11pplg2/pages/list_task_page.dart';
 import 'package:ulangan1_11pplg2/pages/splash_page.dart';
 import 'package:ulangan1_11pplg2/routes/app_routes.dart';
 
