@@ -4,7 +4,6 @@ import 'package:ulangan1_11pplg2/bindings/history_binding.dart';
 import 'package:ulangan1_11pplg2/bindings/home_binding.dart';
 import 'package:ulangan1_11pplg2/bindings/list_task_binding.dart';
 import 'package:ulangan1_11pplg2/bindings/login_binding.dart';
-import 'package:ulangan1_11pplg2/bindings/responsive_binding.dart';
 import 'package:ulangan1_11pplg2/bindings/splash_binding.dart';
 import 'package:ulangan1_11pplg2/navbarMobile/navbar_binding.dart';
 import 'package:ulangan1_11pplg2/navbarMobile/navbar_page.dart';
@@ -23,28 +22,19 @@ class AppPages {
     GetPage(
       name: AppRoutes.loginPage,
       page: () => LoginPage(),
-      bindings : [
-        LoginBinding(),
-        ResponsiveBinding()
-      ],
+      binding: LoginBinding(),
       transition: Transition.fadeIn,
       transitionDuration: const Duration(milliseconds: 500),
     ),
     GetPage(
       name: AppRoutes.homePage,
       page: () => HomePage(),
-      bindings : [
-        HomeBinding(), 
-        ResponsiveBinding()
-      ],
+      binding: HomeBinding(),
     ),
     GetPage(
       name: AppRoutes.navbarPage,
       page: () => NavbarPage(),
-      bindings : [
-        NavbarBinding(),
-        ResponsiveBinding()
-      ],
+      binding: NavbarBinding(),
       transition: Transition.fadeIn,
       transitionDuration: const Duration(milliseconds: 500),
     ),

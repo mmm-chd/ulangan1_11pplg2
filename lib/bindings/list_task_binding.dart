@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:ulangan1_11pplg2/controller/add_edit_task_controller.dart';
 import 'package:ulangan1_11pplg2/controller/list_task_controller.dart';
 import 'package:ulangan1_11pplg2/controller/task_menu_controller.dart';
 
@@ -7,5 +8,9 @@ class ListTaskBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<ListTaskController>(() => ListTaskController(), fenix: true);
     Get.lazyPut<TaskMenuController>(() => TaskMenuController(), fenix: true);
+    Get.lazyPut<AddEditTaskController>(
+      () => AddEditTaskController(),
+      fenix: true,
+    );
   }
 }

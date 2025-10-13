@@ -1,0 +1,235 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
+import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/customtextfield2_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
+import 'package:ulangan1_11pplg2/controller/add_edit_task_controller.dart';
+
+class AddTaskDialog extends StatelessWidget {
+  AddTaskDialog({super.key});
+
+  final AddEditTaskController addEditTaskController =
+      Get.find<AddEditTaskController>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      elevation: 2,
+      insetAnimationCurve: Curves.linear,
+      insetAnimationDuration: Duration(milliseconds: 300),
+      backgroundColor: Colors.white,
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CustomText(
+                text: "Title",
+                color: TextColor.primaryTextColor,
+                weight: FontWeight.bold,
+                size: 18,
+              ),
+
+              const SpacingComponent(height: 6),
+
+              CustomTextField2(
+                controller: addEditTaskController.titleEditingController,
+                hintText: "Enter task title...",
+                outlineColor: SupportColor.stroke,
+                borderRadius: 5,
+              ),
+
+              const SpacingComponent(height: 15),
+
+              const CustomText(
+                text: "Descriptions",
+                color: TextColor.primaryTextColor,
+                weight: FontWeight.bold,
+                size: 18,
+              ),
+
+              const SpacingComponent(height: 6),
+
+              CustomTextField2(
+                controller: addEditTaskController.descEditingController,
+                hintText: "Enter description task...",
+                outlineColor: SupportColor.stroke,
+                borderRadius: 5,
+              ),
+
+              const SpacingComponent(height: 15),
+
+              const CustomText(
+                text: "Due Date",
+                color: TextColor.primaryTextColor,
+                weight: FontWeight.bold,
+                size: 18,
+              ),
+
+              const SpacingComponent(height: 6),
+
+              Obx(
+                () => CustomTextField2(
+                  controller: addEditTaskController.dateEditingController,
+                  readOnly: true,
+                  hintText: addEditTaskController.dueDate(),
+                  outlineColor: SupportColor.stroke,
+                  borderRadius: 5,
+                  suffixIcon: IconButton(
+                    icon: const Icon(Icons.calendar_today),
+                    onPressed: () => addEditTaskController.pickerDate(context),
+                  ),
+                ),
+              ),
+
+              const SpacingComponent(height: 15),
+
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const CustomText(
+                          text: "Start Time",
+                          color: TextColor.primaryTextColor,
+                          weight: FontWeight.bold,
+                          size: 18,
+                        ),
+
+                        SpacingComponent(height: 5),
+
+                        Obx(
+                          () => CustomTextField2(
+                            controller: addEditTaskController
+                                .startTimeEditingController,
+                            readOnly: true,
+                            hintText: addEditTaskController.sTimer(),
+                            outlineColor: SupportColor.stroke,
+                            borderRadius: 5,
+                            suffixIcon: IconButton(
+                              icon: const Icon(Icons.access_time),
+                              onPressed: () =>
+                                  addEditTaskController.spickerTime(context),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SpacingComponent(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const CustomText(
+                          text: "End Time",
+                          color: TextColor.primaryTextColor,
+                          weight: FontWeight.bold,
+                          size: 18,
+                        ),
+
+                        const SpacingComponent(height: 5),
+
+                        Obx(
+                          () => CustomTextField2(
+                            controller:
+                                addEditTaskController.endTimeEditingController,
+                            readOnly: true,
+                            hintText: addEditTaskController.eTimer(),
+                            outlineColor: SupportColor.stroke,
+                            suffixIcon: IconButton(
+                              onPressed: () =>
+                                  addEditTaskController.epickerTime(context),
+                              icon: Icon(Icons.access_time),
+                            ),
+                            borderRadius: 5,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SpacingComponent(height: 20),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const CustomText(
+                          text: "Priority",
+                          color: TextColor.primaryTextColor,
+                          weight: FontWeight.bold,
+                          size: 18,
+                        ),
+                        const SpacingComponent(height: 10),
+                        SizedBox(
+                          height: 40,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            shrinkWrap: true,
+                            itemCount:
+                                addEditTaskController.listPriority.length,
+                            itemBuilder: (context, index) {
+                              return Obx(
+                                () => ButtonComponent(
+                                  weight: FontWeight.w600,
+                                  backgroundColor:
+                                      addEditTaskController
+                                          .listPriority[index]
+                                          .priorityBool
+                                          .value
+                                      ? addEditTaskController
+                                            .listPriority[index]
+                                            .color
+                                      : Colors.transparent,
+                                  outlineColor: addEditTaskController
+                                      .listPriority[index]
+                                      .color,
+                                  text: addEditTaskController
+                                      .listPriority[index]
+                                      .priorityText,
+                                  onPressed: () {
+                                    addEditTaskController.onHandle(index);
+                                  },
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: ButtonComponent(
+                        height: 60,
+                        width: 376,
+                        backgroundColor: MainColor.primaryColor,
+                        text: addEditTaskController.getButtonText(),
+                        size: 24,
+                        weight: FontWeight.bold,
+                        onPressed: addEditTaskController.saveTask,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
