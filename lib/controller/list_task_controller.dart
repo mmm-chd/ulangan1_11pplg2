@@ -8,6 +8,7 @@ class ListTaskController extends GetxController {
   final TaskMenuController taskMenuController = Get.find<TaskMenuController>();
 
   RxBool complete = false.obs;
+  RxBool isTap = false.obs;
 
   var selectedDate = Rxn<DateTime>(DateTime.now());
 
@@ -50,5 +51,9 @@ class ListTaskController extends GetxController {
         update();
       }
     }
+  }
+
+  void onTapAddTask() {
+    isTap.value = !isTap.value;
   }
 }
