@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
-import 'package:ulangan1_11pplg2/components/widget/old_cardview_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/cardview_component/cardview_mobile.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/history_controller.dart';
@@ -94,7 +94,7 @@ class HistoryPageMobile extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: completedList.length,
                   itemBuilder: (context, index) {
-                    return CardTaskComponent(
+                    return CardviewMobile(
                       color: completedList[index].priority,
                       title: completedList[index].title,
                       desc: completedList[index].desc,
