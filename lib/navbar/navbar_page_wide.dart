@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
-import 'package:ulangan1_11pplg2/navbarMobile/navbar_controller.dart';
+import 'package:ulangan1_11pplg2/navbar/navbar_controller.dart';
 
 class NavbarPageWide extends StatelessWidget {
   NavbarPageWide({super.key});

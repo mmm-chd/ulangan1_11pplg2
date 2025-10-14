@@ -44,7 +44,7 @@ class HomePageWide extends StatelessWidget {
                 ),
               ],
             ),
-            SpacingComponent(height: 4,),
+            SpacingComponent(height: 4),
 
             //Subtext
             Obx(() {
@@ -75,7 +75,6 @@ class HomePageWide extends StatelessWidget {
                         color: MainColor.primaryColor,
                         fontWeight: FontWeight.w600,
                         fontSize: 18,
-                        decoration: TextDecoration.underline,
                       ),
                     ),
                   ],
@@ -86,7 +85,7 @@ class HomePageWide extends StatelessWidget {
             SpacingComponent(height: 20),
 
             const CustomSearchBar(width: double.infinity),
-            SpacingComponent(height: 24,),
+            SpacingComponent(height: 24),
 
             //Categories
             CustomText(
@@ -95,7 +94,7 @@ class HomePageWide extends StatelessWidget {
               weight: FontWeight.w700,
               size: 22,
             ),
-            SpacingComponent(height: 20,),
+            SpacingComponent(height: 20),
 
             Obx(
               () => Row(
@@ -131,7 +130,7 @@ class HomePageWide extends StatelessWidget {
               ),
             ),
 
-            SpacingComponent(height: 36,),
+            SpacingComponent(height: 36),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -156,7 +155,7 @@ class HomePageWide extends StatelessWidget {
                 ),
               ],
             ),
-            SpacingComponent(height: 20,),
+            SpacingComponent(height: 20),
 
             Obx(() {
               final todayList = homeController.todayList;
@@ -202,11 +201,7 @@ class HomePageWide extends StatelessWidget {
                     endTime: task.endTime.toString(),
                     isCompleted: task.isCompleted,
                     onTapItem: (value) {
-                      homeController.onTapMenu(
-                        value,
-                        index,
-                        task.isCompleted,
-                      );
+                      homeController.onTapMenu(value, index, task.isCompleted);
                     },
                   );
                 },

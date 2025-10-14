@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/controller/responsive_controller.dart';
-import 'package:ulangan1_11pplg2/navbarMobile/navbar_page_mobile.dart';
-import 'package:ulangan1_11pplg2/navbarMobile/navbar_page_wide.dart';
+import 'package:ulangan1_11pplg2/navbar/navbar_page_mobile.dart';
+import 'package:ulangan1_11pplg2/navbar/navbar_page_wide.dart';
 
 class NavbarPage extends StatelessWidget {
   NavbarPage({super.key});
