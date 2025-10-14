@@ -78,8 +78,6 @@ class CardviewWide extends StatelessWidget {
                   ),
                 ),
 
-                const SpacingComponent(height: 6),
-
                 Row(
                   children: [
                     Icon(
