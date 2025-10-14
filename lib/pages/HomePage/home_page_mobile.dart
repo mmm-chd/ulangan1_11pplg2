@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
-import 'package:ulangan1_11pplg2/components/widget/cardview_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/card_category_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/cardview_component/cardview_mobile.dart';
 import 'package:ulangan1_11pplg2/components/widget/custom_richtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/searchbar_component.dart';
@@ -22,7 +22,7 @@ class HomePageMobile extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SpacingComponent(height: 60),
+            const SpacingComponent(height: 60),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 16),
               child: Column(
@@ -49,7 +49,7 @@ class HomePageMobile extends StatelessWidget {
                     ],
                   ),
 
-                  SpacingComponent(height: 4),
+                  const SpacingComponent(height: 4),
 
                   Obx(
                     () => CustomRichText(
@@ -101,9 +101,9 @@ class HomePageMobile extends StatelessWidget {
                     ),
                   ),
 
-                  SpacingComponent(height: 16),
+                  const SpacingComponent(height: 16),
 
-                  CustomSearchBar(width: double.infinity,),
+                  CustomSearchBar(width: double.infinity),
                   SpacingComponent(height: 20),
 
                   CustomText(
@@ -116,7 +116,7 @@ class HomePageMobile extends StatelessWidget {
               ),
             ),
 
-            SpacingComponent(height: 12),
+            const SpacingComponent(height: 12),
 
             SingleChildScrollView(
               padding: EdgeInsets.symmetric(horizontal: 16),
@@ -132,7 +132,7 @@ class HomePageMobile extends StatelessWidget {
                     ),
                   ),
 
-                  SpacingComponent(width: 12),
+                  const SpacingComponent(width: 12),
 
                   Obx(
                     () => CardviewComponent(
@@ -144,7 +144,7 @@ class HomePageMobile extends StatelessWidget {
                     ),
                   ),
 
-                  SpacingComponent(width: 12),
+                  const SpacingComponent(width: 12),
 
                   Obx(
                     () => CardviewComponent(
@@ -154,13 +154,11 @@ class HomePageMobile extends StatelessWidget {
                       title: "Could Do",
                     ),
                   ),
-
-                  SpacingComponent(width: 12),
                 ],
               ),
             ),
 
-            SpacingComponent(height: 32),
+            const SpacingComponent(height: 32),
 
             Container(
               margin: EdgeInsets.symmetric(horizontal: 16),
@@ -209,7 +207,7 @@ class HomePageMobile extends StatelessWidget {
                                 size: 64,
                                 color: Colors.grey[400],
                               ),
-                              SpacingComponent(height: 16),
+                              const SpacingComponent(height: 16),
                               Text(
                                 'No tasks for today',
                                 style: TextStyle(
@@ -218,7 +216,7 @@ class HomePageMobile extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              SpacingComponent(height: 8),
+                              const SpacingComponent(height: 8),
                               Text(
                                 'Tap "Details" to see and create a new task',
                                 style: TextStyle(
@@ -237,7 +235,7 @@ class HomePageMobile extends StatelessWidget {
                       primary: false,
                       itemCount: todayList.length,
                       itemBuilder: (context, index) {
-                        return CardTaskComponent(
+                        return CardviewMobile(
                           color: todayList[index].priority,
                           title: todayList[index].title,
                           desc: todayList[index].desc,

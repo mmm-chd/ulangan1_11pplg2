@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
-import 'package:ulangan1_11pplg2/components/widget/cardview_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/cardview_component/cardview_wide.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/easydatetime_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
@@ -108,33 +108,44 @@ class ListTaskPageWide extends StatelessWidget {
                 );
               }
 
-              return GridView.builder(
-                itemCount: listTask.length,
-                padding: EdgeInsets.only(top: 8, left: 16, right: 16),
-                itemBuilder: (context, index) {
-                  return CardTaskComponent(
-                    color: listTask[index].priority,
-                    title: listTask[index].title,
-                    desc: listTask[index].desc,
-                    startTime: listTask[index].startTime.toString(),
-                    endTime: listTask[index].endTime,
-                    isCompleted: listTask[index].isCompleted,
-                    onTapItem: (value) {
-                      listTaskController.onTapMenu(
-                        value,
-                        index,
-                        listTask[index].isCompleted,
+              return LayoutBuilder(
+                builder: (context, constraints) {
+                  final screenWidth = constraints.maxWidth;
+                  final crossAxisCount = screenWidth > 600 ? 3 : 2;
+                  final itemWidth =
+                      (screenWidth - (crossAxisCount - 1) * 16) /
+                      crossAxisCount;
+                  final aspectRatio = itemWidth / 150;
+
+                  return GridView.builder(
+                    itemCount: listTask.length,
+                    padding: EdgeInsets.only(top: 8, left: 16, right: 16),
+                    itemBuilder: (context, index) {
+                      return CardviewWide(
+                        color: listTask[index].priority,
+                        title: listTask[index].title,
+                        desc: listTask[index].desc,
+                        startTime: listTask[index].startTime.toString(),
+                        endTime: listTask[index].endTime,
+                        isCompleted: listTask[index].isCompleted,
+                        onTapItem: (value) {
+                          listTaskController.onTapMenu(
+                            value,
+                            index,
+                            listTask[index].isCompleted,
+                          );
+                        },
                       );
                     },
+                    primary: true,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: aspectRatio,
+                      crossAxisCount: crossAxisCount,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                    ),
                   );
                 },
-                primary: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 1.7,
-                  crossAxisCount: 4,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                ),
               );
             }),
           ),
