@@ -2,12 +2,16 @@ import 'dart:ui';
 
 import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
+import 'package:ulangan1_11pplg2/controller/history_controller.dart';
 import 'package:ulangan1_11pplg2/controller/task_menu_controller.dart';
 import 'package:ulangan1_11pplg2/data/data_todo.dart';
+import 'package:ulangan1_11pplg2/data/db_helper.dart';
 import 'package:ulangan1_11pplg2/model/model.dart';
+import 'package:ulangan1_11pplg2/routes/app_routes.dart';
 
 class HomeController extends GetxController {
   final DataTodo dataTodo = Get.find<DataTodo>();
+  final DbHelper dbHelper = DbHelper();
   final TaskMenuController taskMenuController = Get.find<TaskMenuController>();
 
   Rx<DateTime> dateNow = DateTime.now().obs;
@@ -16,7 +20,7 @@ class HomeController extends GetxController {
   Color accentColor = PriorityColor.accentColor;
 
   RxBool complete = false.obs;
-  
+
   List<ToDoItem> get todayList {
     return dataTodo.toDoItem
         .where(
@@ -65,16 +69,21 @@ class HomeController extends GetxController {
         .length;
   }
 
-  void onTapMenu(String value, int index, bool isCompleted) {
+  void onTapMenu(String value, int index, bool isCompleted) async {
     final todoItem = todayList[index];
     final actualIndex = dataTodo.toDoItem.indexOf(todoItem);
 
     if (actualIndex != -1) {
-      taskMenuController.onTapItem(value, actualIndex, isCompleted);
-
-      if (value == 'completed') {
+      if (value == 'edit') {
+        await Get.toNamed(AppRoutes.addtaskPage, arguments: actualIndex);
         update();
+        return;
       }
+
+      //completed, delete
+      taskMenuController.onTapItem(value, actualIndex, isCompleted);
+      update();
+      Get.find<HistoryController>().refresh();
     }
   }
 }

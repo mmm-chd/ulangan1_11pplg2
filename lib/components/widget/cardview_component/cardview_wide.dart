@@ -13,6 +13,7 @@ class CardviewWide extends StatelessWidget {
   final String startTime;
   final String endTime;
   final bool isCompleted;
+  final bool isHistoryPage;
   final Function(String) onTapItem;
 
   final TaskMenuController taskMenuController = Get.find<TaskMenuController>();
@@ -26,6 +27,7 @@ class CardviewWide extends StatelessWidget {
     required this.endTime,
     required this.isCompleted,
     required this.onTapItem,
+    this.isHistoryPage = false,
   });
 
   @override
@@ -101,30 +103,25 @@ class CardviewWide extends StatelessWidget {
           const SpacingComponent(width: 8),
 
           PopupMenuButton<String>(
-            icon: const Icon(
-              Icons.more_vert,
-              size: 20,
-              color: SupportColor.whiteColor,
-            ),
+            icon: Icon(Icons.more_vert, color: Colors.white),
             onSelected: (value) => onTapItem(value),
-            itemBuilder: (context) => [
-              PopupMenuItem(
-                value: 'completed',
-                child: CustomText(
-                  text: '${taskMenuController.getMenuText(isCompleted)}',
-                ),
-              ),
-              PopupMenuDivider(thickness: 1),
-              if (isCompleted == false)
-                PopupMenuItem(
-                  value: 'edit',
-                  child: CustomText(text: 'Edit'),
-                ),
-              PopupMenuItem(
-                value: 'delete',
-                child: CustomText(text: 'Delete'),
-              ),
-            ],
+            itemBuilder: (context) {
+              if (isHistoryPage) {
+                return [
+                  PopupMenuItem(value: 'restore', child: Text('Restore')),
+                  PopupMenuItem(value: 'delete', child: Text('Delete')),
+                ];
+              } else {
+                return [
+                  PopupMenuItem(
+                    value: 'completed',
+                    child: Text('Completed'),
+                  ),
+                  PopupMenuItem(value: 'edit', child: Text('Edit')),
+                  PopupMenuItem(value: 'delete', child: Text('Delete')),
+                ];
+              }
+            },
           ),
         ],
       ),

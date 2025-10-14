@@ -101,12 +101,9 @@ class HistoryPageMobile extends StatelessWidget {
                       startTime: completedList[index].startTime.toString(),
                       endTime: completedList[index].endTime.toString(),
                       isCompleted: completedList[index].isCompleted,
+                      isHistoryPage: true,
                       onTapItem: (value) {
-                        historyController.onTapMenu(
-                          value,
-                          index,
-                          completedList[index].isCompleted,
-                        );
+                        historyController.onTapMenu(value, index);
                       },
                     );
                   },
