@@ -4,7 +4,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
-import 'package:ulangan1_11pplg2/components/widget/cardview2_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/cardview_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/easydatetime_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';

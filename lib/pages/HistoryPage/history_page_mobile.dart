@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
-import 'package:ulangan1_11pplg2/components/widget/cardview2_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/cardview_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/history_controller.dart';
