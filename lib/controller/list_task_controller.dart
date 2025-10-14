@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/controller/task_menu_controller.dart';
 import 'package:ulangan1_11pplg2/data/data_todo.dart';
+import 'package:ulangan1_11pplg2/data/db_helper.dart';
 import 'package:ulangan1_11pplg2/model/model.dart';
+import 'package:ulangan1_11pplg2/routes/app_routes.dart';
 
 class ListTaskController extends GetxController {
   final DataTodo dataTodo = Get.find<DataTodo>();
@@ -40,14 +42,22 @@ class ListTaskController extends GetxController {
     return dataTodo.toDoItem;
   }
 
-  void onTapMenu(String value, int index, bool isCompleted) {
+  void onTapMenu(String value, int index, bool isCompleted) async {
     final todoItem = filteredList[index];
     final actualIndex = dataTodo.toDoItem.indexOf(todoItem);
 
     if (actualIndex != -1) {
+      if (value == 'edit') {
+        await Get.toNamed(AppRoutes.addtaskPage, arguments: actualIndex);
+        update();
+        return;
+      }
+
       taskMenuController.onTapItem(value, actualIndex, isCompleted);
 
       if (value == 'completed') {
+        update();
+      } else if (value == 'delete') {
         update();
       }
     }

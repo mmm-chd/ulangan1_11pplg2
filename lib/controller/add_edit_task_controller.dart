@@ -6,6 +6,7 @@ import 'package:ulangan1_11pplg2/data/data_todo.dart';
 import 'package:ulangan1_11pplg2/data/db_helper.dart';
 import 'package:ulangan1_11pplg2/model/model.dart';
 import 'package:ulangan1_11pplg2/model/model_priority.dart';
+import 'package:ulangan1_11pplg2/routes/app_routes.dart';
 
 class AddEditTaskController extends GetxController {
   late DataTodo dataTodo;
@@ -40,10 +41,10 @@ class AddEditTaskController extends GetxController {
 
   bool get isEditMode => index != null;
 
-// Database
+  // Database
   final _dbhelper = DbHelper();
 
-// Fetch Database for Create, edit
+  // Fetch Database for Create, edit
   Future<void> fetchData() async {
     await _dbhelper.initDatabase();
     final data = await _dbhelper.getList();
@@ -124,10 +125,16 @@ class AddEditTaskController extends GetxController {
   }
 
   // Edit Task
-  void editTask() {
+  // Edit Task
+  void editTask() async {
     if (!validateFields() || !isEditMode) return;
 
-    dataTodo.toDoItem[index!] = ToDoItem(
+    // Ambil item lama (untuk id dan status isCompleted)
+    final oldItem = dataTodo.toDoItem[index!];
+
+    // Buat item baru dengan data hasil edit (sertakan id lama)
+    final updatedItem = ToDoItem(
+      id: oldItem.id, // penting agar update menyasar row yang benar di DB
       title: titleEditingController.text.trim(),
       desc: descEditingController.text.trim(),
       date: date.value,
@@ -135,11 +142,22 @@ class AddEditTaskController extends GetxController {
       endTime: _formatTime(endTime.value),
       priority: priorityColor,
       priorityStr: priorityStr,
-      isCompleted: dataTodo.toDoItem[index!].isCompleted,
+      isCompleted: oldItem.isCompleted,
     );
 
+    // Update ke database
+    await _dbhelper.updateTask(updatedItem);
+
+    // Update Task
+    dataTodo.toDoItem[index!] = updatedItem;
+    dataTodo.toDoItem.refresh(); //RxList ter-trigger
+
+    //reload
     clearControllers();
-    Get.back();
+    await fetchData();
+
+    // Kembali ke halaman utama
+    Get.offAllNamed(AppRoutes.navbarPage);
   }
 
   int get selectedPriorityIndex {

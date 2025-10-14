@@ -42,12 +42,8 @@ class DbHelper {
   }
 
   Future<void> printAllData() async {
-    // Your database instance
     final data = await db;
-    // Query all rows from a table
     final List<Map<String, dynamic>> results = await data.query('toDoItem');
-
-    // Print the data
     print('Total records: ${results.length}');
     for (var row in results) {
       print(row);
@@ -78,6 +74,27 @@ class DbHelper {
     });
   }
 
+  // Update data
+  Future<int> updateTask(ToDoItem item) async {
+  final client = await db;
+  return await client.update(
+    'toDoItem',
+    {
+      'title': item.title,
+      'desc': item.desc,
+      'date': item.date.toString(),
+      'startTime': item.startTime,
+      'endTime': item.endTime,
+      'priority': item.priority.value,
+      'priorityStr': item.priorityStr,
+      'isCompleted': item.isCompleted ? 1 : 0,
+    },
+    where: 'id = ?',
+    whereArgs: [item.id],
+  );
+}
+
+
   // Get data
   Future<List<ToDoItem>> getList() async {
     final client = await db;
@@ -85,8 +102,28 @@ class DbHelper {
       'toDoItem',
       orderBy: 'id DESC',
     );
-
-    // Convert di database layer
     return data.map((map) => ToDoItem.fromMap(map)).toList();
+  }
+
+  //Delete task berdasarkan ID
+  Future<int> deleteById(int id) async {
+    final client = await db;
+    return await client.delete('toDoItem', where: 'id = ?', whereArgs: [id]);
+  }
+
+  //Delete semua task
+  Future<void> deleteAllCompleted() async {
+    final client = await db;
+    await client.delete('toDoItem', where: 'isCompleted = ?', whereArgs: [1]);
+  }
+
+  Future<void> updateIsCompleted(int id, int isCompleted) async {
+    final client = await db;
+    await client.update(
+      'toDoItem',
+      {'isCompleted': isCompleted},
+      where: 'id = ?',
+      whereArgs: [id],
+    );
   }
 }
