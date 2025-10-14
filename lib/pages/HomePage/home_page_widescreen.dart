@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
-import 'package:ulangan1_11pplg2/components/widget/cardview_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/card_category_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/custom_richtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/searchbar_component.dart';
-import 'package:ulangan1_11pplg2/components/widget/cardview2_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/cardview_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/home_controller.dart';
 import 'package:ulangan1_11pplg2/routes/app_routes.dart';
@@ -189,7 +189,7 @@ class HomePageWide extends StatelessWidget {
                   crossAxisCount: 2,
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
-                  childAspectRatio: 1.8,
+                  childAspectRatio: 2.5,
                 ),
                 itemBuilder: (context, index) {
                   final task = todayList[index];

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomText extends StatelessWidget {
+class CustomLongText extends StatelessWidget {
   final String text;
   final double size;
   // final double padding;
@@ -9,7 +9,7 @@ class CustomText extends StatelessWidget {
   final String? fontFamily;
   final TextAlign? textAlign;
 
-  const CustomText({
+  const CustomLongText({
     super.key,
     required this.text,
     required this.color,
@@ -25,7 +25,7 @@ class CustomText extends StatelessWidget {
       text,
       textAlign: textAlign,
       overflow: TextOverflow.ellipsis,
-      maxLines: 1,
+      maxLines: 5,
       style: TextStyle(
         fontSize: size,
         color: color,

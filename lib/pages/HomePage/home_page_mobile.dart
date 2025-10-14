@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
-import 'package:ulangan1_11pplg2/components/widget/cardview2_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/cardview_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/card_category_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/custom_richtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/searchbar_component.dart';
