@@ -8,6 +8,7 @@ class CustomLongText extends StatelessWidget {
   final FontWeight weight;
   final String? fontFamily;
   final TextAlign? textAlign;
+  final double maxLines;
 
   const CustomLongText({
     super.key,
@@ -17,6 +18,7 @@ class CustomLongText extends StatelessWidget {
     this.fontFamily,
     required this.size,
     this.textAlign = TextAlign.start,
+    this.maxLines = 2,
   });
 
   @override
@@ -25,7 +27,7 @@ class CustomLongText extends StatelessWidget {
       text,
       textAlign: textAlign,
       overflow: TextOverflow.ellipsis,
-      maxLines: 5,
+      maxLines: 2,
       style: TextStyle(
         fontSize: size,
         color: color,

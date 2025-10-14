@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/card_category_component.dart';
+import 'package:ulangan1_11pplg2/components/widget/cardview_component/cardview_wide.dart';
 import 'package:ulangan1_11pplg2/components/widget/custom_richtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/customtext_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/searchbar_component.dart';
-import 'package:ulangan1_11pplg2/components/widget/cardview_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/home_controller.dart';
 import 'package:ulangan1_11pplg2/routes/app_routes.dart';
@@ -145,11 +145,14 @@ class HomePageWide extends StatelessWidget {
                   onTap: () {
                     Get.toNamed(AppRoutes.listtaskPage);
                   },
-                  child: Text(
-                    "Details",
-                    style: TextStyle(
+                  borderRadius: BorderRadius.all(Radius.circular(6)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: CustomText(
+                      text: 'Details',
                       color: SupportColor.grayColor,
-                      fontWeight: FontWeight.w500,
+                      weight: FontWeight.w500,
+                      size: 12,
                     ),
                   ),
                 ),
@@ -181,27 +184,42 @@ class HomePageWide extends StatelessWidget {
                 );
               }
 
-              return GridView.builder(
-                itemCount: todayList.length,
-                shrinkWrap: true,
-                primary: false,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                  childAspectRatio: 2.5,
-                ),
-                itemBuilder: (context, index) {
-                  final task = todayList[index];
-                  return CardTaskComponent(
-                    color: task.priority,
-                    title: task.title,
-                    desc: task.desc,
-                    startTime: task.startTime.toString(),
-                    endTime: task.endTime.toString(),
-                    isCompleted: task.isCompleted,
-                    onTapItem: (value) {
-                      homeController.onTapMenu(value, index, task.isCompleted);
+              return LayoutBuilder(
+                builder: (context, constraints) {
+                  final screenWidth = constraints.maxWidth;
+                  final crossAxisCount = screenWidth > 600 ? 3 : 2;
+                  final itemWidth =
+                      (screenWidth - (crossAxisCount - 1) * 16) /
+                      crossAxisCount;
+                  final aspectRatio = itemWidth / 150;
+
+                  return GridView.builder(
+                    itemCount: todayList.length,
+                    shrinkWrap: true,
+                    primary: false,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: crossAxisCount,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                      childAspectRatio: aspectRatio,
+                    ),
+                    itemBuilder: (context, index) {
+                      final task = todayList[index];
+                      return CardviewWide(
+                        color: task.priority,
+                        title: task.title,
+                        desc: task.desc,
+                        startTime: task.startTime.toString(),
+                        endTime: task.endTime.toString(),
+                        isCompleted: task.isCompleted,
+                        onTapItem: (value) {
+                          homeController.onTapMenu(
+                            value,
+                            index,
+                            task.isCompleted,
+                          );
+                        },
+                      );
                     },
                   );
                 },

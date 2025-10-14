@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 
 class CustomText extends StatelessWidget {
   final String text;
-  final double size;
+  final double? size;
   // final double padding;
-  final Color color;
-  final FontWeight weight;
+  final Color? color;
+  final FontWeight? weight;
   final String? fontFamily;
   final TextAlign? textAlign;
 
   const CustomText({
     super.key,
     required this.text,
-    required this.color,
-    required this.weight,
+    this.color,
+    this.weight,
     this.fontFamily,
-    required this.size,
+    this.size,
     this.textAlign = TextAlign.start,
   });
 
