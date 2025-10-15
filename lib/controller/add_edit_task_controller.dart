@@ -393,4 +393,85 @@ class AddEditTaskController extends GetxController {
     priorityColor = PriorityColor.primaryColor;
     priorityStr = 'must do';
   }
+
+  void saveTaskFromDialog() async {
+  if (isEditMode) {
+    await editTaskFromDialog();
+  } else {
+    await addTaskFromDialog();
+  }
+}
+
+// Modified editTask for dialog usage
+Future<void> editTaskFromDialog() async {
+  if (!validateFields() || !isEditMode) return;
+
+  final oldItem = dataTodo.toDoItem[index!];
+
+  final updatedItem = ToDoItem(
+    id: oldItem.id,
+    title: titleEditingController.text.trim(),
+    desc: descEditingController.text.trim(),
+    date: date.value,
+    startTime: _formatTime(startTime.value),
+    endTime: _formatTime(endTime.value),
+    priority: priorityColor,
+    priorityStr: priorityStr,
+    isCompleted: oldItem.isCompleted,
+  );
+
+  await _dbhelper.updateTask(updatedItem);
+  dataTodo.toDoItem[index!] = updatedItem;
+  dataTodo.toDoItem.refresh();
+
+  clearControllers();
+  await fetchData();
+  
+  Get.back();
+  
+  Get.snackbar(
+    'Success',
+    'Task updated successfully',
+    snackPosition: SnackPosition.BOTTOM,
+    backgroundColor: Colors.green,
+    colorText: Colors.white,
+  );
+}
+
+Future<void> addTaskFromDialog() async {
+  if (!validateFields()) return;
+
+  final String titleTxt = titleEditingController.text.trim();
+  final String descTxt = descEditingController.text.trim();
+  final String dateTxt = date.value.toIso8601String();
+  final String startTimeTxt = _formatTime(startTime.value);
+  final String endTimeTextTxt = _formatTime(endTime.value);
+  final int priorityCo = priorityColor.value.toInt();
+  final String priorityStrg = priorityStr;
+  final int isCompleted = 0;
+
+  await _dbhelper.insertList(
+    titleTxt,
+    descTxt,
+    dateTxt,
+    startTimeTxt,
+    endTimeTextTxt,
+    priorityCo,
+    priorityStrg,
+    isCompleted,
+  );
+
+  clearControllers();
+  await fetchData();
+  
+  Get.back(); // Close dialog instead of navigating
+  
+  Get.snackbar(
+    'Success',
+    'Task added successfully',
+    snackPosition: SnackPosition.BOTTOM,
+    backgroundColor: Colors.green,
+    colorText: Colors.white,
+  );
+}
 }

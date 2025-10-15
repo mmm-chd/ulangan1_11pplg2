@@ -8,13 +8,27 @@ import 'package:ulangan1_11pplg2/components/widget/space_component.dart';
 import 'package:ulangan1_11pplg2/controller/add_edit_task_controller.dart';
 
 class AddTaskDialog extends StatelessWidget {
-  AddTaskDialog({super.key});
+  final int? editIndex;
+
+  AddTaskDialog({
+    super.key,
+    this.editIndex,
+  });
 
   final AddEditTaskController addEditTaskController =
       Get.find<AddEditTaskController>();
 
   @override
   Widget build(BuildContext context) {
+    // Load task data if editing
+    if (editIndex != null) {
+      addEditTaskController.index = editIndex;
+      addEditTaskController.fillIn();
+    } else {
+      addEditTaskController.index = null;
+      addEditTaskController.clearControllers();
+    }
+
     return Dialog(
       elevation: 2,
       insetAnimationCurve: Curves.linear,
@@ -220,7 +234,9 @@ class AddTaskDialog extends StatelessWidget {
                         text: addEditTaskController.getButtonText(),
                         size: 24,
                         weight: FontWeight.bold,
-                        onPressed: addEditTaskController.saveTask,
+                        onPressed: () {
+                          addEditTaskController.saveTaskFromDialog();
+                        },
                       ),
                     ),
                   ),

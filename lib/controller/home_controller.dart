@@ -7,6 +7,7 @@ import 'package:ulangan1_11pplg2/controller/task_menu_controller.dart';
 import 'package:ulangan1_11pplg2/data/data_todo.dart';
 import 'package:ulangan1_11pplg2/data/db_helper.dart';
 import 'package:ulangan1_11pplg2/model/model.dart';
+import 'package:ulangan1_11pplg2/pages/AddTaskListPage/add_task_dialog.dart';
 import 'package:ulangan1_11pplg2/routes/app_routes.dart';
 
 class HomeController extends GetxController {
@@ -75,7 +76,7 @@ class HomeController extends GetxController {
 
     if (actualIndex != -1) {
       if (value == 'edit') {
-        await Get.toNamed(AppRoutes.addtaskPage, arguments: actualIndex);
+        await Get.dialog(AddTaskDialog(editIndex: actualIndex));
         update();
         return;
       }
