@@ -105,7 +105,6 @@ class HistoryPageWide extends StatelessWidget {
                     ),
                     itemCount: completedList.length,
                     itemBuilder: (context, index) {
-                      final item = completedList[index];
                       return CardviewWide(
                         color: completedList[index].priority,
                       title: completedList[index].title,
