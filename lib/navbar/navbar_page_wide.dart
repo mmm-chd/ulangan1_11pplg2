@@ -18,7 +18,7 @@ class NavbarPageWide extends StatelessWidget {
           // Sidebar
           Container(
             width: 120,
-            color: Colors.white,
+            color: Color(0xffF4E2EC),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
