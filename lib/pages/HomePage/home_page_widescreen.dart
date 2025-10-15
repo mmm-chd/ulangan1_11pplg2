@@ -70,9 +70,18 @@ class HomePageWide extends StatelessWidget {
                     ),
                     TextSpan(
                       text:
-                          "${homeController.totalTasks} tasks to complete this month.",
+                          "${homeController.totalTasks} ",
                       style: TextStyle(
                         color: MainColor.primaryColor,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18,
+                      ),
+                    ),
+                    TextSpan(
+                      text:
+                          "tasks to complete this month.",
+                      style: TextStyle(
+                        color: TextColor.primaryTextColor,
                         fontWeight: FontWeight.w600,
                         fontSize: 18,
                       ),
