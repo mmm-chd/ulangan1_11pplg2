@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:ulangan1_11pplg2/components/color/custom_color.dart';
 import 'package:ulangan1_11pplg2/components/widget/background_component.dart';
 import 'package:ulangan1_11pplg2/components/widget/button_component.dart';
@@ -28,10 +29,14 @@ class LoginPageWide extends StatelessWidget {
                 child: Center(
                   child: Padding(
                     padding: const EdgeInsets.all(48),
-                    child: Image.asset(
-                      "assets/images/login.png",
-                      fit: BoxFit.contain,
-                    ),
+                    child: Lottie.asset(
+                          'assets/animation/login.json',
+                          width: 400,
+                          height: 400,
+                          frameRate: FrameRate(30),
+                          backgroundLoading: true,
+                          filterQuality: FilterQuality.low,
+                        ),
                   ),
                 ),
               ),
