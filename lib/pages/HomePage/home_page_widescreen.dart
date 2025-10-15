@@ -82,7 +82,7 @@ class HomePageWide extends StatelessWidget {
                           "tasks to complete this month.",
                       style: TextStyle(
                         color: TextColor.primaryTextColor,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w500,
                         fontSize: 18,
                       ),
                     ),
