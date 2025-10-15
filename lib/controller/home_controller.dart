@@ -8,7 +8,6 @@ import 'package:ulangan1_11pplg2/data/data_todo.dart';
 import 'package:ulangan1_11pplg2/data/db_helper.dart';
 import 'package:ulangan1_11pplg2/model/model.dart';
 import 'package:ulangan1_11pplg2/pages/AddTaskListPage/add_task_dialog.dart';
-import 'package:ulangan1_11pplg2/routes/app_routes.dart';
 
 class HomeController extends GetxController {
   final DataTodo dataTodo = Get.find<DataTodo>();
