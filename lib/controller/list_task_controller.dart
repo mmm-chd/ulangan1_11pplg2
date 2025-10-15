@@ -3,7 +3,6 @@ import 'package:ulangan1_11pplg2/controller/task_menu_controller.dart';
 import 'package:ulangan1_11pplg2/data/data_todo.dart';
 import 'package:ulangan1_11pplg2/model/model.dart';
 import 'package:ulangan1_11pplg2/pages/AddTaskListPage/add_task_dialog.dart';
-import 'package:ulangan1_11pplg2/routes/app_routes.dart';
 
 class ListTaskController extends GetxController {
   final DataTodo dataTodo = Get.find<DataTodo>();
@@ -55,11 +54,7 @@ class ListTaskController extends GetxController {
 
       taskMenuController.onTapItem(value, actualIndex, isCompleted);
 
-      if (value == 'completed') {
-        update();
-      } else if (value == 'delete') {
-        update();
-      }
+      update();
     }
   }
 

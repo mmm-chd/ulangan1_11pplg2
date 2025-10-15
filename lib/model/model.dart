@@ -23,18 +23,20 @@ class ToDoItem {
     required this.isCompleted,
   });
 
-  Map<String, dynamic> toMap() => {
-    'id': id,
-    'title': title,
-    'desc': desc,
-    'date': date.toIso8601String(),
-    'startTime': startTime,
-    'endTime': endTime,
-    'priority': priority.value,
-    'priorityStr': priorityStr,
-    'isCompleted': isCompleted ? 1 : 0,
-  };
+  // convert list to map
+  // Map<String, dynamic> toMap() => {
+  //   'id': id,
+  //   'title': title,
+  //   'desc': desc,
+  //   'date': date.toIso8601String(),
+  //   'startTime': startTime,
+  //   'endTime': endTime,
+  //   'priority': priority.value,
+  //   'priorityStr': priorityStr,
+  //   'isCompleted': isCompleted ? 1 : 0,
+  // };
 
+  // convert map to list
   factory ToDoItem.fromMap(Map<String, dynamic> map) => ToDoItem(
     id: map['id'] as int?,
     title: map['title'] as String,

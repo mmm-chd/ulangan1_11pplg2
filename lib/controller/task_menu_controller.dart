@@ -10,9 +10,13 @@ class TaskMenuController extends GetxController {
   void onTapItem(String value, int index, bool isCompleted) async {
     final todoItem = dataTodo.toDoItem[index];
     switch (value) {
-      case 'completed': 
-        dataTodo.toDoItem[index].isCompleted = !isCompleted;
+      case 'completed':
+        dataTodo.toDoItem[index].isCompleted = true;
         dataTodo.toDoItem.refresh();
+        await DbHelper().updateIsCompleted(
+          todoItem.id!,
+          dataTodo.toDoItem[index].isCompleted ? 1 : 0,
+        );
         print(currentRoute);
         break;
       case 'edit':
@@ -22,7 +26,10 @@ class TaskMenuController extends GetxController {
         dataTodo.toDoItem[index].isCompleted = false;
         dataTodo.toDoItem.refresh();
 
-        await DbHelper().updateIsCompleted(todoItem.id!, 0);
+        await DbHelper().updateIsCompleted(
+          todoItem.id!,
+          dataTodo.toDoItem[index].isCompleted ? 1 : 0,
+        );
 
         print(currentRoute);
         break;
