@@ -337,19 +337,6 @@ class AddEditTaskController extends GetxController {
       isCompleted,
     );
 
-    // dataTodo.toDoItem.add(
-    //   ToDoItem(
-    //     title: titleEditingController.text.trim(),
-    //     desc: descEditingController.text.trim(),
-    //     date: date.value,
-    //     startTime: _formatTime(startTime.value),
-    //     endTime: _formatTime(endTime.value),
-    //     priority: priorityColor,
-    //     priorityStr: priorityStr,
-    //     isCompleted: false,
-    //   ),
-    // );
-
     clearControllers();
     await fetchData();
     Get.offAllNamed('/navbarPage');

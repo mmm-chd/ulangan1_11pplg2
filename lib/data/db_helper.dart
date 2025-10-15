@@ -41,6 +41,7 @@ class DbHelper {
     );
   }
 
+// Just For Check database
   Future<void> printAllData() async {
     final data = await db;
     final List<Map<String, dynamic>> results = await data.query('toDoItem');
@@ -117,6 +118,7 @@ class DbHelper {
     await client.delete('toDoItem', where: 'isCompleted = ?', whereArgs: [1]);
   }
 
+// uppdate isCompleted When complete menu tapped
   Future<void> updateIsCompleted(int id, int isCompleted) async {
     final client = await db;
     await client.update(

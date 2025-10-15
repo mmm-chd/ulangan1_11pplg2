@@ -45,7 +45,7 @@ class HomePageWide extends StatelessWidget {
                 ),
               ],
             ),
-            SpacingComponent(height: 4),
+            const SpacingComponent(height: 4),
 
             //Subtext
             Obx(() {
@@ -70,8 +70,7 @@ class HomePageWide extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text:
-                          "${homeController.totalTasks} ",
+                      text: "${homeController.totalTasks} ",
                       style: TextStyle(
                         color: MainColor.primaryColor,
                         fontWeight: FontWeight.w500,
@@ -79,8 +78,7 @@ class HomePageWide extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text:
-                          "tasks to complete this month.",
+                      text: "tasks to complete this month.",
                       style: TextStyle(
                         color: TextColor.primaryTextColor,
                         fontWeight: FontWeight.w500,
@@ -92,7 +90,7 @@ class HomePageWide extends StatelessWidget {
               }
             }),
 
-            SpacingComponent(height: 20),
+            const SpacingComponent(height: 20),
 
             const CustomSearchBar(width: double.infinity),
             SpacingComponent(height: 24),
@@ -104,7 +102,7 @@ class HomePageWide extends StatelessWidget {
               weight: FontWeight.w700,
               size: 22,
             ),
-            SpacingComponent(height: 20),
+            const SpacingComponent(height: 20),
 
             Obx(
               () => Row(
@@ -140,7 +138,7 @@ class HomePageWide extends StatelessWidget {
               ),
             ),
 
-            SpacingComponent(height: 36),
+            const SpacingComponent(height: 36),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -168,7 +166,7 @@ class HomePageWide extends StatelessWidget {
                 ),
               ],
             ),
-            SpacingComponent(height: 20),
+            const SpacingComponent(height: 20),
 
             Obx(() {
               final todayList = homeController.todayList;
