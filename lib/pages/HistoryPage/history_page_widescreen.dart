@@ -14,7 +14,6 @@ class HistoryPageWide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: SupportColor.whiteColor,
       body: SafeArea(
@@ -96,26 +95,42 @@ class HistoryPageWide extends StatelessWidget {
                     );
                   }
 
-                  return GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20,
-                      childAspectRatio: 1.8,
-                    ),
-                    itemCount: completedList.length,
-                    itemBuilder: (context, index) {
-                      return CardviewWide(
-                        color: completedList[index].priority,
-                      title: completedList[index].title,
-                      desc: completedList[index].desc,
-                      startTime: completedList[index].startTime.toString(),
-                      endTime: completedList[index].endTime.toString(),
-                      isCompleted: completedList[index].isCompleted,
-                      isHistoryPage: true,
-                        onTapItem: (value) {
-                        historyController.onTapMenu(value, index);
-                      },
+                  return LayoutBuilder(
+                    builder: (context, constraints) {
+                      final screenWidth = constraints.maxWidth;
+                      final crossAxisCount = screenWidth > 600 ? 3 : 2;
+                      final itemWidth =
+                          (screenWidth - (crossAxisCount - 1) * 16) /
+                          crossAxisCount;
+                      final aspectRatio = itemWidth / 150;
+
+                      return GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: crossAxisCount,
+                          crossAxisSpacing: 20,
+                          mainAxisSpacing: 20,
+                          childAspectRatio: aspectRatio,
+                        ),
+                        itemCount: completedList.length,
+                        itemBuilder: (context, index) {
+                          final item = completedList[index];
+                          return CardviewWide(
+                            color: item.priority,
+                            title: item.title,
+                            desc: item.desc,
+                            startTime: item.startTime.toString(),
+                            endTime: item.endTime.toString(),
+                            isCompleted: item.isCompleted,
+                            isHistoryPage: true,
+                            onTapItem: (value) {
+                              historyController.onTapMenu(
+                                value,
+                                index,
+                                item.isCompleted,
+                              );
+                            },
+                          );
+                        },
                       );
                     },
                   );

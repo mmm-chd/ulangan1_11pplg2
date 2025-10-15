@@ -8,50 +8,33 @@ class HistoryController extends GetxController {
   final DataTodo dataTodo = Get.find<DataTodo>();
   final TaskMenuController taskMenuController = Get.find<TaskMenuController>();
 
-  RxList<ToDoItem> completedList = <ToDoItem>[].obs;
+  RxBool complete = true.obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-    _loadCompleted();
-  }
-
-  // Load completed
-  void _loadCompleted() {
-    completedList.value =
-        dataTodo.toDoItem.where((item) => item.isCompleted).toList();
+  RxList<ToDoItem> get completedList {
+    return dataTodo.toDoItem
+        .where((item) => item.isCompleted == complete.value)
+        .toList()
+        .obs;
   }
 
   //Hapus semua completed
-  void deleteAll() {
+  void deleteAll() async {
     dataTodo.toDoItem.removeWhere((item) => item.isCompleted);
-    _loadCompleted();
+    await DbHelper().deleteAllCompleted();
   }
 
-  //Hapus satu item
-  void deleteById(int id) {
-    dataTodo.toDoItem.removeWhere((item) => item.id == id);
-    _loadCompleted();
-  }
+  // //Hapus satu item
+  // void deleteById(int id) {
+  //   dataTodo.toDoItem.removeWhere((item) => item.id == id);
+  // }
 
   //delete atau restore
-  void onTapMenu(String value, int index) async {
-  final todoItem = completedList[index];
-  final actualIndex = dataTodo.toDoItem.indexOf(todoItem);
+  Future<void> onTapMenu(String value, int index, bool isCompleted) async {
+    final todoItem = completedList[index];
+    final actualIndex = dataTodo.toDoItem.indexOf(todoItem);
 
-  if (actualIndex != -1) {
-    if (value == 'delete') {
-      dataTodo.toDoItem.removeAt(actualIndex);
-      await DbHelper().deleteById(todoItem.id!);
-    } else if (value == 'restore') {
-      dataTodo.toDoItem[actualIndex].isCompleted = false;
+    if (actualIndex != -1) {
+      taskMenuController.onTapItem(value, index, isCompleted);
     }
-    _loadCompleted();
-  }
-}
-
-  //Dipanggil dari HomeController ketika task di-mark completed
-  void refresh() {
-    _loadCompleted();
   }
 }

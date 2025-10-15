@@ -92,18 +92,24 @@ class HistoryPageMobile extends StatelessWidget {
 
                 return ListView.builder(
                   shrinkWrap: true,
+                  primary: false,
                   itemCount: completedList.length,
                   itemBuilder: (context, index) {
+                    final item = completedList[index];
                     return CardviewMobile(
-                      color: completedList[index].priority,
-                      title: completedList[index].title,
-                      desc: completedList[index].desc,
-                      startTime: completedList[index].startTime.toString(),
-                      endTime: completedList[index].endTime.toString(),
-                      isCompleted: completedList[index].isCompleted,
+                      color: item.priority,
+                      title: item.title,
+                      desc: item.desc,
+                      startTime: item.startTime.toString(),
+                      endTime: item.endTime.toString(),
+                      isCompleted: item.isCompleted,
                       isHistoryPage: true,
                       onTapItem: (value) {
-                        historyController.onTapMenu(value, index);
+                        historyController.onTapMenu(
+                          value,
+                          index,
+                          item.isCompleted,
+                        );
                       },
                     );
                   },

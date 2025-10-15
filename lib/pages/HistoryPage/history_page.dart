@@ -13,13 +13,15 @@ class HistoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: LayoutBuilder(
-        builder: (context, constraints){
+        builder: (context, constraints) {
           controller.updateLayout(constraints);
           return Obx(
-            ()=> controller.isMobile.value ? HistoryPageMobile() : HistoryPageWide()
+            () => controller.isMobile.value
+                ? HistoryPageMobile()
+                : HistoryPageWide(),
           );
-        }
-        ),
+        },
+      ),
     );
   }
 }
